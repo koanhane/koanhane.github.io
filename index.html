@@ -359,6 +359,12 @@ html[lang="zh-CN"] .hero h1{letter-spacing:-.055em}
 .research-modal-pdf:hover{background:#7854d9;transform:translateY(-2px)}
 .research-modal-close{padding:9px 0;border:0;background:none;color:#796c85;font-size:12px;cursor:pointer}
 @media(max-width:650px){.detail-dialog:has(.research-modal-body){padding:35px 23px 25px}.research-modal-actions{gap:10px}}
+
+/* Section spacing refinement: avoid duplicate separators around Experience. */
+#experience.experience { border-top: 0 !important; border-bottom: 0 !important; }
+/* Preserve the Experience list's internal rules, but make About corners consistent. */
+#about .about { border-radius: 32px !important; overflow: hidden !important; clip-path: inset(0 round 32px); }
+@media (max-width: 600px) { #about .about { border-radius: 26px !important; clip-path: inset(0 round 26px); } }
 </style>
 <script id="shared-portfolio-language">
 (function(){
