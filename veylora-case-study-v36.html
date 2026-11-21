@@ -2133,6 +2133,63 @@ html[lang="zh-CN"] .hero-integrated h1{
   },true);
 })();
 </script>
+<style id="mobile-consistency-patch">
+
+/* Mobile reading system shared by all Personal Universe case studies.
+   Desktop presentation remains untouched. */
+@media (max-width: 820px) {
+  html { scroll-padding-top: 92px; }
+  body { max-width: 100%; overflow-x: clip; -webkit-text-size-adjust: 100%; }
+  main, main > section, section, article { min-width: 0; }
+  main img, main video, main svg, main canvas { max-width: 100%; }
+  img, video { height: auto; }
+  h1, h2, h3, h4, p, li, .lede, .desc { overflow-wrap: break-word; }
+  section[id], div[id] { scroll-margin-top: 92px; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+@media (max-width: 480px) {
+  body { font-size: 15px; line-height: 1.68; }
+  h2 { font-size: clamp(28px, 7.6vw, 33px) !important; line-height: 1.13 !important; letter-spacing: -.035em !important; }
+  h3 { line-height: 1.25; }
+  p, li { line-height: 1.68; }
+}
+
+/* Veylora — preserve its forest-green look but match every other case-study mobile navbar. */
+@media(max-width:820px){
+  .site-nav.veylora-case-nav{position:sticky!important;top:8px!important;z-index:200!important;
+    width:calc(100% - 24px)!important;height:56px!important;min-height:56px!important;
+    margin:10px auto 0!important;padding:6px 10px 6px 14px!important;
+    display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px!important;align-items:center!important;justify-content:initial!important;flex-wrap:nowrap!important;border-radius:999px!important;}
+  .site-nav.veylora-case-nav .brand{font-size:13px!important;min-width:0!important;}
+  .site-nav.veylora-case-nav nav.navlinks,.site-nav.veylora-case-nav .navlinks{display:none!important;visibility:hidden!important;}
+  .site-nav.veylora-case-nav .nav-actions{display:flex!important;justify-self:end!important;align-items:center!important;margin:0!important;gap:6px!important;}
+  .site-nav.veylora-case-nav .language-switch{font-size:10px!important;padding:8px 9px!important;min-height:36px!important;}
+  .site-nav.veylora-case-nav .nav-return{font-size:10px!important;padding:9px 11px!important;min-height:36px!important;}
+  .wrap{width:calc(100% - 40px)!important;max-width:none!important;margin-left:auto!important;margin-right:auto!important;}
+  .hero-integrated h1,.hero-artifact h1,h1{font-size:clamp(43px,10.8vw,50px)!important;line-height:1.03!important;}
+  h2{font-size:clamp(29px,7.6vw,34px)!important;line-height:1.13!important;}
+  .hero{padding:58px 0 60px!important;}
+  .hero-grid,.hero-artifact-grid{grid-template-columns:1fr!important;gap:26px!important;}
+  section{padding:62px 0!important;}
+  .section-head{display:block!important;max-width:100%!important;}
+  .section-head h2{margin-bottom:14px!important;}
+  .lede,.section-copy,.version-intro{font-size:15px!important;line-height:1.7!important;}
+  .grid-2,.grid-3,.version-grid,.concept-grid,.ui-current-grid,.current-ui-grid,
+  .ui-system-grid,.core-mechanics-head,.mechanic-grid,.v3-map-preview,
+  .current-ui-head,.os-canvas,.v3-build-grid,.takeaway{grid-template-columns:1fr!important;min-width:0!important;}
+  .table-wrap,.v3-frame-shell,.os-demo{max-width:100%!important;overflow-x:auto!important;}
+  .card,.concept-board,.ui-block{min-width:0!important;}
+  .current-ui-card,.ui-system-card{min-width:0!important;}
+  .hero-art{min-height:360px!important;}
+}
+@media(max-width:360px){
+  .site-nav.veylora-case-nav .brand{font-size:11px!important;}
+  .site-nav.veylora-case-nav .nav-return{font-size:9px!important;padding:8px!important;}
+  .site-nav.veylora-case-nav .language-switch{font-size:9px!important;padding:8px!important;}
+}
+
+</style>
 </head>
 <body>
 
