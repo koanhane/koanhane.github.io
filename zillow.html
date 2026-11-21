@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zillow Focus — Product Concept Case Study</title>
+  <meta name="description" content="Zillow Focus — an independent AI-assisted product concept exploring a clearer rental-search and decision experience." />
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --surface-2: #f0f3f8;
+      --text: #0f172a;
+      --muted: #667085;
+      --line: #e4e8ef;
+      --blue: #1b4fd8;
+      --blue-2: #eaf0ff;
+      --green: #178b61;
+      --green-2: #e9f7f1;
+      --amber: #a15c00;
+      --amber-2: #fff4df;
+      --pink: #c13d6b;
+      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(27,79,216,.07), transparent 28%),
+        linear-gradient(180deg, #fbfcff 0%, var(--bg) 30%, #ffffff 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--blue), #6b8cff);
+      z-index: 100;
+    }
+
+    .nav {
+      position: sticky;
+      top: 8px;
+      z-index: 90;
+      width: min(1160px, calc(100% - 48px));
+      min-height: 54px;
+      margin: 10px auto 0;
+      padding: 6px 14px 6px 20px;
+      display: flex;
+      align-items: center;
+      background: rgba(250,248,252,.89);
+      border: 1px solid rgba(65,49,83,.16);
+      border-radius: 999px;
+      box-shadow: 0 6px 22px rgba(97,81,122,.035);
+      backdrop-filter: blur(20px);
+    }
+    .nav-inner {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+    }
+    .brand {
+      justify-self: start;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -.06em;
+      color: #24212b;
+      white-space: nowrap;
+    }
+    .brand span { color: #7854d9; }
+    .nav-links {
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      color: #24212b;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .nav-links a { padding: 6px 0; transition: color .2s ease; }
+    .nav-links a:hover { color: #7854d9; }
+    .nav-actions { justify-self: end; display: flex; align-items: center; gap: 7px; }
+    .profile-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border: 1px solid #24212b;
+      border-radius: 999px;
+      background: #24212b;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .profile-back:hover { background: #7854d9; border-color: #7854d9; transform: translateY(-2px); }
+    .language-switch {
+      appearance: none; border: 1px solid rgba(65,49,83,.16); background: #fff; color: #24212b;
+      border-radius: 999px; padding: 7px 11px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap;
+      transition: border-color .2s ease, color .2s ease, transform .2s ease;
+    }
+    .language-switch:hover { border-color: #7854d9; color: #7854d9; transform: translateY(-1px); }
+    html[lang="zh-CN"] body { font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif; }
+    html[lang="zh-CN"] h1, html[lang="zh-CN"] h2 { letter-spacing: -.045em; }
+    html[lang="zh-CN"] .hero-sub { max-width: 760px; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .hero {
+      padding: 48px 0 56px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 48px;
+      align-items: center;
+      min-height: 70vh;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700; color: var(--blue);
+      background: var(--blue-2); border: 1px solid #d7e0ff;
+      padding: 8px 11px; border-radius: 999px;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+    h1 {
+      font-size: clamp(52px, 7vw, 88px);
+      line-height: .95; letter-spacing: -.065em;
+      margin: 22px 0 24px;
+      max-width: 830px;
+    }
+    .hero-sub {
+      font-size: clamp(20px, 2.1vw, 28px);
+      line-height: 1.35;
+      max-width: 720px;
+      color: #364152;
+      letter-spacing: -.02em;
+    }
+    .hero-meta {
+      margin-top: 34px;
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .pill {
+      padding: 9px 13px; border-radius: 999px;
+      border: 1px solid var(--line); background: rgba(255,255,255,.85);
+      color: #4b5567; font-size: 13px; font-weight: 650;
+    }
+    .hero-note { margin-top: 18px; color: var(--muted); font-size: 13px; }
+
+    .hero-stage {
+      position: relative; min-height: 600px;
+      display: grid; place-items: center;
+    }
+    .orb {
+      position: absolute; width: 430px; height: 430px; border-radius: 50%;
+      background: linear-gradient(145deg, rgba(27,79,216,.13), rgba(255,255,255,.4));
+      filter: blur(.2px);
+    }
+    .phone {
+      width: 290px; min-height: 570px; background: #fff;
+      border: 8px solid #131722; border-radius: 46px; box-shadow: var(--shadow);
+      padding: 16px; position: relative; z-index: 4;
+    }
+    .notch { width: 92px; height: 22px; border-radius: 0 0 16px 16px; background: #131722; margin: -16px auto 14px; }
+    .phone-head { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #64748b; }
+    .zmark { font-weight: 900; color: var(--blue); font-size: 19px; letter-spacing: -.05em; }
+    .screen-title { font-size: 28px; line-height: 1.05; letter-spacing: -.04em; margin: 22px 0 8px; }
+    .screen-sub { color: var(--muted); font-size: 12px; line-height: 1.45; margin-bottom: 18px; }
+    .screen-card { border: 1px solid var(--line); border-radius: 18px; padding: 12px; margin: 10px 0; background: #fff; }
+    .screen-card strong { font-size: 13px; }
+    .screen-card small { color: var(--muted); font-size: 10px; }
+    .match-row { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+    .check { color: var(--green); font-weight: 800; }
+    .warn { color: var(--amber); font-weight: 800; }
+    .mini-tag { font-size: 9px; padding: 4px 6px; border-radius: 999px; background: var(--green-2); color: var(--green); font-weight: 750; }
+    .mini-divider { height: 1px; background: var(--line); margin: 10px 0; }
+    .screen-button { margin-top: 15px; padding: 11px 12px; text-align: center; border-radius: 13px; color: #fff; background: var(--blue); font-weight: 750; font-size: 11px; }
+
+    .float-card {
+      position: absolute; z-index: 5; width: 245px;
+      background: rgba(255,255,255,.94); border: 1px solid rgba(228,232,239,.9);
+      box-shadow: var(--shadow); border-radius: 20px; padding: 15px;
+      backdrop-filter: blur(12px);
+    }
+    .float-a { left: 0; top: 120px; transform: rotate(-3deg); }
+    .float-b { right: -5px; bottom: 120px; transform: rotate(3deg); }
+    .float-title { font-size: 11px; font-weight: 800; margin-bottom: 8px; }
+    .float-metric { font-size: 26px; letter-spacing: -.05em; font-weight: 850; }
+    .float-label { font-size: 10px; color: var(--muted); }
+
+    section { padding: 90px 0; }
+    .section-kicker { color: var(--blue); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
+    h2 {
+      margin: 10px 0 20px;
+      font-size: clamp(36px, 4.6vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      max-width: 900px;
+    }
+    .lede { max-width: 780px; color: #465065; font-size: 20px; line-height: 1.5; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; margin-top: 40px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; margin-top: 34px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+      padding: 26px; box-shadow: 0 10px 35px rgba(15,23,42,.035);
+    }
+    .card h3 { margin: 0 0 10px; letter-spacing: -.03em; }
+    .card p { margin: 0; color: var(--muted); }
+    .num { font-size: 12px; font-weight: 900; color: var(--blue); margin-bottom: 18px; letter-spacing: .08em; }
+
+    .quote {
+      border-left: 4px solid var(--blue);
+      padding: 18px 22px;
+      background: linear-gradient(90deg, var(--blue-2), #fff);
+      border-radius: 0 20px 20px 0;
+      font-size: clamp(26px, 3.2vw, 40px);
+      line-height: 1.2; letter-spacing: -.035em; font-weight: 750;
+      margin-top: 42px;
+    }
+
+    .journey {
+      margin-top: 40px; padding: 28px; background: #0f172a; color: white;
+      border-radius: 30px; overflow: hidden;
+    }
+    .journey-track { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .journey-step {
+      padding: 12px 16px; border-radius: 999px; background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12); font-size: 14px; font-weight: 700;
+    }
+    .arrow { opacity: .45; }
+    .journey-caption { color: #b8c1d3; margin-top: 18px; font-size: 14px; }
+
+    .insight-card { min-height: 240px; display: flex; flex-direction: column; justify-content: space-between; }
+    .insight-card .big { font-size: 28px; font-weight: 850; letter-spacing: -.04em; line-height: 1.05; }
+    .insight-card .implication { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+
+    .principle {
+      margin-top: 42px; padding: 58px; border-radius: 34px;
+      background: linear-gradient(135deg, #183fc4, #285eea 65%, #6b8cff);
+      color: white; text-align: center; box-shadow: var(--shadow);
+    }
+    .principle small { text-transform: uppercase; letter-spacing: .13em; opacity: .75; font-weight: 800; }
+    .principle strong { display: block; font-size: clamp(48px, 7vw, 86px); line-height: .95; letter-spacing: -.06em; margin-top: 12px; }
+
+    .solution-block { margin-top: 42px; }
+    .solution-grid {
+      display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: center;
+      padding: 44px 0; border-top: 1px solid var(--line);
+    }
+    .solution-grid.reverse { grid-template-columns: 1.1fr .9fr; }
+    .solution-copy h3 { font-size: 34px; line-height: 1.05; margin: 8px 0 16px; letter-spacing: -.04em; }
+    .solution-copy p { color: var(--muted); font-size: 17px; }
+    .solution-copy ul { padding-left: 19px; color: #465065; }
+
+    .ui-shell {
+      background: linear-gradient(180deg, #f6f8fc, #eef2f9);
+      border: 1px solid #dfe5ef; border-radius: 28px; padding: 20px; box-shadow: var(--shadow);
+    }
+    .ui-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .ui-top strong { color: var(--blue); }
+    .ui-chip { padding: 6px 10px; border: 1px solid var(--line); background: white; border-radius: 999px; font-size: 11px; color: var(--muted); }
+    .preference-group { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 14px; margin: 10px 0; }
+    .preference-label { font-size: 11px; font-weight: 850; margin-bottom: 9px; }
+    .preference-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+    .pref-tag { padding: 7px 9px; border-radius: 9px; background: var(--surface-2); font-size: 11px; color: #43506a; font-weight: 700; }
+    .pref-tag.must { background: #e9f7f1; color: var(--green); }
+    .pref-tag.imp { background: #eaf0ff; color: var(--blue); }
+
+    .listing { background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+    .listing-img { height: 150px; background: linear-gradient(135deg, #cfd8e8, #eef2f7 55%, #c8d5ea); position: relative; }
+    .listing-img::after { content: ""; position: absolute; left: 35px; right: 35px; bottom: 0; height: 105px; background: linear-gradient(180deg, #f4efe8, #e6ddd2); border-radius: 18px 18px 0 0; box-shadow: inset 0 0 0 2px rgba(255,255,255,.55); }
+    .listing-body { padding: 18px; }
+    .listing-body h4 { margin: 0 0 4px; font-size: 20px; letter-spacing: -.03em; }
+    .listing-body .meta { color: var(--muted); font-size: 12px; }
+    .match-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .match-item { font-size: 11px; padding: 8px 9px; border-radius: 10px; background: #f7f9fc; }
+
+    .trade-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; background: white; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 9px 0; }
+    .trade-row strong { font-size: 12px; }
+    .trade-row span { font-size: 11px; color: var(--muted); }
+    .trade-plus { font-size: 11px; color: var(--blue); font-weight: 800; white-space: nowrap; }
+
+    .compare-wrap { overflow-x: auto; background: white; border: 1px solid var(--line); border-radius: 22px; }
+    table { width: 100%; border-collapse: collapse; min-width: 620px; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; font-size: 12px; }
+    th { background: #f8faff; color: #334155; }
+    td:first-child { font-weight: 800; color: #3f4b5f; }
+    .yes { color: var(--green); font-weight: 800; }
+    .best { background: #f3f7ff; }
+
+    .commute { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .commute-card { background: white; border: 1px solid var(--line); padding: 16px; border-radius: 16px; }
+    .commute-card .time { font-size: 31px; line-height: 1; font-weight: 850; letter-spacing: -.05em; margin: 10px 0 4px; }
+    .commute-card small { color: var(--muted); }
+    .weekly { grid-column: 1/-1; background: #0f172a; color: white; border: 0; }
+    .weekly small { color: #bcc6d7; }
+
+    .review-theme { display: flex; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 12px; }
+    .review-theme:last-child { border-bottom: 0; }
+    .review-count { color: var(--muted); }
+
+    .test-section { background: #0f172a; color: white; }
+    .test-section .section-kicker { color: #96adff; }
+    .test-section .lede { color: #bac4d5; }
+    .test-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 32px; margin-top: 36px; }
+    .test-stat { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 24px; border-radius: 20px; }
+    .test-stat strong { font-size: 46px; letter-spacing: -.05em; display: block; }
+    .test-stat span { color: #bac4d5; font-size: 13px; }
+    .test-list { display: grid; gap: 14px; }
+    .test-item { padding: 18px 20px; border-radius: 18px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.05); }
+    .test-item b { display: block; margin-bottom: 5px; }
+    .test-item p { margin: 0; color: #bac4d5; font-size: 13px; }
+
+    .iteration { display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: center; margin-top: 26px; }
+    .iteration-card { border: 1px solid var(--line); border-radius: 18px; padding: 20px; background: #fff; min-height: 150px; }
+    .iteration-card.before { background: #fff8f8; }
+    .iteration-card.after { background: #f5fff9; }
+    .iteration-label { font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
+    .iteration-arrow { font-size: 24px; color: #9ba4b4; }
+
+    .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 34px; }
+    .scope-card { border-radius: 22px; padding: 26px; border: 1px solid var(--line); }
+    .scope-card.core { background: #eef4ff; border-color: #d6e2ff; }
+    .scope-card.future { background: #fff; }
+    .scope-card h3 { margin: 0 0 14px; }
+    .scope-card ul { margin: 0; padding-left: 18px; color: #566176; }
+
+    .reflection {
+      padding: 56px; border-radius: 30px; background: linear-gradient(135deg, #fff, #f1f5fb);
+      border: 1px solid var(--line);
+    }
+    .reflection p { font-size: 24px; line-height: 1.45; letter-spacing: -.02em; max-width: 900px; color: #344054; }
+    .reflection strong { color: var(--text); }
+
+    footer { padding: 50px 0 80px; color: var(--muted); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 22px; }
+
+    .fade-up { opacity: 0; transform: translateY(18px); transition: .6s ease; }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .nav { width: calc(100% - 28px); padding: 7px 12px 7px 16px; }
+      .nav-inner { grid-template-columns: 1fr auto; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 40px; }
+      .hero-stage { min-height: 560px; }
+      .float-a { left: 3%; }
+      .float-b { right: 2%; }
+      .grid-3, .grid-2, .test-grid, .scope-grid { grid-template-columns: 1fr; }
+      .solution-grid, .solution-grid.reverse { grid-template-columns: 1fr; }
+      .solution-grid.reverse .solution-copy { order: 1; }
+      .solution-grid.reverse .ui-shell { order: 2; }
+      .nav-links { display: none; }
+      .iteration { grid-template-columns: 1fr; }
+      .iteration-arrow { transform: rotate(90deg); justify-self: center; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 18px; }
+      section { padding: 66px 0; }
+      .hero { padding-top: 34px; }
+      .hero-stage { min-height: 530px; }
+      .phone { width: 255px; min-height: 520px; }
+      .float-card { width: 190px; padding: 12px; }
+      .float-a { top: 105px; left: -4px; }
+      .float-b { bottom: 80px; right: -2px; }
+      .principle, .reflection { padding: 36px 24px; }
+      .commute { grid-template-columns: 1fr; }
+      .weekly { grid-column: auto; }
+      .footer-inner { flex-direction: column; }
+    }
+  
+
+    /* V2 research additions, kept within the original portfolio visual system */
+    .search-bar { display:flex; align-items:center; gap:8px; border:1px solid #dfe5ef; background:#fff; border-radius:12px; padding:9px 10px; margin:12px 0 8px; font-size:10px; color:#3f4b5f; }
+    .search-bar::before { content:"⌕"; color:var(--blue); font-size:16px; font-weight:900; }
+    .tabs { display:flex; gap:16px; border-bottom:1px solid var(--line); margin-bottom:10px; }
+    .tab { font-size:9px; padding:7px 0; color:var(--muted); font-weight:700; }
+    .tab.active { color:var(--blue); border-bottom:2px solid var(--blue); }
+    .availability { display:flex; align-items:center; gap:6px; margin-top:8px; font-size:9px; color:var(--green); font-weight:750; }
+    .availability::before { content:""; width:6px; height:6px; border-radius:50%; background:#33a56e; }
+    .verify-badge { display:inline-flex; align-items:center; gap:5px; padding:5px 7px; border-radius:999px; background:var(--green-2); color:var(--green); font-size:9px; font-weight:800; }
+    .unit-row { display:grid; grid-template-columns:1.15fr .85fr .85fr; gap:8px; align-items:center; padding:11px 0; border-bottom:1px solid var(--line); font-size:11px; }
+    .unit-row:last-child { border-bottom:0; }
+    .unit-row b { font-size:12px; }
+    .status-live { color:var(--green); font-weight:800; }
+    .status-stale { color:var(--amber); font-weight:800; }
+    .source-strip { display:flex; gap:7px; flex-wrap:wrap; margin-top:10px; }
+    .source-chip { padding:6px 8px; border-radius:999px; border:1px solid var(--line); background:#fff; font-size:10px; font-weight:700; color:#4c596a; }
+    .research-note { margin-top:16px; padding:14px 16px; border-left:3px solid var(--blue); background:#f7f9ff; color:#465569; font-size:14px; }
+
+    /* Keep the hero phone compact and proportional */
+    .hero-stage { min-height: 540px; }
+    .orb { width: 400px; height: 400px; }
+    .phone { width: 276px; min-height: 0; border-radius: 42px; padding: 14px; }
+    .notch { width: 86px; height: 20px; margin: -14px auto 12px; }
+    .screen-title { font-size: 24px; margin: 16px 0 6px; }
+    .screen-sub { font-size: 10px; margin-bottom: 12px; }
+    .screen-card { border-radius: 16px; padding: 10px; margin: 8px 0; }
+    .screen-card strong { font-size: 12px; }
+    .screen-card small { font-size: 9px; }
+    .mini-divider { margin: 8px 0; }
+    .screen-button { margin-top: 10px; padding: 9px 10px; }
+    .hero-compact-more { font-size:9px; color:var(--muted); text-align:center; padding:7px 0 1px; font-weight:700; }
+    .float-a { top: 95px; }
+    .float-b { bottom: 78px; }
+
+    @media (max-width: 600px) {
+      .brand { display:inline-flex; font-size:15px; }
+      .language-switch { padding: 7px 9px; font-size: 10px; }
+      .profile-back { padding: 8px 11px; font-size: 11px; }
+      .hero-stage { min-height: 500px; }
+      .phone { width: 248px; }
+      .float-a { top: 90px; }
+      .float-b { bottom: 55px; }
+    }
+
+    /* Readability refinement: quieter typography and clearer feedback hierarchy */
+    body { font-weight: 400; color: #172033; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, strong, b { font-weight: 600; }
+    h1 { font-weight: 650; }
+    h2 { font-weight: 560; letter-spacing: -.04em; }
+    .hero-sub, .lede { font-weight: 400; }
+    .section-kicker, .num, .iteration-label { font-weight: 650; }
+    .pill, .ui-chip, .pref-tag, .source-chip { font-weight: 500; }
+    .screen-button, .mini-tag, .verify-badge { font-weight: 600; }
+    .solution-copy h3, .card h3, .scope-card h3 { font-weight: 560; }
+    .solution-copy p, .solution-copy li, .card p, .scope-card li { font-weight: 400; }
+
+    .test-section { background: #111827; }
+    .test-section h2 { max-width: 690px; }
+    .test-section .lede { max-width: 650px; color: #aeb9ca; }
+    .feedback-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .feedback-card {
+      padding: 26px 24px 24px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 20px;
+      background: rgba(255,255,255,.045);
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+    }
+    .feedback-index {
+      color: #8fa8ff;
+      font-size: 11px;
+      letter-spacing: .12em;
+      margin-bottom: 28px;
+    }
+    .feedback-card h3 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      line-height: 1.25;
+      letter-spacing: -.025em;
+      color: #fff;
+      font-weight: 560;
+    }
+    .feedback-card > p {
+      margin: 0;
+      color: #aeb9ca;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .feedback-response {
+      margin-top: auto;
+      padding-top: 22px;
+      color: #d4dbea;
+      font-size: 12px;
+      line-height: 1.65;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .feedback-response span {
+      display: block;
+      margin-bottom: 5px;
+      color: #8fa8ff;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    @media (max-width: 900px) {
+      .feedback-cards { grid-template-columns: 1fr; }
+      .feedback-card { min-height: 0; }
+      .feedback-index { margin-bottom: 18px; }
+    }
+
+  </style>
+<script id="shared-portfolio-language">
+(function(){
+  const key='yanyu-personal-universe-language';
+  window.portfolioLanguage={
+    get(){try{return localStorage.getItem(key)==='zh'?'zh':'en';}catch(e){return 'en';}},
+    set(lang){try{localStorage.setItem(key,lang==='zh'?'zh':'en');}catch(e){}}
+  };
+  document.addEventListener('click',function(event){
+    const target=event.target;
+    if(target && target.closest && target.closest('.language-switch')){
+      window.portfolioLanguage.set(document.documentElement.lang==='zh-CN'?'en':'zh');
+    }
+  },true);
+})();
+</script>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <nav class="nav" aria-label="Case study navigation">
+    <div class="nav-inner">
+      <a href="index.html#work" class="brand" aria-label="Back to Yanyu Gu portfolio">YANYU GU<span>.</span></a>
+      <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#research">Research</a>
+        <a href="#solution">Solution</a>
+        <a href="#testing">Testing</a>
+        <a href="#reflection">Reflection</a>
+      </div>
+      <div class="nav-actions">
+        <button class="language-switch" type="button" aria-label="Switch language" aria-pressed="false">EN / 中文</button>
+        <a href="index.html#work" class="profile-back">← Back to Profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <div class="container">
+      <header class="hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Independent Product Concept</div>
+          <h1>Find less.<br>Decide better.</h1>
+          <p class="hero-sub">A Zillow rental concept that helps renters cut through incomplete listings, stale availability, and decision overload — then compare a smaller set of homes with the information that actually matters.</p>
+          <div class="hero-meta">
+            <span class="pill">Product Concept</span>
+            <span class="pill">Mobile UX</span>
+            <span class="pill">Rental Marketplace</span>
+            <span class="pill">Concept Exploration</span>
+          </div>
+          <p class="hero-note">Independent AI-assisted concept project. Not affiliated with Zillow. Renter feedback is paraphrased, and all product screens and data shown here are conceptual and illustrative.</p>
+        </div>
+
+        <div class="hero-stage" aria-hidden="true">
+          <div class="orb"></div>
+          <div class="float-card float-a">
+            <div class="float-title">Best matches for you</div>
+            <div class="float-metric">7</div>
+            <div class="float-label">from 146 available rentals</div>
+          </div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="phone-head"><span class="zmark">Z</span><span>9:41</span></div>
+            <div class="search-bar">Berkeley & Oakland rentals</div>
+            <div class="tabs"><span class="tab">Map</span><span class="tab active">List</span><span class="tab">Saved</span></div>
+            <div class="screen-title">7 best matches</div>
+            <div class="screen-sub">From 146 listings · matched to your priorities and checked for current availability.</div>
+            <div class="screen-card">
+              <div class="match-row">
+                <div><strong>Hanover Northgate</strong><br><small>$2,940 est. monthly</small></div>
+                <span class="mini-tag">Strong fit</span>
+              </div>
+              <div class="mini-divider"></div>
+              <small><span class="check">✓</span> In-unit laundry</small><br>
+              <small><span class="check">✓</span> Parking included</small><br>
+              <small><span class="check">✓</span> 22 min to Berkeley</small><br>
+              <small><span class="warn">△</span> SF commute is 41 min</small>
+              <div class="availability">3 floor plans · verified 8 min ago</div>
+            </div>
+            <div class="hero-compact-more">+ 6 more high-fit homes</div>
+            <div class="screen-button">Compare finalists</div>
+          </div>
+          <div class="float-card float-b">
+            <div class="float-title">Availability confidence</div>
+            <div class="float-metric">Live</div>
+            <div class="float-label">Property inventory checked 8 min ago</div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <section id="problem">
+      <div class="container fade-up">
+        <div class="section-kicker">01 — The problem</div>
+        <h2>Renters can find plenty of listings. The hard part is knowing what is complete, current, and actually worth pursuing.</h2>
+        <p class="lede">Renter feedback revealed three connected problems: information is fragmented across apps, availability can disagree with a property’s own website, and after browsing enough “good” options, choosing between them becomes exhausting.</p>
+
+        <div class="journey">
+          <div class="journey-track">
+            <span class="journey-step">Zillow</span><span class="arrow">↔</span>
+            <span class="journey-step">Apartments.com</span><span class="arrow">↔</span>
+            <span class="journey-step">Google Maps</span><span class="arrow">↔</span>
+            <span class="journey-step">Google / Yelp</span><span class="arrow">↔</span>
+            <span class="journey-step">Xiaohongshu</span><span class="arrow">↔</span>
+            <span class="journey-step">Property website</span>
+          </div>
+          <div class="journey-caption">Users cross-check multiple sources because no single surface feels complete — and the same floor plan may appear available in one place but unavailable on the property’s own site.</div>
+        </div>
+
+        <div class="quote">The opportunity is not to show renters more homes. It is to give them one clearer, more current view of the few homes they might actually choose.</div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container fade-up">
+        <div class="section-kicker">02 — Research</div>
+        <h2>What renters said was breaking the search experience.</h2>
+        <p class="lede">Informal renter conversations consistently pointed to the same pattern: people do not trust one app to tell the whole story, so they assemble the decision themselves across several sources.</p>
+
+        <div class="grid-2">
+          <div class="card insight-card">
+            <div>
+              <div class="num">FINDING 01</div>
+              <div class="big">No single rental app feels complete.</div>
+            </div>
+            <div class="implication"><b>Implication:</b> Bring pricing, commute, reviews, floor-plan details, and application context into one decision surface.</div>
+          </div>
+          <div class="card insight-card">
+            <div>
+              <div class="num">FINDING 02</div>
+              <div class="big">Marketplace availability can disagree with the property website.</div>
+            </div>
+            <div class="implication"><b>Implication:</b> Show when unit inventory was last verified and distinguish live, stale, and unavailable floor plans.</div>
+          </div>
+          <div class="card insight-card">
+            <div>
+              <div class="num">FINDING 03</div>
+              <div class="big">After enough browsing, several options start to look equally good.</div>
+            </div>
+            <div class="implication"><b>Implication:</b> Shift from discovery to personalized comparison before decision fatigue sets in.</div>
+          </div>
+          <div class="card insight-card">
+            <div>
+              <div class="num">FINDING 04</div>
+              <div class="big">Commute, facilities, parking, price, and reviews shape the final choice.</div>
+            </div>
+            <div class="implication"><b>Implication:</b> Let renters choose which attributes deserve space in the comparison table.</div>
+          </div>
+        </div>
+        <div class="research-note">Observed behavior: renters check multiple rental apps, then validate promising properties with maps, review platforms, social content, and the property’s own website before deciding.</div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="num">MANAGED APARTMENTS</div>
+            <h3>Different friction after search</h3>
+            <p>Income requirements, application fees, external leasing portals, and property-specific websites add learning cost. Availability can also change between the marketplace and the official leasing site.</p>
+          </div>
+          <div class="card">
+            <div class="num">PRIVATE RENTALS</div>
+            <h3>Different kinds of uncertainty</h3>
+            <p>Landlord reliability, maintenance expectations, utilities, neighborhood reality, noise, parking, and lease flexibility become more important than polished amenities.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <small>Design principle</small>
+          <strong>Find less.<br>Decide better.</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution">
+      <div class="container fade-up">
+        <div class="section-kicker">03 — The solution</div>
+        <h2>A decision workspace, not just a listing browser.</h2>
+        <p class="lede">Zillow Focus combines stronger information coverage with availability confidence, then helps renters narrow and compare a smaller set of homes around their own priorities.</p>
+
+        <div class="solution-block">
+          <div class="solution-grid">
+            <div class="solution-copy">
+              <div class="num">01 — PRIORITIES</div>
+              <h3>Tell Zillow what actually matters.</h3>
+              <p>Users organize criteria by importance instead of relying only on binary filters.</p>
+              <ul>
+                <li><b>Must have:</b> laundry, parking, pet policy</li>
+                <li><b>Important:</b> total monthly cost, commute, reviews</li>
+                <li><b>Nice to have:</b> gym, balcony, natural light</li>
+              </ul>
+            </div>
+            <div class="ui-shell">
+              <div class="ui-top"><strong>Set your priorities</strong><span class="ui-chip">Step 2 of 3</span></div>
+              <div class="preference-group">
+                <div class="preference-label">Must have</div>
+                <div class="preference-tags"><span class="pref-tag must">In-unit laundry</span><span class="pref-tag must">Parking</span><span class="pref-tag must">Cat friendly</span></div>
+              </div>
+              <div class="preference-group">
+                <div class="preference-label">Important</div>
+                <div class="preference-tags"><span class="pref-tag imp">≤ $3,000 true monthly</span><span class="pref-tag imp">≤ 30 min commute</span><span class="pref-tag imp">Resident reviews</span></div>
+              </div>
+              <div class="preference-group">
+                <div class="preference-label">Nice to have</div>
+                <div class="preference-tags"><span class="pref-tag">Gym</span><span class="pref-tag">Natural light</span><span class="pref-tag">Balcony</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-grid reverse">
+            <div class="ui-shell">
+              <div class="ui-top"><strong>7 best matches</strong><span class="ui-chip">from 146 homes</span></div>
+              <div class="listing">
+                <div class="listing-img"></div>
+                <div class="listing-body">
+                  <div class="match-row"><div><h4>Hanover Northgate</h4><div class="meta">$2,940 est. monthly · Oakland</div></div><span class="mini-tag">Strong fit</span></div>
+                  <div class="match-list">
+                    <div class="match-item"><span class="check">✓</span> Laundry</div>
+                    <div class="match-item"><span class="check">✓</span> Parking</div>
+                    <div class="match-item"><span class="check">✓</span> 22 min commute</div>
+                    <div class="match-item"><span class="warn">△</span> Smaller kitchen</div>
+                  </div>
+                  <div class="availability">3 floor plans · verified 8 min ago</div>
+                </div>
+              </div>
+            </div>
+            <div class="solution-copy">
+              <div class="num">02 — BEST MATCHES</div>
+              <h3>Surface fewer homes — without hiding the rest.</h3>
+              <p>Users get a prioritized set of matches with clear reasons. The full inventory remains available to preserve control and trust.</p>
+              <ul>
+                <li>“7 best matches from 146 available”</li>
+                <li>Visible match explanations</li>
+                <li>“View all” and “Why these?” controls</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="solution-grid">
+            <div class="solution-copy">
+              <div class="num">03 — TRADE-OFFS</div>
+              <h3>Show what changes when a preference changes.</h3>
+              <p>Instead of a dead-end “No results,” users can see the consequence of relaxing one condition at a time.</p>
+            </div>
+            <div class="ui-shell">
+              <div class="ui-top"><strong>See how changes affect results</strong><span class="ui-chip">You control this</span></div>
+              <div class="trade-row"><div><strong>Budget up to $3,100</strong><br><span>Current preference: $3,000</span></div><div class="trade-plus">+5 homes</div></div>
+              <div class="trade-row"><div><strong>Commute up to 35 min</strong><br><span>Current preference: 30 min</span></div><div class="trade-plus">+8 homes</div></div>
+              <div class="trade-row"><div><strong>Shared laundry</strong><br><span>Current preference: in-unit</span></div><div class="trade-plus">+12 homes</div></div>
+            </div>
+          </div>
+
+          <div class="solution-grid reverse">
+            <div class="ui-shell">
+              <div class="ui-top"><strong>Compare finalists</strong><span class="ui-chip">Top priorities first</span></div>
+              <div class="compare-wrap">
+                <table>
+                  <thead><tr><th>Your priorities</th><th class="best">Hanover</th><th>Forma</th><th>Vespr</th></tr></thead>
+                  <tbody>
+                    <tr><td>True monthly</td><td class="best">$2,940</td><td>$3,080</td><td>$3,120</td></tr>
+                    <tr><td>In-unit laundry</td><td class="best yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+                    <tr><td>Parking</td><td class="best">Included</td><td>$200</td><td>$150</td></tr>
+                    <tr><td>Berkeley commute</td><td class="best">22 min</td><td>14 min</td><td>11 min</td></tr>
+                    <tr><td>SF commute</td><td class="best">31 min</td><td>38 min</td><td>43 min</td></tr>
+                    <tr><td>Resident rating</td><td class="best">4.0★</td><td>4.3★</td><td>4.5★</td></tr>
+                    <tr><td>Availability</td><td class="best status-live">3 live</td><td class="status-live">1 live</td><td class="status-stale">Needs refresh</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="solution-copy">
+              <div class="num">04 — PERSONALIZED COMPARE</div>
+              <h3>Compare what matters to this renter — not every possible attribute.</h3>
+              <p>The same priorities selected earlier become the comparison table. Users can reorder, collapse, and pin criteria.</p>
+            </div>
+          </div>
+
+          <div class="solution-grid">
+            <div class="solution-copy">
+              <div class="num">05 — LIVE AVAILABILITY</div>
+              <h3>Verify what is actually rentable before users get invested.</h3>
+              <p>When marketplace data and an apartment’s official website disagree, the renter pays the cost. Zillow Focus makes freshness visible at the floor-plan level.</p>
+              <ul>
+                <li>Last-verified timestamp</li>
+                <li>Floor-plan-level availability</li>
+                <li>Live / stale / unavailable states</li>
+                <li>Direct path to official property inventory</li>
+              </ul>
+            </div>
+            <div class="ui-shell">
+              <div class="ui-top"><strong>Current availability</strong><span class="verify-badge">Verified 8 min ago</span></div>
+              <div class="unit-row"><div><b>Studio S1</b><br><span class="meta">470 sq ft</span></div><div>$2,690</div><div class="status-live">2 units</div></div>
+              <div class="unit-row"><div><b>1 Bed A3</b><br><span class="meta">615 sq ft</span></div><div>$2,940</div><div class="status-live">1 unit</div></div>
+              <div class="unit-row"><div><b>1 Bed A5</b><br><span class="meta">690 sq ft</span></div><div>$3,025</div><div class="status-stale">Refresh needed</div></div>
+              <div class="source-strip"><span class="source-chip">Zillow listing</span><span class="source-chip">Property inventory</span><span class="source-chip">Last synced 8m ago</span></div>
+            </div>
+          </div>
+
+          <div class="solution-grid">
+            <div class="solution-copy">
+              <div class="num">06 — COMMUTE</div>
+              <h3>Move from distance to real weekly routine.</h3>
+              <p>A single travel-time estimate misses hybrid work, school schedules, transfer time, and transportation mode.</p>
+              <ul>
+                <li>Different destinations on different days</li>
+                <li>Arrival-time-aware estimates</li>
+                <li>Walking + transit context</li>
+                <li>Estimated weekly commute</li>
+              </ul>
+            </div>
+            <div class="ui-shell">
+              <div class="ui-top"><strong>My weekly routine</strong><span class="ui-chip">Hanover</span></div>
+              <div class="commute">
+                <div class="commute-card"><b>UC Berkeley</b><div class="time">22m</div><small>Mon / Wed / Fri · transit + walk</small></div>
+                <div class="commute-card"><b>SF Office</b><div class="time">31m</div><small>Tue / Thu · BART + walk</small></div>
+                <div class="commute-card weekly"><b>Estimated weekly commute</b><div class="time">2h 48m</div><small>Typical weekday conditions · route details available</small></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-grid reverse">
+            <div class="ui-shell">
+              <div class="ui-top"><strong>Resident experience</strong><span class="ui-chip">Sources visible</span></div>
+              <div class="card" style="padding:16px; box-shadow:none;">
+                <div class="match-row"><div><b>Google</b><br><span class="meta">4.3★ · 231 reviews</span></div><div><b>Yelp</b><br><span class="meta">3.8★ · 86 reviews</span></div></div>
+                <div class="mini-divider"></div>
+                <div class="review-theme"><span>Responsive maintenance</span><span class="review-count">34 mentions</span></div>
+                <div class="review-theme"><span>Street noise</span><span class="review-count">18 mentions</span></div>
+                <div class="review-theme"><span>Move-out charges</span><span class="review-count">11 mentions</span></div>
+              </div>
+            </div>
+            <div class="solution-copy">
+              <div class="num">07 — REVIEWS + APPLY INFO</div>
+              <h3>Reduce context switching at the moment of decision.</h3>
+              <p>For managed apartments, Zillow Focus surfaces review context and application requirements before sending users to an external property portal.</p>
+              <ul>
+                <li>Third-party ratings with source transparency</li>
+                <li>Income requirements</li>
+                <li>Application fee</li>
+                <li>Required documents</li>
+                <li>Clear external-portal handoff</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testing" class="test-section">
+      <div class="container fade-up">
+        <div class="section-kicker">04 — User feedback</div>
+        <h2>Three things changed the direction.</h2>
+        <p class="lede">The goal became less about adding features — and more about making rental decisions easier to trust.</p>
+
+        <div class="feedback-cards">
+          <article class="feedback-card">
+            <span class="feedback-index">01</span>
+            <h3>Information is fragmented.</h3>
+            <p>Renters check several rental apps because no single platform feels complete.</p>
+            <div class="feedback-response"><span>Design response</span> Bring commute, reviews, costs, and application details closer to the listing.</div>
+          </article>
+          <article class="feedback-card">
+            <span class="feedback-index">02</span>
+            <h3>Availability is hard to trust.</h3>
+            <p>Marketplace listings and official property websites can show different floor plans or availability.</p>
+            <div class="feedback-response"><span>Design response</span> Show when each floor plan was last verified and whether inventory needs a refresh.</div>
+          </article>
+          <article class="feedback-card">
+            <span class="feedback-index">03</span>
+            <h3>Too many good options become noise.</h3>
+            <p>After enough browsing, several homes can all look “good enough,” making the final choice harder.</p>
+            <div class="feedback-response"><span>Design response</span> Move users into a personalized comparison view earlier.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container fade-up">
+        <div class="section-kicker">05 — Iteration</div>
+        <h2>The biggest changes were about completeness, freshness, and decision clarity.</h2>
+        <p class="lede">The concept moved beyond “better recommendations” toward a system that explains what is current, what is missing, and why one option may fit better than another.</p>
+
+        <div class="iteration">
+          <div class="iteration-card before">
+            <div class="iteration-label">Before</div>
+            <h3>Static listing availability</h3>
+            <p>A renter could get excited about a floor plan that was already gone on the official property site.</p>
+          </div>
+          <div class="iteration-arrow">→</div>
+          <div class="iteration-card after">
+            <div class="iteration-label">After</div>
+            <h3>Availability confidence</h3>
+            <p>Shows when inventory was verified, which floor plans are live, and when the property source needs to be refreshed.</p>
+          </div>
+        </div>
+
+        <div class="iteration">
+          <div class="iteration-card before">
+            <div class="iteration-label">Before</div>
+            <h3>More browsing</h3>
+            <p>Showing more relevant listings still leaves renters with the same final problem: several homes can all look good.</p>
+          </div>
+          <div class="iteration-arrow">→</div>
+          <div class="iteration-card after">
+            <div class="iteration-label">After</div>
+            <h3>Earlier decision mode</h3>
+            <p>Once users have a few viable options, Zillow shifts into personalized compare instead of encouraging more scrolling.</p>
+          </div>
+        </div>
+
+        <div class="scope-grid">
+          <div class="scope-card core">
+            <h3>Core MVP</h3>
+            <ul>
+              <li>Personal priorities</li>
+              <li>Best Matches</li>
+              <li>Live availability confidence</li>
+              <li>Transparent trade-offs</li>
+              <li>Personalized Compare</li>
+              <li>Commute context</li>
+              <li>Resident reviews</li>
+              <li>Application requirements</li>
+            </ul>
+          </div>
+          <div class="scope-card future">
+            <h3>Future exploration</h3>
+            <ul>
+              <li>Reusable renter profile</li>
+              <li>Verified income/document portability</li>
+              <li>Private-rental community insights</li>
+              <li>Cross-property application standardization</li>
+              <li>Longitudinal match-quality learning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reflection">
+      <div class="container fade-up">
+        <div class="section-kicker">06 — Reflection</div>
+        <h2>The project changed once the problem got bigger than the screen.</h2>
+        <div class="reflection">
+          <p>This project started as a better Zillow comparison table. Renter feedback reframed it. The harder problem was the work happening <strong>around</strong> the listing: checking other apps, verifying whether a floor plan is still available, reading reviews, checking commute, and then trying to remember why one “good” option was better than another.</p>
+          <p>The design opportunity became clearer: <strong>a better rental product should not just surface more homes. It should help renters trust what is current, see the information they actually need, and make a decision before search turns into overload.</strong></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>Zillow Focus — Independent Product Concept</div>
+      <div>AI-assisted conceptual exploration · Portfolio case study · 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const updateProgress = () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progress.style.width = `${height ? (scrollTop / height) * 100 : 0}%`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('in');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  </script>
+
+  <script>
+    (function(){
+      const translations = {"Problem": "问题", "Research": "研究", "Solution": "方案", "Testing": "反馈", "Reflection": "复盘", "← Back to Profile": "← 返回主页", "Independent Product Concept": "独立产品概念", "Find less.": "少看一点。", "Decide better.": "更好地决定。", "A Zillow rental concept that helps renters cut through incomplete listings, stale availability, and decision overload — then compare a smaller set of homes with the information that actually matters.": "一个 Zillow 租房产品概念：帮助租客减少不完整信息、过期房源和选择过载带来的干扰，再用真正重要的信息比较更少、更合适的房子。", "Product Concept": "产品概念", "Mobile UX": "移动端体验", "Rental Marketplace": "租房平台", "Concept Exploration": "概念探索", "Independent AI-assisted concept project. Not affiliated with Zillow. Renter feedback is paraphrased, and all product screens and data shown here are conceptual and illustrative.": "这是一个由 AI 辅助完成的独立概念项目，与 Zillow 无关联。用户反馈经过转述；页面中的产品界面与数据均为概念性展示。", "Best matches for you": "最适合你的房源", "from 146 available rentals": "来自 146 个可租房源", "Berkeley & Oakland rentals": "Berkeley & Oakland 租房", "Map": "地图", "List": "列表", "Saved": "收藏", "7 best matches": "7 个最佳匹配", "From 146 listings · matched to your priorities and checked for current availability.": "从 146 个房源中筛选 · 根据你的偏好匹配，并核对当前可租状态。", "Strong fit": "高度匹配", "In-unit laundry": "室内洗衣机", "Parking included": "含停车位", "22 min to Berkeley": "到 Berkeley 22 分钟", "SF commute is 41 min": "到 SF 通勤 41 分钟", "3 floor plans · verified 8 min ago": "3 个户型 · 8 分钟前已核验", "+ 6 more high-fit homes": "+ 6 个高匹配房源", "Compare finalists": "比较最终候选", "Availability confidence": "房源状态可信度", "Live": "实时", "Property inventory checked 8 min ago": "8 分钟前已核对物业库存", "01 — The problem": "01 — 问题", "Renters can find plenty of listings. The hard part is knowing what is complete, current, and actually worth pursuing.": "租客并不缺房源。真正困难的是判断哪些信息完整、哪些仍然有效，以及哪些房子真的值得继续看。", "Renter feedback revealed three connected problems: information is fragmented across apps, availability can disagree with a property’s own website, and after browsing enough “good” options, choosing between them becomes exhausting.": "用户反馈暴露出三个互相关联的问题：信息散落在不同平台；平台上的可租状态可能与物业官网不一致；而当看过足够多“都不错”的房子后，做选择本身也会变得疲惫。", "Property website": "物业官网", "Users cross-check multiple sources because no single surface feels complete — and the same floor plan may appear available in one place but unavailable on the property’s own site.": "用户会交叉查看多个来源，因为没有任何一个平台的信息看起来足够完整——同一个户型甚至可能在一个平台显示可租，在物业官网却已经不可租。", "The opportunity is not to show renters more homes. It is to give them one clearer, more current view of the few homes they might actually choose.": "机会点不是给租客看更多房，而是让他们用一个更清晰、更新鲜的信息界面，看懂真正可能会选的少数几套。", "02 — Research": "02 — 研究", "What renters said was breaking the search experience.": "租客认为，找房体验到底哪里出了问题？", "Informal renter conversations consistently pointed to the same pattern: people do not trust one app to tell the whole story, so they assemble the decision themselves across several sources.": "非正式租客访谈反复出现同一个模式：大家不相信一个 App 能提供完整信息，因此只能自己在多个来源之间拼凑出最终判断。", "FINDING 01": "发现 01", "No single rental app feels complete.": "没有任何一个租房 App 的信息是完整的。", "Implication:": "设计启示：", "Bring pricing, commute, reviews, floor-plan details, and application context into one decision surface.": "把价格、通勤、评价、户型和申请信息集中到同一个决策界面。", "FINDING 02": "发现 02", "Marketplace availability can disagree with the property website.": "租房平台的可租状态可能和物业官网不一致。", "Show when unit inventory was last verified and distinguish live, stale, and unavailable floor plans.": "显示房源最后核验时间，并区分实时、待刷新和已不可租的户型。", "FINDING 03": "发现 03", "After enough browsing, several options start to look equally good.": "看得越多，越容易出现几套房都很好、反而不知道怎么选的情况。", "Shift from discovery to personalized comparison before decision fatigue sets in.": "在选择疲劳出现之前，从“继续发现”切换到个性化比较。", "FINDING 04": "发现 04", "Commute, facilities, parking, price, and reviews shape the final choice.": "通勤、设施、停车、价格和评价共同影响最终选择。", "Let renters choose which attributes deserve space in the comparison table.": "让租客自己决定哪些信息值得出现在比较表里。", "Observed behavior: renters check multiple rental apps, then validate promising properties with maps, review platforms, social content, and the property’s own website before deciding.": "观察到的行为：租客会同时查看多个租房 App，再用地图、评价平台、社交内容和物业官网去验证看起来不错的房源。", "MANAGED APARTMENTS": "管理型公寓", "Different friction after search": "搜索之后还有另一层摩擦", "Income requirements, application fees, external leasing portals, and property-specific websites add learning cost. Availability can also change between the marketplace and the official leasing site.": "收入要求、申请费、外部租赁门户和每个物业不同的网站都会增加学习成本；平台和官网之间的可租状态也可能发生变化。", "PRIVATE RENTALS": "私人出租", "Different kinds of uncertainty": "另一种不确定性", "Landlord reliability, maintenance expectations, utilities, neighborhood reality, noise, parking, and lease flexibility become more important than polished amenities.": "房东是否可靠、维修体验、水电费用、真实街区环境、噪音、停车和租约灵活性，往往比精美的设施介绍更重要。", "Design principle": "设计原则", "03 — The solution": "03 — 方案", "A decision workspace, not just a listing browser.": "不只是浏览房源，而是一个租房决策空间。", "Zillow Focus combines stronger information coverage with availability confidence, then helps renters narrow and compare a smaller set of homes around their own priorities.": "Zillow Focus 把更完整的信息与房源状态可信度结合起来，再根据租客自己的优先级，把选择缩小并进行比较。", "01 — PRIORITIES": "01 — 优先级", "Tell Zillow what actually matters.": "先告诉 Zillow，你真正看重什么。", "Users organize criteria by importance instead of relying only on binary filters.": "用户按重要程度组织条件，而不是只依赖“有 / 没有”的二元筛选。", "Must have:": "必须有：", "laundry, parking, pet policy": "洗衣、停车、宠物政策", "Important:": "重要：", "total monthly cost, commute, reviews": "真实月成本、通勤、评价", "Nice to have:": "加分项：", "gym, balcony, natural light": "健身房、阳台、自然采光", "Set your priorities": "设置你的优先级", "Step 2 of 3": "第 2 / 3 步", "Must have": "必须有", "Parking": "停车", "Cat friendly": "可养猫", "Important": "重要", "≤ $3,000 true monthly": "真实月成本 ≤ $3,000", "≤ 30 min commute": "通勤 ≤ 30 分钟", "Resident reviews": "住户评价", "Nice to have": "加分项", "Gym": "健身房", "Natural light": "自然采光", "Balcony": "阳台", "from 146 homes": "来自 146 个房源", "$2,940 est. monthly · Oakland": "预计每月 $2,940 · Oakland", "Laundry": "洗衣", "22 min commute": "通勤 22 分钟", "Smaller kitchen": "厨房较小", "02 — BEST MATCHES": "02 — 最佳匹配", "Surface fewer homes — without hiding the rest.": "优先展示更少的房子，但不把其他选择藏起来。", "Users get a prioritized set of matches with clear reasons. The full inventory remains available to preserve control and trust.": "用户先看到按优先级整理的匹配结果，并能理解为什么被推荐；完整房源仍然可查看，以保留控制感和信任。", "“7 best matches from 146 available”": "“146 个可租房源中的 7 个最佳匹配”", "Visible match explanations": "清楚解释匹配原因", "“View all” and “Why these?” controls": "保留“查看全部”和“为什么是这些？”", "03 — TRADE-OFFS": "03 — 取舍", "Show what changes when a preference changes.": "让用户知道，改变一个偏好会带来什么变化。", "Instead of a dead-end “No results,” users can see the consequence of relaxing one condition at a time.": "不再只给出“没有结果”，而是让用户看到一次放宽一个条件会得到哪些新选择。", "See how changes affect results": "看看调整条件会如何影响结果", "You control this": "由你决定", "Budget up to $3,100": "预算提高到 $3,100", "Current preference: $3,000": "当前偏好：$3,000", "+5 homes": "+5 个房源", "Commute up to 35 min": "通勤提高到 35 分钟", "Current preference: 30 min": "当前偏好：30 分钟", "+8 homes": "+8 个房源", "Shared laundry": "共用洗衣房", "Current preference: in-unit": "当前偏好：室内洗衣", "+12 homes": "+12 个房源", "Top priorities first": "优先显示最重要的信息", "Your priorities": "你的优先级", "True monthly": "真实月成本", "Yes": "有", "Included": "已包含", "Berkeley commute": "Berkeley 通勤", "SF commute": "SF 通勤", "Resident rating": "住户评分", "Availability": "可租状态", "3 live": "3 个实时可租", "1 live": "1 个实时可租", "Needs refresh": "需要刷新", "04 — PERSONALIZED COMPARE": "04 — 个性化比较", "Compare what matters to this renter — not every possible attribute.": "比较这个租客真正关心的内容，而不是把所有属性都塞进表格。", "The same priorities selected earlier become the comparison table. Users can reorder, collapse, and pin criteria.": "之前选择的优先级会直接变成比较表；用户还可以重新排序、折叠或固定项目。", "05 — LIVE AVAILABILITY": "05 — 实时房源状态", "Verify what is actually rentable before users get invested.": "在用户投入大量时间之前，先确认哪些房子真的还能租。", "When marketplace data and an apartment’s official website disagree, the renter pays the cost. Zillow Focus makes freshness visible at the floor-plan level.": "当平台和公寓官网的信息不一致时，承担时间成本的是租客。Zillow Focus 会把数据新鲜度明确显示到具体户型层级。", "Last-verified timestamp": "最后核验时间", "Floor-plan-level availability": "户型级可租状态", "Live / stale / unavailable states": "实时 / 过期 / 不可租状态", "Direct path to official property inventory": "可直接前往物业官方库存", "Current availability": "当前可租状态", "Verified 8 min ago": "8 分钟前已核验", "2 units": "2 套", "1 unit": "1 套", "Refresh needed": "需要刷新", "Zillow listing": "Zillow 房源", "Property inventory": "物业库存", "Last synced 8m ago": "8 分钟前同步", "06 — COMMUTE": "06 — 通勤", "Move from distance to real weekly routine.": "从“距离”升级到真实的一周通勤。", "A single travel-time estimate misses hybrid work, school schedules, transfer time, and transportation mode.": "单一通勤时间无法反映混合办公、课程安排、换乘时间和交通方式。", "Different destinations on different days": "不同日期对应不同目的地", "Arrival-time-aware estimates": "考虑到达时间的估算", "Walking + transit context": "步行 + 公共交通信息", "Estimated weekly commute": "预计每周通勤", "My weekly routine": "我的一周行程", "UC Berkeley": "UC Berkeley", "Mon / Wed / Fri · transit + walk": "周一 / 三 / 五 · 公交 + 步行", "SF Office": "SF 办公室", "Tue / Thu · BART + walk": "周二 / 四 · BART + 步行", "Typical weekday conditions · route details available": "典型工作日路况 · 可查看路线详情", "Resident experience": "住户体验", "Sources visible": "来源可见", "Responsive maintenance": "维修响应及时", "34 mentions": "34 次提及", "Street noise": "街道噪音", "18 mentions": "18 次提及", "Move-out charges": "退租收费", "11 mentions": "11 次提及", "07 — REVIEWS + APPLY INFO": "07 — 评价 + 申请信息", "Reduce context switching at the moment of decision.": "在真正做决定的时候，减少来回切换平台。", "For managed apartments, Zillow Focus surfaces review context and application requirements before sending users to an external property portal.": "对于管理型公寓，Zillow Focus 会在把用户跳转到外部物业网站之前，先展示评价背景和申请要求。", "Third-party ratings with source transparency": "第三方评分，并明确来源", "Income requirements": "收入要求", "Application fee": "申请费", "Required documents": "所需文件", "Clear external-portal handoff": "清晰说明将跳转至外部申请网站", "04 — User feedback": "04 — 用户反馈", "The strongest feedback was not “give me more filters.” It was “help me trust the information and decide.”": "最强烈的反馈不是“给我更多筛选器”，而是“让我相信这些信息，并帮我做决定”。", "Qualitative feedback shifted the concept from a recommendation layer into a more complete decision system.": "这些定性反馈把概念从单纯的推荐层，推向了更完整的决策系统。", "Cross-platform search": "跨平台搜索", "Renters check multiple rental apps because each platform can be missing something the others show.": "租客会同时查看多个租房 App，因为每个平台都可能缺少其他平台提供的信息。", "Availability mismatch": "可租状态不一致", "A unit or floor plan shown on the marketplace may not match what is actually available on the property’s own site.": "租房平台显示的房源或户型，可能与物业官网实际可租的内容不一致。", "Decision fatigue": "选择疲劳", "After browsing many good options, users start to feel overwhelmed and struggle to explain why one is better than another.": "看过很多不错的选项之后，用户会开始眼花缭乱，也很难说清楚为什么其中一套更好。", "“I end up checking basically every rental app.”": "“我基本上所有租房软件都会看。”", "Design response: make Zillow Focus a richer decision surface rather than forcing users to reconstruct the same property across several products.": "设计回应：让 Zillow Focus 承担更完整的决策信息，而不是逼用户在多个产品之间重新拼凑同一套房的信息。", "“The app and the official apartment website can show different floor plans.”": "“App 上和公寓官网显示的户型可能不一样。”", "Design response: add floor-plan-level availability confidence, timestamps, and official-inventory checks.": "设计回应：加入户型级可租状态、更新时间以及官方库存核验。", "“After I look at too many, I get confused. A few of them all seem good.”": "“看多了之后会有点眼花缭乱，几个可能都挺好的，就不知道怎么决定。”", "Design response: move users into priority-based comparison earlier, with top criteria visible side by side.": "设计回应：更早进入基于个人优先级的比较模式，把最重要的信息并排展示。", "“I still need Maps, reviews, and the building website.”": "“我还是需要地图、评价，还有公寓官网。”", "Design response: consolidate commute, third-party review context, costs, availability, and application requirements.": "设计回应：集中展示通勤、第三方评价、成本、可租状态和申请要求。", "Managed apartments add another learning curve.": "管理型公寓还会带来额外的学习成本。", "Design response: preview income requirements, fees, required documents, and the destination application portal before handoff.": "设计回应：在跳转前先预览收入要求、费用、所需文件和最终申请网站。", "05 — Iteration": "05 — 迭代", "The biggest changes were about completeness, freshness, and decision clarity.": "最大的迭代围绕三件事：信息完整度、数据新鲜度和决策清晰度。", "The concept moved beyond “better recommendations” toward a system that explains what is current, what is missing, and why one option may fit better than another.": "这个概念不再只是“更好的推荐”，而是一个能解释什么是最新的、什么信息缺失、以及为什么某个选项更合适的系统。", "Before": "之前", "Static listing availability": "静态房源状态", "A renter could get excited about a floor plan that was already gone on the official property site.": "租客可能已经对某个户型产生兴趣，结果去官网才发现它早就没了。", "After": "之后", "Shows when inventory was verified, which floor plans are live, and when the property source needs to be refreshed.": "显示库存何时被核验、哪些户型仍然可租，以及什么时候需要重新刷新物业来源。", "More browsing": "继续浏览更多", "Showing more relevant listings still leaves renters with the same final problem: several homes can all look good.": "就算推荐的房源更相关，用户最后仍可能遇到同一个问题：几套房看起来都不错。", "Earlier decision mode": "更早进入决策模式", "Once users have a few viable options, Zillow shifts into personalized compare instead of encouraging more scrolling.": "当用户已经有几个可行选项时，Zillow 会切换到个性化比较，而不是继续鼓励无限滚动。", "Core MVP": "核心 MVP", "Personal priorities": "个人优先级", "Best Matches": "最佳匹配", "Live availability confidence": "实时房源状态可信度", "Transparent trade-offs": "透明的取舍", "Personalized Compare": "个性化比较", "Commute context": "通勤信息", "Application requirements": "申请要求", "Future exploration": "未来探索", "Reusable renter profile": "可复用的租客档案", "Verified income/document portability": "可复用的收入 / 文件验证", "Private-rental community insights": "私人出租社区信息", "Cross-property application standardization": "跨物业申请标准化", "Longitudinal match-quality learning": "长期学习匹配质量", "06 — Reflection": "06 — 复盘", "The project changed once the problem got bigger than the screen.": "当问题不再只是一个界面，这个项目也随之改变。", "This project started as a better Zillow comparison table. Renter feedback reframed it. The harder problem was the work happening": "这个项目最初只是想做一个更好的 Zillow 比较表，但租客反馈重新定义了问题。真正困难的是发生在房源页面", "around": "之外", "the listing: checking other apps, verifying whether a floor plan is still available, reading reviews, checking commute, and then trying to remember why one “good” option was better than another.": "的那些工作：查看其他 App、确认户型是否还可租、阅读评价、检查通勤，然后还要记住为什么某个“都不错”的选项比另一个更合适。", "The design opportunity became clearer:": "设计机会因此变得更清晰：", "a better rental product should not just surface more homes. It should help renters trust what is current, see the information they actually need, and make a decision before search turns into overload.": "一个更好的租房产品不应该只是展示更多房源，而应该帮助租客相信哪些信息仍然有效、看到真正需要的信息，并在搜索变成选择过载之前做出决定。", "Zillow Focus — Independent Product Concept": "Zillow Focus — 独立产品概念", "AI-assisted conceptual exploration · Portfolio case study · 2026": "AI 辅助概念探索 · 作品集案例 · 2026", "Three things changed the direction.": "三个反馈改变了设计方向。", "The goal became less about adding features — and more about making rental decisions easier to trust.": "重点不再是继续增加功能，而是让租房决策更可信、更容易。", "Information is fragmented.": "信息散落在不同平台。", "Renters check several rental apps because no single platform feels complete.": "租客会同时查看多个租房 App，因为没有一个平台能提供完整信息。", "Design response": "设计回应", "Bring commute, reviews, costs, and application details closer to the listing.": "把通勤、评价、成本和申请信息更集中地放在房源旁。", "Availability is hard to trust.": "可租状态很难完全相信。", "Marketplace listings and official property websites can show different floor plans or availability.": "租房平台与物业官网可能显示不同的户型或可租状态。", "Show when each floor plan was last verified and whether inventory needs a refresh.": "显示每个户型上次核验的时间，以及库存是否需要刷新。", "Too many good options become noise.": "太多不错的选择反而会变成噪音。", "After enough browsing, several homes can all look “good enough,” making the final choice harder.": "看得越多，越容易出现几套房都“差不多不错”，反而更难做最终决定。", "Move users into a personalized comparison view earlier.": "更早让用户进入个性化比较模式。"};
+      const toggle = document.querySelector('.language-switch');
+      if(!toggle) return;
+      const items = [];
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let node;
+      while((node = walker.nextNode())){
+        if(node.parentElement?.closest('script,style')) continue;
+        const original = node.nodeValue;
+        const key = original.trim();
+        if(translations[key]) items.push([node, original, translations[key]]);
+      }
+      function setLanguage(lang){
+        const zh = lang === 'zh';
+        document.documentElement.lang = zh ? 'zh-CN' : 'en';
+        items.forEach(([n,en,z]) => { n.nodeValue = zh ? en.replace(en.trim(), z) : en; });
+        toggle.textContent = zh ? '中文 / EN' : 'EN / 中文';
+        toggle.setAttribute('aria-pressed', String(zh));
+        toggle.setAttribute('aria-label', zh ? 'Switch to English' : '切换到中文');
+        document.title = zh ? 'Zillow Focus — 产品概念案例' : 'Zillow Focus — Product Concept Case Study';
+      }
+      toggle.addEventListener('click', () => setLanguage(document.documentElement.lang === 'zh-CN' ? 'en' : 'zh'));
+      setLanguage(window.portfolioLanguage.get());
+    })();
+  </script>
+
+</body>
+</html>
