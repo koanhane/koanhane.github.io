@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zillow Focus — Product Concept Case Study</title>
-  <meta name="description" content="Zillow Focus — an independent AI-assisted product concept exploring a clearer rental-search and decision experience." />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zillow Focus — Product Concept Case Study</title>
+<meta content="Zillow Focus — an independent AI-assisted product concept exploring a clearer rental-search and decision experience." name="description"/>
+<style>
     :root {
       --bg: #f7f8fb;
       --surface: #ffffff;
@@ -555,7 +556,6 @@
   .pill{font-size:11px!important;padding:7px 10px!important;}
   .hero-note{font-size:12px!important;line-height:1.65!important;}
   .hero-stage{min-height:490px!important;width:100%!important;overflow:visible!important;}
-  .hero-stage .orb{width:min(400px,92vw)!important;height:min(400px,92vw)!important;}
   .hero-stage .phone{width:min(240px,64vw)!important;min-height:0!important;}
   .hero-stage .float-card{width:min(40%,164px)!important;max-width:164px!important;padding:10px!important;}
   .hero-stage .float-a{left:0!important;top:90px!important;}
@@ -587,446 +587,416 @@
 }
 
 </style>
-</head>
+<style>
+/* Compact editorial hierarchy */
+.hero-sub{font-size:clamp(17px,1.65vw,21px)!important;line-height:1.55!important;max-width:590px!important}
+section h2{font-size:clamp(29px,3.2vw,43px)!important;font-weight:580!important;line-height:1.13!important;letter-spacing:-.035em!important;max-width:850px!important}
+.lede{font-size:clamp(15px,1.45vw,17px)!important;line-height:1.7!important;max-width:740px!important}
+#research .grid-2{margin-top:24px!important;gap:15px!important}
+#research .insight-card{min-height:0!important;padding:22px!important}
+#research .insight-card .big{font-size:clamp(19px,2vw,24px)!important;font-weight:600!important;line-height:1.2!important}
+#research .implication{font-size:13px!important;line-height:1.6!important;padding-top:15px!important;margin-top:22px!important}
+#problem .quote{font-size:clamp(18px,2.2vw,26px)!important;font-weight:560!important;line-height:1.35!important;padding:18px 22px!important;margin-top:24px!important}
+#research .principle{padding:32px 22px!important;margin-top:28px!important}
+#research .principle strong{font-size:clamp(32px,4.7vw,54px)!important;font-weight:620!important;line-height:1.03!important}
+#reflection .reflection{padding:clamp(22px,3vw,38px)!important}
+#reflection .reflection p{font-size:clamp(16px,1.6vw,19px)!important;line-height:1.65!important;font-weight:400!important;margin:0!important}
+#reflection .reflection strong{font-weight:600!important}
+.section-kicker{font-size:11px!important;font-weight:650!important}
+@media(max-width:600px){#research .insight-card{padding:20px!important}#research .grid-2{gap:12px!important}#reflection .reflection{padding:22px!important}#problem .quote{padding:17px!important}}
+</style></head>
 <body>
-  <div class="progress" id="progress"></div>
+<div class="progress" id="progress"></div>
+<nav aria-label="Case study navigation" class="nav">
+<div class="nav-inner">
+<a aria-label="Back to Yanyu Gu portfolio" class="brand" href="index.html#work">YANYU GU<span>.</span></a>
+<div class="nav-links">
+<a href="#problem">Problem</a>
+<a href="#research">Research</a>
+<a href="#solution">Solution</a>
+<a href="#testing">Testing</a>
+<a href="#reflection">Reflection</a>
+</div>
+<div class="nav-actions">
+<button aria-label="Switch language" aria-pressed="false" class="language-switch" type="button">EN / 中文</button>
+<a class="profile-back" href="index.html#work">← Back to Profile</a>
+</div>
+</div>
+</nav>
+<main id="top">
+<div class="container">
+<header class="hero">
+<div>
+<div class="eyebrow"><span class="dot"></span> Independent Product Concept</div>
+<h1>Find less.<br/>Decide better.</h1>
+<p class="hero-sub">A rental-search concept that brings verified availability, key details, and side-by-side comparison into one simpler experience.</p>
+<div class="hero-meta">
+<span class="pill">Product Concept</span>
+<span class="pill">Mobile UX</span>
+<span class="pill">Rental Marketplace</span>
+<span class="pill">Concept Exploration</span>
+</div>
+<p class="hero-note">Independent AI-assisted concept project. Not affiliated with Zillow. Renter feedback is paraphrased, and all product screens and data shown here are conceptual and illustrative.</p>
+</div>
+<div aria-hidden="true" class="hero-stage">
+<div class="orb"></div>
+<div class="float-card float-a">
+<div class="float-title">Best matches for you</div>
+<div class="float-metric">7</div>
+<div class="float-label">from 146 available rentals</div>
+</div>
+<div class="phone">
+<div class="notch"></div>
+<div class="phone-head"><span class="zmark">Z</span><span>9:41</span></div>
+<div class="search-bar">Berkeley &amp; Oakland rentals</div>
+<div class="tabs"><span class="tab">Map</span><span class="tab active">List</span><span class="tab">Saved</span></div>
+<div class="screen-title">7 best matches</div>
+<div class="screen-sub">From 146 listings · matched to your priorities and checked for current availability.</div>
+<div class="screen-card">
+<div class="match-row">
+<div><strong>Hanover Northgate</strong><br/><small>$2,940 est. monthly</small></div>
+<span class="mini-tag">Strong fit</span>
+</div>
+<div class="mini-divider"></div>
+<small><span class="check">✓</span> In-unit laundry</small><br/>
+<small><span class="check">✓</span> Parking included</small><br/>
+<small><span class="check">✓</span> 22 min to Berkeley</small><br/>
+<small><span class="warn">△</span> SF commute is 41 min</small>
+<div class="availability">3 floor plans · verified 8 min ago</div>
+</div>
+<div class="hero-compact-more">+ 6 more high-fit homes</div>
+<div class="screen-button">Compare finalists</div>
+</div>
+<div class="float-card float-b">
+<div class="float-title">Availability confidence</div>
+<div class="float-metric">Live</div>
+<div class="float-label">Property inventory checked 8 min ago</div>
+</div>
+</div>
+</header>
+</div>
+<section id="problem">
+<div class="container fade-up">
+<div class="section-kicker">01 — The problem</div>
+<h2>Finding homes is easy. Trusting the information is harder.</h2>
+<p class="lede">Renters switch between listing sites, property pages, reviews, and maps to check information before making a decision.</p>
+<div class="journey">
+<div class="journey-track">
+<span class="journey-step">Zillow</span><span class="arrow">↔</span>
+<span class="journey-step">Apartments.com</span><span class="arrow">↔</span>
+<span class="journey-step">Google Maps</span><span class="arrow">↔</span>
+<span class="journey-step">Google / Yelp</span><span class="arrow">↔</span>
+<span class="journey-step">Xiaohongshu</span><span class="arrow">↔</span>
+<span class="journey-step">Property website</span>
+</div>
+<div class="journey-caption">Availability and details often differ across sources.</div>
+</div>
+<div class="quote">Make the shortlist clearer, more current, and easier to compare.</div>
+</div>
+</section>
+<section id="research">
+<div class="container fade-up">
+<div class="section-kicker">02 — Research</div>
+<h2>What renters need before they decide.</h2>
+<p class="lede">Informal renter conversations revealed three recurring frustrations.</p>
+<div class="grid-2">
+<div class="card insight-card">
+<div>
+<div class="num">FINDING 01</div>
+<div class="big">Information is scattered.</div>
+</div>
+<div class="implication">Combine price, commute, reviews, and floor-plan details.</div>
+</div>
+<div class="card insight-card">
+<div>
+<div class="num">FINDING 02</div>
+<div class="big">Availability can be outdated.</div>
+</div>
+<div class="implication">Show when listings were last checked.</div>
+</div>
+<div class="card insight-card">
+<div>
+<div class="num">FINDING 03</div>
+<div class="big">Too many options make comparison harder.</div>
+</div>
+<div class="implication">Compare a shortlist using renter priorities.</div>
+</div>
 
-  <nav class="nav" aria-label="Case study navigation">
-    <div class="nav-inner">
-      <a href="index.html#work" class="brand" aria-label="Back to Yanyu Gu portfolio">YANYU GU<span>.</span></a>
-      <div class="nav-links">
-        <a href="#problem">Problem</a>
-        <a href="#research">Research</a>
-        <a href="#solution">Solution</a>
-        <a href="#testing">Testing</a>
-        <a href="#reflection">Reflection</a>
-      </div>
-      <div class="nav-actions">
-        <button class="language-switch" type="button" aria-label="Switch language" aria-pressed="false">EN / 中文</button>
-        <a href="index.html#work" class="profile-back">← Back to Profile</a>
-      </div>
-    </div>
-  </nav>
+</div>
 
-  <main id="top">
-    <div class="container">
-      <header class="hero">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> Independent Product Concept</div>
-          <h1>Find less.<br>Decide better.</h1>
-          <p class="hero-sub">A Zillow rental concept that helps renters cut through incomplete listings, stale availability, and decision overload — then compare a smaller set of homes with the information that actually matters.</p>
-          <div class="hero-meta">
-            <span class="pill">Product Concept</span>
-            <span class="pill">Mobile UX</span>
-            <span class="pill">Rental Marketplace</span>
-            <span class="pill">Concept Exploration</span>
-          </div>
-          <p class="hero-note">Independent AI-assisted concept project. Not affiliated with Zillow. Renter feedback is paraphrased, and all product screens and data shown here are conceptual and illustrative.</p>
-        </div>
 
-        <div class="hero-stage" aria-hidden="true">
-          <div class="orb"></div>
-          <div class="float-card float-a">
-            <div class="float-title">Best matches for you</div>
-            <div class="float-metric">7</div>
-            <div class="float-label">from 146 available rentals</div>
-          </div>
-          <div class="phone">
-            <div class="notch"></div>
-            <div class="phone-head"><span class="zmark">Z</span><span>9:41</span></div>
-            <div class="search-bar">Berkeley & Oakland rentals</div>
-            <div class="tabs"><span class="tab">Map</span><span class="tab active">List</span><span class="tab">Saved</span></div>
-            <div class="screen-title">7 best matches</div>
-            <div class="screen-sub">From 146 listings · matched to your priorities and checked for current availability.</div>
-            <div class="screen-card">
-              <div class="match-row">
-                <div><strong>Hanover Northgate</strong><br><small>$2,940 est. monthly</small></div>
-                <span class="mini-tag">Strong fit</span>
-              </div>
-              <div class="mini-divider"></div>
-              <small><span class="check">✓</span> In-unit laundry</small><br>
-              <small><span class="check">✓</span> Parking included</small><br>
-              <small><span class="check">✓</span> 22 min to Berkeley</small><br>
-              <small><span class="warn">△</span> SF commute is 41 min</small>
-              <div class="availability">3 floor plans · verified 8 min ago</div>
-            </div>
-            <div class="hero-compact-more">+ 6 more high-fit homes</div>
-            <div class="screen-button">Compare finalists</div>
-          </div>
-          <div class="float-card float-b">
-            <div class="float-title">Availability confidence</div>
-            <div class="float-metric">Live</div>
-            <div class="float-label">Property inventory checked 8 min ago</div>
-          </div>
-        </div>
-      </header>
-    </div>
-
-    <section id="problem">
-      <div class="container fade-up">
-        <div class="section-kicker">01 — The problem</div>
-        <h2>Renters can find plenty of listings. The hard part is knowing what is complete, current, and actually worth pursuing.</h2>
-        <p class="lede">Renter feedback revealed three connected problems: information is fragmented across apps, availability can disagree with a property’s own website, and after browsing enough “good” options, choosing between them becomes exhausting.</p>
-
-        <div class="journey">
-          <div class="journey-track">
-            <span class="journey-step">Zillow</span><span class="arrow">↔</span>
-            <span class="journey-step">Apartments.com</span><span class="arrow">↔</span>
-            <span class="journey-step">Google Maps</span><span class="arrow">↔</span>
-            <span class="journey-step">Google / Yelp</span><span class="arrow">↔</span>
-            <span class="journey-step">Xiaohongshu</span><span class="arrow">↔</span>
-            <span class="journey-step">Property website</span>
-          </div>
-          <div class="journey-caption">Users cross-check multiple sources because no single surface feels complete — and the same floor plan may appear available in one place but unavailable on the property’s own site.</div>
-        </div>
-
-        <div class="quote">The opportunity is not to show renters more homes. It is to give them one clearer, more current view of the few homes they might actually choose.</div>
-      </div>
-    </section>
-
-    <section id="research">
-      <div class="container fade-up">
-        <div class="section-kicker">02 — Research</div>
-        <h2>What renters said was breaking the search experience.</h2>
-        <p class="lede">Informal renter conversations consistently pointed to the same pattern: people do not trust one app to tell the whole story, so they assemble the decision themselves across several sources.</p>
-
-        <div class="grid-2">
-          <div class="card insight-card">
-            <div>
-              <div class="num">FINDING 01</div>
-              <div class="big">No single rental app feels complete.</div>
-            </div>
-            <div class="implication"><b>Implication:</b> Bring pricing, commute, reviews, floor-plan details, and application context into one decision surface.</div>
-          </div>
-          <div class="card insight-card">
-            <div>
-              <div class="num">FINDING 02</div>
-              <div class="big">Marketplace availability can disagree with the property website.</div>
-            </div>
-            <div class="implication"><b>Implication:</b> Show when unit inventory was last verified and distinguish live, stale, and unavailable floor plans.</div>
-          </div>
-          <div class="card insight-card">
-            <div>
-              <div class="num">FINDING 03</div>
-              <div class="big">After enough browsing, several options start to look equally good.</div>
-            </div>
-            <div class="implication"><b>Implication:</b> Shift from discovery to personalized comparison before decision fatigue sets in.</div>
-          </div>
-          <div class="card insight-card">
-            <div>
-              <div class="num">FINDING 04</div>
-              <div class="big">Commute, facilities, parking, price, and reviews shape the final choice.</div>
-            </div>
-            <div class="implication"><b>Implication:</b> Let renters choose which attributes deserve space in the comparison table.</div>
-          </div>
-        </div>
-        <div class="research-note">Observed behavior: renters check multiple rental apps, then validate promising properties with maps, review platforms, social content, and the property’s own website before deciding.</div>
-
-        <div class="grid-2">
-          <div class="card">
-            <div class="num">MANAGED APARTMENTS</div>
-            <h3>Different friction after search</h3>
-            <p>Income requirements, application fees, external leasing portals, and property-specific websites add learning cost. Availability can also change between the marketplace and the official leasing site.</p>
-          </div>
-          <div class="card">
-            <div class="num">PRIVATE RENTALS</div>
-            <h3>Different kinds of uncertainty</h3>
-            <p>Landlord reliability, maintenance expectations, utilities, neighborhood reality, noise, parking, and lease flexibility become more important than polished amenities.</p>
-          </div>
-        </div>
-
-        <div class="principle">
-          <small>Design principle</small>
-          <strong>Find less.<br>Decide better.</strong>
-        </div>
-      </div>
-    </section>
-
-    <section id="solution">
-      <div class="container fade-up">
-        <div class="section-kicker">03 — The solution</div>
-        <h2>A decision workspace, not just a listing browser.</h2>
-        <p class="lede">Zillow Focus combines stronger information coverage with availability confidence, then helps renters narrow and compare a smaller set of homes around their own priorities.</p>
-
-        <div class="solution-block">
-          <div class="solution-grid">
-            <div class="solution-copy">
-              <div class="num">01 — PRIORITIES</div>
-              <h3>Tell Zillow what actually matters.</h3>
-              <p>Users organize criteria by importance instead of relying only on binary filters.</p>
-              <ul>
-                <li><b>Must have:</b> laundry, parking, pet policy</li>
-                <li><b>Important:</b> total monthly cost, commute, reviews</li>
-                <li><b>Nice to have:</b> gym, balcony, natural light</li>
-              </ul>
-            </div>
-            <div class="ui-shell">
-              <div class="ui-top"><strong>Set your priorities</strong><span class="ui-chip">Step 2 of 3</span></div>
-              <div class="preference-group">
-                <div class="preference-label">Must have</div>
-                <div class="preference-tags"><span class="pref-tag must">In-unit laundry</span><span class="pref-tag must">Parking</span><span class="pref-tag must">Cat friendly</span></div>
-              </div>
-              <div class="preference-group">
-                <div class="preference-label">Important</div>
-                <div class="preference-tags"><span class="pref-tag imp">≤ $3,000 true monthly</span><span class="pref-tag imp">≤ 30 min commute</span><span class="pref-tag imp">Resident reviews</span></div>
-              </div>
-              <div class="preference-group">
-                <div class="preference-label">Nice to have</div>
-                <div class="preference-tags"><span class="pref-tag">Gym</span><span class="pref-tag">Natural light</span><span class="pref-tag">Balcony</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="solution-grid reverse">
-            <div class="ui-shell">
-              <div class="ui-top"><strong>7 best matches</strong><span class="ui-chip">from 146 homes</span></div>
-              <div class="listing">
-                <div class="listing-img"></div>
-                <div class="listing-body">
-                  <div class="match-row"><div><h4>Hanover Northgate</h4><div class="meta">$2,940 est. monthly · Oakland</div></div><span class="mini-tag">Strong fit</span></div>
-                  <div class="match-list">
-                    <div class="match-item"><span class="check">✓</span> Laundry</div>
-                    <div class="match-item"><span class="check">✓</span> Parking</div>
-                    <div class="match-item"><span class="check">✓</span> 22 min commute</div>
-                    <div class="match-item"><span class="warn">△</span> Smaller kitchen</div>
-                  </div>
-                  <div class="availability">3 floor plans · verified 8 min ago</div>
-                </div>
-              </div>
-            </div>
-            <div class="solution-copy">
-              <div class="num">02 — BEST MATCHES</div>
-              <h3>Surface fewer homes — without hiding the rest.</h3>
-              <p>Users get a prioritized set of matches with clear reasons. The full inventory remains available to preserve control and trust.</p>
-              <ul>
-                <li>“7 best matches from 146 available”</li>
-                <li>Visible match explanations</li>
-                <li>“View all” and “Why these?” controls</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="solution-grid">
-            <div class="solution-copy">
-              <div class="num">03 — TRADE-OFFS</div>
-              <h3>Show what changes when a preference changes.</h3>
-              <p>Instead of a dead-end “No results,” users can see the consequence of relaxing one condition at a time.</p>
-            </div>
-            <div class="ui-shell">
-              <div class="ui-top"><strong>See how changes affect results</strong><span class="ui-chip">You control this</span></div>
-              <div class="trade-row"><div><strong>Budget up to $3,100</strong><br><span>Current preference: $3,000</span></div><div class="trade-plus">+5 homes</div></div>
-              <div class="trade-row"><div><strong>Commute up to 35 min</strong><br><span>Current preference: 30 min</span></div><div class="trade-plus">+8 homes</div></div>
-              <div class="trade-row"><div><strong>Shared laundry</strong><br><span>Current preference: in-unit</span></div><div class="trade-plus">+12 homes</div></div>
-            </div>
-          </div>
-
-          <div class="solution-grid reverse">
-            <div class="ui-shell">
-              <div class="ui-top"><strong>Compare finalists</strong><span class="ui-chip">Top priorities first</span></div>
-              <div class="compare-wrap">
-                <table>
-                  <thead><tr><th>Your priorities</th><th class="best">Hanover</th><th>Forma</th><th>Vespr</th></tr></thead>
-                  <tbody>
-                    <tr><td>True monthly</td><td class="best">$2,940</td><td>$3,080</td><td>$3,120</td></tr>
-                    <tr><td>In-unit laundry</td><td class="best yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-                    <tr><td>Parking</td><td class="best">Included</td><td>$200</td><td>$150</td></tr>
-                    <tr><td>Berkeley commute</td><td class="best">22 min</td><td>14 min</td><td>11 min</td></tr>
-                    <tr><td>SF commute</td><td class="best">31 min</td><td>38 min</td><td>43 min</td></tr>
-                    <tr><td>Resident rating</td><td class="best">4.0★</td><td>4.3★</td><td>4.5★</td></tr>
-                    <tr><td>Availability</td><td class="best status-live">3 live</td><td class="status-live">1 live</td><td class="status-stale">Needs refresh</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="solution-copy">
-              <div class="num">04 — PERSONALIZED COMPARE</div>
-              <h3>Compare what matters to this renter — not every possible attribute.</h3>
-              <p>The same priorities selected earlier become the comparison table. Users can reorder, collapse, and pin criteria.</p>
-            </div>
-          </div>
-
-          <div class="solution-grid">
-            <div class="solution-copy">
-              <div class="num">05 — LIVE AVAILABILITY</div>
-              <h3>Verify what is actually rentable before users get invested.</h3>
-              <p>When marketplace data and an apartment’s official website disagree, the renter pays the cost. Zillow Focus makes freshness visible at the floor-plan level.</p>
-              <ul>
-                <li>Last-verified timestamp</li>
-                <li>Floor-plan-level availability</li>
-                <li>Live / stale / unavailable states</li>
-                <li>Direct path to official property inventory</li>
-              </ul>
-            </div>
-            <div class="ui-shell">
-              <div class="ui-top"><strong>Current availability</strong><span class="verify-badge">Verified 8 min ago</span></div>
-              <div class="unit-row"><div><b>Studio S1</b><br><span class="meta">470 sq ft</span></div><div>$2,690</div><div class="status-live">2 units</div></div>
-              <div class="unit-row"><div><b>1 Bed A3</b><br><span class="meta">615 sq ft</span></div><div>$2,940</div><div class="status-live">1 unit</div></div>
-              <div class="unit-row"><div><b>1 Bed A5</b><br><span class="meta">690 sq ft</span></div><div>$3,025</div><div class="status-stale">Refresh needed</div></div>
-              <div class="source-strip"><span class="source-chip">Zillow listing</span><span class="source-chip">Property inventory</span><span class="source-chip">Last synced 8m ago</span></div>
-            </div>
-          </div>
-
-          <div class="solution-grid">
-            <div class="solution-copy">
-              <div class="num">06 — COMMUTE</div>
-              <h3>Move from distance to real weekly routine.</h3>
-              <p>A single travel-time estimate misses hybrid work, school schedules, transfer time, and transportation mode.</p>
-              <ul>
-                <li>Different destinations on different days</li>
-                <li>Arrival-time-aware estimates</li>
-                <li>Walking + transit context</li>
-                <li>Estimated weekly commute</li>
-              </ul>
-            </div>
-            <div class="ui-shell">
-              <div class="ui-top"><strong>My weekly routine</strong><span class="ui-chip">Hanover</span></div>
-              <div class="commute">
-                <div class="commute-card"><b>UC Berkeley</b><div class="time">22m</div><small>Mon / Wed / Fri · transit + walk</small></div>
-                <div class="commute-card"><b>SF Office</b><div class="time">31m</div><small>Tue / Thu · BART + walk</small></div>
-                <div class="commute-card weekly"><b>Estimated weekly commute</b><div class="time">2h 48m</div><small>Typical weekday conditions · route details available</small></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="solution-grid reverse">
-            <div class="ui-shell">
-              <div class="ui-top"><strong>Resident experience</strong><span class="ui-chip">Sources visible</span></div>
-              <div class="card" style="padding:16px; box-shadow:none;">
-                <div class="match-row"><div><b>Google</b><br><span class="meta">4.3★ · 231 reviews</span></div><div><b>Yelp</b><br><span class="meta">3.8★ · 86 reviews</span></div></div>
-                <div class="mini-divider"></div>
-                <div class="review-theme"><span>Responsive maintenance</span><span class="review-count">34 mentions</span></div>
-                <div class="review-theme"><span>Street noise</span><span class="review-count">18 mentions</span></div>
-                <div class="review-theme"><span>Move-out charges</span><span class="review-count">11 mentions</span></div>
-              </div>
-            </div>
-            <div class="solution-copy">
-              <div class="num">07 — REVIEWS + APPLY INFO</div>
-              <h3>Reduce context switching at the moment of decision.</h3>
-              <p>For managed apartments, Zillow Focus surfaces review context and application requirements before sending users to an external property portal.</p>
-              <ul>
-                <li>Third-party ratings with source transparency</li>
-                <li>Income requirements</li>
-                <li>Application fee</li>
-                <li>Required documents</li>
-                <li>Clear external-portal handoff</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="testing" class="test-section">
-      <div class="container fade-up">
-        <div class="section-kicker">04 — User feedback</div>
-        <h2>Three things changed the direction.</h2>
-        <p class="lede">The goal became less about adding features — and more about making rental decisions easier to trust.</p>
-
-        <div class="feedback-cards">
-          <article class="feedback-card">
-            <span class="feedback-index">01</span>
-            <h3>Information is fragmented.</h3>
-            <p>Renters check several rental apps because no single platform feels complete.</p>
-            <div class="feedback-response"><span>Design response</span> Bring commute, reviews, costs, and application details closer to the listing.</div>
-          </article>
-          <article class="feedback-card">
-            <span class="feedback-index">02</span>
-            <h3>Availability is hard to trust.</h3>
-            <p>Marketplace listings and official property websites can show different floor plans or availability.</p>
-            <div class="feedback-response"><span>Design response</span> Show when each floor plan was last verified and whether inventory needs a refresh.</div>
-          </article>
-          <article class="feedback-card">
-            <span class="feedback-index">03</span>
-            <h3>Too many good options become noise.</h3>
-            <p>After enough browsing, several homes can all look “good enough,” making the final choice harder.</p>
-            <div class="feedback-response"><span>Design response</span> Move users into a personalized comparison view earlier.</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container fade-up">
-        <div class="section-kicker">05 — Iteration</div>
-        <h2>The biggest changes were about completeness, freshness, and decision clarity.</h2>
-        <p class="lede">The concept moved beyond “better recommendations” toward a system that explains what is current, what is missing, and why one option may fit better than another.</p>
-
-        <div class="iteration">
-          <div class="iteration-card before">
-            <div class="iteration-label">Before</div>
-            <h3>Static listing availability</h3>
-            <p>A renter could get excited about a floor plan that was already gone on the official property site.</p>
-          </div>
-          <div class="iteration-arrow">→</div>
-          <div class="iteration-card after">
-            <div class="iteration-label">After</div>
-            <h3>Availability confidence</h3>
-            <p>Shows when inventory was verified, which floor plans are live, and when the property source needs to be refreshed.</p>
-          </div>
-        </div>
-
-        <div class="iteration">
-          <div class="iteration-card before">
-            <div class="iteration-label">Before</div>
-            <h3>More browsing</h3>
-            <p>Showing more relevant listings still leaves renters with the same final problem: several homes can all look good.</p>
-          </div>
-          <div class="iteration-arrow">→</div>
-          <div class="iteration-card after">
-            <div class="iteration-label">After</div>
-            <h3>Earlier decision mode</h3>
-            <p>Once users have a few viable options, Zillow shifts into personalized compare instead of encouraging more scrolling.</p>
-          </div>
-        </div>
-
-        <div class="scope-grid">
-          <div class="scope-card core">
-            <h3>Core MVP</h3>
-            <ul>
-              <li>Personal priorities</li>
-              <li>Best Matches</li>
-              <li>Live availability confidence</li>
-              <li>Transparent trade-offs</li>
-              <li>Personalized Compare</li>
-              <li>Commute context</li>
-              <li>Resident reviews</li>
-              <li>Application requirements</li>
-            </ul>
-          </div>
-          <div class="scope-card future">
-            <h3>Future exploration</h3>
-            <ul>
-              <li>Reusable renter profile</li>
-              <li>Verified income/document portability</li>
-              <li>Private-rental community insights</li>
-              <li>Cross-property application standardization</li>
-              <li>Longitudinal match-quality learning</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reflection">
-      <div class="container fade-up">
-        <div class="section-kicker">06 — Reflection</div>
-        <h2>The project changed once the problem got bigger than the screen.</h2>
-        <div class="reflection">
-          <p>This project started as a better Zillow comparison table. Renter feedback reframed it. The harder problem was the work happening <strong>around</strong> the listing: checking other apps, verifying whether a floor plan is still available, reading reviews, checking commute, and then trying to remember why one “good” option was better than another.</p>
-          <p>The design opportunity became clearer: <strong>a better rental product should not just surface more homes. It should help renters trust what is current, see the information they actually need, and make a decision before search turns into overload.</strong></p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>Zillow Focus — Independent Product Concept</div>
-      <div>AI-assisted conceptual exploration · Portfolio case study · 2026</div>
-    </div>
-  </footer>
-
-  <script>
+<div class="principle">
+<small>Design principle</small>
+<strong>Find less.<br/>Decide better.</strong>
+</div>
+</div>
+</section>
+<section id="solution">
+<div class="container fade-up">
+<div class="section-kicker">03 — The solution</div>
+<h2>A decision workspace, not just a listing browser.</h2>
+<p class="lede">Zillow Focus combines stronger information coverage with availability confidence, then helps renters narrow and compare a smaller set of homes around their own priorities.</p>
+<div class="solution-block">
+<div class="solution-grid">
+<div class="solution-copy">
+<div class="num">01 — PRIORITIES</div>
+<h3>Tell Zillow what actually matters.</h3>
+<p>Users organize criteria by importance instead of relying only on binary filters.</p>
+<ul>
+<li><b>Must have:</b> laundry, parking, pet policy</li>
+<li><b>Important:</b> total monthly cost, commute, reviews</li>
+<li><b>Nice to have:</b> gym, balcony, natural light</li>
+</ul>
+</div>
+<div class="ui-shell">
+<div class="ui-top"><strong>Set your priorities</strong><span class="ui-chip">Step 2 of 3</span></div>
+<div class="preference-group">
+<div class="preference-label">Must have</div>
+<div class="preference-tags"><span class="pref-tag must">In-unit laundry</span><span class="pref-tag must">Parking</span><span class="pref-tag must">Cat friendly</span></div>
+</div>
+<div class="preference-group">
+<div class="preference-label">Important</div>
+<div class="preference-tags"><span class="pref-tag imp">≤ $3,000 true monthly</span><span class="pref-tag imp">≤ 30 min commute</span><span class="pref-tag imp">Resident reviews</span></div>
+</div>
+<div class="preference-group">
+<div class="preference-label">Nice to have</div>
+<div class="preference-tags"><span class="pref-tag">Gym</span><span class="pref-tag">Natural light</span><span class="pref-tag">Balcony</span></div>
+</div>
+</div>
+</div>
+<div class="solution-grid reverse">
+<div class="ui-shell">
+<div class="ui-top"><strong>7 best matches</strong><span class="ui-chip">from 146 homes</span></div>
+<div class="listing">
+<div class="listing-img"></div>
+<div class="listing-body">
+<div class="match-row"><div><h4>Hanover Northgate</h4><div class="meta">$2,940 est. monthly · Oakland</div></div><span class="mini-tag">Strong fit</span></div>
+<div class="match-list">
+<div class="match-item"><span class="check">✓</span> Laundry</div>
+<div class="match-item"><span class="check">✓</span> Parking</div>
+<div class="match-item"><span class="check">✓</span> 22 min commute</div>
+<div class="match-item"><span class="warn">△</span> Smaller kitchen</div>
+</div>
+<div class="availability">3 floor plans · verified 8 min ago</div>
+</div>
+</div>
+</div>
+<div class="solution-copy">
+<div class="num">02 — BEST MATCHES</div>
+<h3>Surface fewer homes — without hiding the rest.</h3>
+<p>Users get a prioritized set of matches with clear reasons. The full inventory remains available to preserve control and trust.</p>
+<ul>
+<li>“7 best matches from 146 available”</li>
+<li>Visible match explanations</li>
+<li>“View all” and “Why these?” controls</li>
+</ul>
+</div>
+</div>
+<div class="solution-grid">
+<div class="solution-copy">
+<div class="num">03 — TRADE-OFFS</div>
+<h3>Show what changes when a preference changes.</h3>
+<p>Instead of a dead-end “No results,” users can see the consequence of relaxing one condition at a time.</p>
+</div>
+<div class="ui-shell">
+<div class="ui-top"><strong>See how changes affect results</strong><span class="ui-chip">You control this</span></div>
+<div class="trade-row"><div><strong>Budget up to $3,100</strong><br/><span>Current preference: $3,000</span></div><div class="trade-plus">+5 homes</div></div>
+<div class="trade-row"><div><strong>Commute up to 35 min</strong><br/><span>Current preference: 30 min</span></div><div class="trade-plus">+8 homes</div></div>
+<div class="trade-row"><div><strong>Shared laundry</strong><br/><span>Current preference: in-unit</span></div><div class="trade-plus">+12 homes</div></div>
+</div>
+</div>
+<div class="solution-grid reverse">
+<div class="ui-shell">
+<div class="ui-top"><strong>Compare finalists</strong><span class="ui-chip">Top priorities first</span></div>
+<div class="compare-wrap">
+<table>
+<thead><tr><th>Your priorities</th><th class="best">Hanover</th><th>Forma</th><th>Vespr</th></tr></thead>
+<tbody>
+<tr><td>True monthly</td><td class="best">$2,940</td><td>$3,080</td><td>$3,120</td></tr>
+<tr><td>In-unit laundry</td><td class="best yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+<tr><td>Parking</td><td class="best">Included</td><td>$200</td><td>$150</td></tr>
+<tr><td>Berkeley commute</td><td class="best">22 min</td><td>14 min</td><td>11 min</td></tr>
+<tr><td>SF commute</td><td class="best">31 min</td><td>38 min</td><td>43 min</td></tr>
+<tr><td>Resident rating</td><td class="best">4.0★</td><td>4.3★</td><td>4.5★</td></tr>
+<tr><td>Availability</td><td class="best status-live">3 live</td><td class="status-live">1 live</td><td class="status-stale">Needs refresh</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="solution-copy">
+<div class="num">04 — PERSONALIZED COMPARE</div>
+<h3>Compare what matters to this renter — not every possible attribute.</h3>
+<p>The same priorities selected earlier become the comparison table. Users can reorder, collapse, and pin criteria.</p>
+</div>
+</div>
+<div class="solution-grid">
+<div class="solution-copy">
+<div class="num">05 — LIVE AVAILABILITY</div>
+<h3>Verify what is actually rentable before users get invested.</h3>
+<p>When marketplace data and an apartment’s official website disagree, the renter pays the cost. Zillow Focus makes freshness visible at the floor-plan level.</p>
+<ul>
+<li>Last-verified timestamp</li>
+<li>Floor-plan-level availability</li>
+<li>Live / stale / unavailable states</li>
+<li>Direct path to official property inventory</li>
+</ul>
+</div>
+<div class="ui-shell">
+<div class="ui-top"><strong>Current availability</strong><span class="verify-badge">Verified 8 min ago</span></div>
+<div class="unit-row"><div><b>Studio S1</b><br/><span class="meta">470 sq ft</span></div><div>$2,690</div><div class="status-live">2 units</div></div>
+<div class="unit-row"><div><b>1 Bed A3</b><br/><span class="meta">615 sq ft</span></div><div>$2,940</div><div class="status-live">1 unit</div></div>
+<div class="unit-row"><div><b>1 Bed A5</b><br/><span class="meta">690 sq ft</span></div><div>$3,025</div><div class="status-stale">Refresh needed</div></div>
+<div class="source-strip"><span class="source-chip">Zillow listing</span><span class="source-chip">Property inventory</span><span class="source-chip">Last synced 8m ago</span></div>
+</div>
+</div>
+<div class="solution-grid">
+<div class="solution-copy">
+<div class="num">06 — COMMUTE</div>
+<h3>Move from distance to real weekly routine.</h3>
+<p>A single travel-time estimate misses hybrid work, school schedules, transfer time, and transportation mode.</p>
+<ul>
+<li>Different destinations on different days</li>
+<li>Arrival-time-aware estimates</li>
+<li>Walking + transit context</li>
+<li>Estimated weekly commute</li>
+</ul>
+</div>
+<div class="ui-shell">
+<div class="ui-top"><strong>My weekly routine</strong><span class="ui-chip">Hanover</span></div>
+<div class="commute">
+<div class="commute-card"><b>UC Berkeley</b><div class="time">22m</div><small>Mon / Wed / Fri · transit + walk</small></div>
+<div class="commute-card"><b>SF Office</b><div class="time">31m</div><small>Tue / Thu · BART + walk</small></div>
+<div class="commute-card weekly"><b>Estimated weekly commute</b><div class="time">2h 48m</div><small>Typical weekday conditions · route details available</small></div>
+</div>
+</div>
+</div>
+<div class="solution-grid reverse">
+<div class="ui-shell">
+<div class="ui-top"><strong>Resident experience</strong><span class="ui-chip">Sources visible</span></div>
+<div class="card" style="padding:16px; box-shadow:none;">
+<div class="match-row"><div><b>Google</b><br/><span class="meta">4.3★ · 231 reviews</span></div><div><b>Yelp</b><br/><span class="meta">3.8★ · 86 reviews</span></div></div>
+<div class="mini-divider"></div>
+<div class="review-theme"><span>Responsive maintenance</span><span class="review-count">34 mentions</span></div>
+<div class="review-theme"><span>Street noise</span><span class="review-count">18 mentions</span></div>
+<div class="review-theme"><span>Move-out charges</span><span class="review-count">11 mentions</span></div>
+</div>
+</div>
+<div class="solution-copy">
+<div class="num">07 — REVIEWS + APPLY INFO</div>
+<h3>Reduce context switching at the moment of decision.</h3>
+<p>For managed apartments, Zillow Focus surfaces review context and application requirements before sending users to an external property portal.</p>
+<ul>
+<li>Third-party ratings with source transparency</li>
+<li>Income requirements</li>
+<li>Application fee</li>
+<li>Required documents</li>
+<li>Clear external-portal handoff</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="test-section" id="testing">
+<div class="container fade-up">
+<div class="section-kicker">04 — User feedback</div>
+<h2>Three things changed the direction.</h2>
+<p class="lede">The goal became less about adding features — and more about making rental decisions easier to trust.</p>
+<div class="feedback-cards">
+<article class="feedback-card">
+<span class="feedback-index">01</span>
+<h3>Information is fragmented.</h3>
+<p>Renters check several rental apps because no single platform feels complete.</p>
+<div class="feedback-response"><span>Design response</span> Bring commute, reviews, costs, and application details closer to the listing.</div>
+</article>
+<article class="feedback-card">
+<span class="feedback-index">02</span>
+<h3>Availability is hard to trust.</h3>
+<p>Marketplace listings and official property websites can show different floor plans or availability.</p>
+<div class="feedback-response"><span>Design response</span> Show when each floor plan was last verified and whether inventory needs a refresh.</div>
+</article>
+<article class="feedback-card">
+<span class="feedback-index">03</span>
+<h3>Too many good options become noise.</h3>
+<p>After enough browsing, several homes can all look “good enough,” making the final choice harder.</p>
+<div class="feedback-response"><span>Design response</span> Move users into a personalized comparison view earlier.</div>
+</article>
+</div>
+</div>
+</section>
+<section>
+<div class="container fade-up">
+<div class="section-kicker">05 — Iteration</div>
+<h2>The biggest changes were about completeness, freshness, and decision clarity.</h2>
+<p class="lede">The concept moved beyond “better recommendations” toward a system that explains what is current, what is missing, and why one option may fit better than another.</p>
+<div class="iteration">
+<div class="iteration-card before">
+<div class="iteration-label">Before</div>
+<h3>Static listing availability</h3>
+<p>A renter could get excited about a floor plan that was already gone on the official property site.</p>
+</div>
+<div class="iteration-arrow">→</div>
+<div class="iteration-card after">
+<div class="iteration-label">After</div>
+<h3>Availability confidence</h3>
+<p>Shows when inventory was verified, which floor plans are live, and when the property source needs to be refreshed.</p>
+</div>
+</div>
+<div class="iteration">
+<div class="iteration-card before">
+<div class="iteration-label">Before</div>
+<h3>More browsing</h3>
+<p>Showing more relevant listings still leaves renters with the same final problem: several homes can all look good.</p>
+</div>
+<div class="iteration-arrow">→</div>
+<div class="iteration-card after">
+<div class="iteration-label">After</div>
+<h3>Earlier decision mode</h3>
+<p>Once users have a few viable options, Zillow shifts into personalized compare instead of encouraging more scrolling.</p>
+</div>
+</div>
+<div class="scope-grid">
+<div class="scope-card core">
+<h3>Core MVP</h3>
+<ul>
+<li>Personal priorities</li>
+<li>Best Matches</li>
+<li>Live availability confidence</li>
+<li>Transparent trade-offs</li>
+<li>Personalized Compare</li>
+<li>Commute context</li>
+<li>Resident reviews</li>
+<li>Application requirements</li>
+</ul>
+</div>
+<div class="scope-card future">
+<h3>Future exploration</h3>
+<ul>
+<li>Reusable renter profile</li>
+<li>Verified income/document portability</li>
+<li>Private-rental community insights</li>
+<li>Cross-property application standardization</li>
+<li>Longitudinal match-quality learning</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="reflection">
+<div class="container fade-up">
+<div class="section-kicker">06 — Reflection</div>
+<h2>What I learned.</h2>
+<div class="reflection"><p>The biggest opportunity was not another search filter. Renters needed reliable information and a simpler way to compare their final options. This shifted the concept from listing discovery toward decision support.</p></div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container footer-inner">
+<div>Zillow Focus — Independent Product Concept</div>
+<div>AI-assisted conceptual exploration · Portfolio case study · 2026</div>
+</div>
+</footer>
+<script>
     const progress = document.getElementById('progress');
     const updateProgress = () => {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -1043,10 +1013,9 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
   </script>
-
-  <script>
+<script>
     (function(){
-      const translations = {"Problem": "问题", "Research": "研究", "Solution": "方案", "Testing": "反馈", "Reflection": "复盘", "← Back to Profile": "← 返回主页", "Independent Product Concept": "独立产品概念", "Find less.": "少看一点。", "Decide better.": "更好地决定。", "A Zillow rental concept that helps renters cut through incomplete listings, stale availability, and decision overload — then compare a smaller set of homes with the information that actually matters.": "一个 Zillow 租房产品概念：帮助租客减少不完整信息、过期房源和选择过载带来的干扰，再用真正重要的信息比较更少、更合适的房子。", "Product Concept": "产品概念", "Mobile UX": "移动端体验", "Rental Marketplace": "租房平台", "Concept Exploration": "概念探索", "Independent AI-assisted concept project. Not affiliated with Zillow. Renter feedback is paraphrased, and all product screens and data shown here are conceptual and illustrative.": "这是一个由 AI 辅助完成的独立概念项目，与 Zillow 无关联。用户反馈经过转述；页面中的产品界面与数据均为概念性展示。", "Best matches for you": "最适合你的房源", "from 146 available rentals": "来自 146 个可租房源", "Berkeley & Oakland rentals": "Berkeley & Oakland 租房", "Map": "地图", "List": "列表", "Saved": "收藏", "7 best matches": "7 个最佳匹配", "From 146 listings · matched to your priorities and checked for current availability.": "从 146 个房源中筛选 · 根据你的偏好匹配，并核对当前可租状态。", "Strong fit": "高度匹配", "In-unit laundry": "室内洗衣机", "Parking included": "含停车位", "22 min to Berkeley": "到 Berkeley 22 分钟", "SF commute is 41 min": "到 SF 通勤 41 分钟", "3 floor plans · verified 8 min ago": "3 个户型 · 8 分钟前已核验", "+ 6 more high-fit homes": "+ 6 个高匹配房源", "Compare finalists": "比较最终候选", "Availability confidence": "房源状态可信度", "Live": "实时", "Property inventory checked 8 min ago": "8 分钟前已核对物业库存", "01 — The problem": "01 — 问题", "Renters can find plenty of listings. The hard part is knowing what is complete, current, and actually worth pursuing.": "租客并不缺房源。真正困难的是判断哪些信息完整、哪些仍然有效，以及哪些房子真的值得继续看。", "Renter feedback revealed three connected problems: information is fragmented across apps, availability can disagree with a property’s own website, and after browsing enough “good” options, choosing between them becomes exhausting.": "用户反馈暴露出三个互相关联的问题：信息散落在不同平台；平台上的可租状态可能与物业官网不一致；而当看过足够多“都不错”的房子后，做选择本身也会变得疲惫。", "Property website": "物业官网", "Users cross-check multiple sources because no single surface feels complete — and the same floor plan may appear available in one place but unavailable on the property’s own site.": "用户会交叉查看多个来源，因为没有任何一个平台的信息看起来足够完整——同一个户型甚至可能在一个平台显示可租，在物业官网却已经不可租。", "The opportunity is not to show renters more homes. It is to give them one clearer, more current view of the few homes they might actually choose.": "机会点不是给租客看更多房，而是让他们用一个更清晰、更新鲜的信息界面，看懂真正可能会选的少数几套。", "02 — Research": "02 — 研究", "What renters said was breaking the search experience.": "租客认为，找房体验到底哪里出了问题？", "Informal renter conversations consistently pointed to the same pattern: people do not trust one app to tell the whole story, so they assemble the decision themselves across several sources.": "非正式租客访谈反复出现同一个模式：大家不相信一个 App 能提供完整信息，因此只能自己在多个来源之间拼凑出最终判断。", "FINDING 01": "发现 01", "No single rental app feels complete.": "没有任何一个租房 App 的信息是完整的。", "Implication:": "设计启示：", "Bring pricing, commute, reviews, floor-plan details, and application context into one decision surface.": "把价格、通勤、评价、户型和申请信息集中到同一个决策界面。", "FINDING 02": "发现 02", "Marketplace availability can disagree with the property website.": "租房平台的可租状态可能和物业官网不一致。", "Show when unit inventory was last verified and distinguish live, stale, and unavailable floor plans.": "显示房源最后核验时间，并区分实时、待刷新和已不可租的户型。", "FINDING 03": "发现 03", "After enough browsing, several options start to look equally good.": "看得越多，越容易出现几套房都很好、反而不知道怎么选的情况。", "Shift from discovery to personalized comparison before decision fatigue sets in.": "在选择疲劳出现之前，从“继续发现”切换到个性化比较。", "FINDING 04": "发现 04", "Commute, facilities, parking, price, and reviews shape the final choice.": "通勤、设施、停车、价格和评价共同影响最终选择。", "Let renters choose which attributes deserve space in the comparison table.": "让租客自己决定哪些信息值得出现在比较表里。", "Observed behavior: renters check multiple rental apps, then validate promising properties with maps, review platforms, social content, and the property’s own website before deciding.": "观察到的行为：租客会同时查看多个租房 App，再用地图、评价平台、社交内容和物业官网去验证看起来不错的房源。", "MANAGED APARTMENTS": "管理型公寓", "Different friction after search": "搜索之后还有另一层摩擦", "Income requirements, application fees, external leasing portals, and property-specific websites add learning cost. Availability can also change between the marketplace and the official leasing site.": "收入要求、申请费、外部租赁门户和每个物业不同的网站都会增加学习成本；平台和官网之间的可租状态也可能发生变化。", "PRIVATE RENTALS": "私人出租", "Different kinds of uncertainty": "另一种不确定性", "Landlord reliability, maintenance expectations, utilities, neighborhood reality, noise, parking, and lease flexibility become more important than polished amenities.": "房东是否可靠、维修体验、水电费用、真实街区环境、噪音、停车和租约灵活性，往往比精美的设施介绍更重要。", "Design principle": "设计原则", "03 — The solution": "03 — 方案", "A decision workspace, not just a listing browser.": "不只是浏览房源，而是一个租房决策空间。", "Zillow Focus combines stronger information coverage with availability confidence, then helps renters narrow and compare a smaller set of homes around their own priorities.": "Zillow Focus 把更完整的信息与房源状态可信度结合起来，再根据租客自己的优先级，把选择缩小并进行比较。", "01 — PRIORITIES": "01 — 优先级", "Tell Zillow what actually matters.": "先告诉 Zillow，你真正看重什么。", "Users organize criteria by importance instead of relying only on binary filters.": "用户按重要程度组织条件，而不是只依赖“有 / 没有”的二元筛选。", "Must have:": "必须有：", "laundry, parking, pet policy": "洗衣、停车、宠物政策", "Important:": "重要：", "total monthly cost, commute, reviews": "真实月成本、通勤、评价", "Nice to have:": "加分项：", "gym, balcony, natural light": "健身房、阳台、自然采光", "Set your priorities": "设置你的优先级", "Step 2 of 3": "第 2 / 3 步", "Must have": "必须有", "Parking": "停车", "Cat friendly": "可养猫", "Important": "重要", "≤ $3,000 true monthly": "真实月成本 ≤ $3,000", "≤ 30 min commute": "通勤 ≤ 30 分钟", "Resident reviews": "住户评价", "Nice to have": "加分项", "Gym": "健身房", "Natural light": "自然采光", "Balcony": "阳台", "from 146 homes": "来自 146 个房源", "$2,940 est. monthly · Oakland": "预计每月 $2,940 · Oakland", "Laundry": "洗衣", "22 min commute": "通勤 22 分钟", "Smaller kitchen": "厨房较小", "02 — BEST MATCHES": "02 — 最佳匹配", "Surface fewer homes — without hiding the rest.": "优先展示更少的房子，但不把其他选择藏起来。", "Users get a prioritized set of matches with clear reasons. The full inventory remains available to preserve control and trust.": "用户先看到按优先级整理的匹配结果，并能理解为什么被推荐；完整房源仍然可查看，以保留控制感和信任。", "“7 best matches from 146 available”": "“146 个可租房源中的 7 个最佳匹配”", "Visible match explanations": "清楚解释匹配原因", "“View all” and “Why these?” controls": "保留“查看全部”和“为什么是这些？”", "03 — TRADE-OFFS": "03 — 取舍", "Show what changes when a preference changes.": "让用户知道，改变一个偏好会带来什么变化。", "Instead of a dead-end “No results,” users can see the consequence of relaxing one condition at a time.": "不再只给出“没有结果”，而是让用户看到一次放宽一个条件会得到哪些新选择。", "See how changes affect results": "看看调整条件会如何影响结果", "You control this": "由你决定", "Budget up to $3,100": "预算提高到 $3,100", "Current preference: $3,000": "当前偏好：$3,000", "+5 homes": "+5 个房源", "Commute up to 35 min": "通勤提高到 35 分钟", "Current preference: 30 min": "当前偏好：30 分钟", "+8 homes": "+8 个房源", "Shared laundry": "共用洗衣房", "Current preference: in-unit": "当前偏好：室内洗衣", "+12 homes": "+12 个房源", "Top priorities first": "优先显示最重要的信息", "Your priorities": "你的优先级", "True monthly": "真实月成本", "Yes": "有", "Included": "已包含", "Berkeley commute": "Berkeley 通勤", "SF commute": "SF 通勤", "Resident rating": "住户评分", "Availability": "可租状态", "3 live": "3 个实时可租", "1 live": "1 个实时可租", "Needs refresh": "需要刷新", "04 — PERSONALIZED COMPARE": "04 — 个性化比较", "Compare what matters to this renter — not every possible attribute.": "比较这个租客真正关心的内容，而不是把所有属性都塞进表格。", "The same priorities selected earlier become the comparison table. Users can reorder, collapse, and pin criteria.": "之前选择的优先级会直接变成比较表；用户还可以重新排序、折叠或固定项目。", "05 — LIVE AVAILABILITY": "05 — 实时房源状态", "Verify what is actually rentable before users get invested.": "在用户投入大量时间之前，先确认哪些房子真的还能租。", "When marketplace data and an apartment’s official website disagree, the renter pays the cost. Zillow Focus makes freshness visible at the floor-plan level.": "当平台和公寓官网的信息不一致时，承担时间成本的是租客。Zillow Focus 会把数据新鲜度明确显示到具体户型层级。", "Last-verified timestamp": "最后核验时间", "Floor-plan-level availability": "户型级可租状态", "Live / stale / unavailable states": "实时 / 过期 / 不可租状态", "Direct path to official property inventory": "可直接前往物业官方库存", "Current availability": "当前可租状态", "Verified 8 min ago": "8 分钟前已核验", "2 units": "2 套", "1 unit": "1 套", "Refresh needed": "需要刷新", "Zillow listing": "Zillow 房源", "Property inventory": "物业库存", "Last synced 8m ago": "8 分钟前同步", "06 — COMMUTE": "06 — 通勤", "Move from distance to real weekly routine.": "从“距离”升级到真实的一周通勤。", "A single travel-time estimate misses hybrid work, school schedules, transfer time, and transportation mode.": "单一通勤时间无法反映混合办公、课程安排、换乘时间和交通方式。", "Different destinations on different days": "不同日期对应不同目的地", "Arrival-time-aware estimates": "考虑到达时间的估算", "Walking + transit context": "步行 + 公共交通信息", "Estimated weekly commute": "预计每周通勤", "My weekly routine": "我的一周行程", "UC Berkeley": "UC Berkeley", "Mon / Wed / Fri · transit + walk": "周一 / 三 / 五 · 公交 + 步行", "SF Office": "SF 办公室", "Tue / Thu · BART + walk": "周二 / 四 · BART + 步行", "Typical weekday conditions · route details available": "典型工作日路况 · 可查看路线详情", "Resident experience": "住户体验", "Sources visible": "来源可见", "Responsive maintenance": "维修响应及时", "34 mentions": "34 次提及", "Street noise": "街道噪音", "18 mentions": "18 次提及", "Move-out charges": "退租收费", "11 mentions": "11 次提及", "07 — REVIEWS + APPLY INFO": "07 — 评价 + 申请信息", "Reduce context switching at the moment of decision.": "在真正做决定的时候，减少来回切换平台。", "For managed apartments, Zillow Focus surfaces review context and application requirements before sending users to an external property portal.": "对于管理型公寓，Zillow Focus 会在把用户跳转到外部物业网站之前，先展示评价背景和申请要求。", "Third-party ratings with source transparency": "第三方评分，并明确来源", "Income requirements": "收入要求", "Application fee": "申请费", "Required documents": "所需文件", "Clear external-portal handoff": "清晰说明将跳转至外部申请网站", "04 — User feedback": "04 — 用户反馈", "The strongest feedback was not “give me more filters.” It was “help me trust the information and decide.”": "最强烈的反馈不是“给我更多筛选器”，而是“让我相信这些信息，并帮我做决定”。", "Qualitative feedback shifted the concept from a recommendation layer into a more complete decision system.": "这些定性反馈把概念从单纯的推荐层，推向了更完整的决策系统。", "Cross-platform search": "跨平台搜索", "Renters check multiple rental apps because each platform can be missing something the others show.": "租客会同时查看多个租房 App，因为每个平台都可能缺少其他平台提供的信息。", "Availability mismatch": "可租状态不一致", "A unit or floor plan shown on the marketplace may not match what is actually available on the property’s own site.": "租房平台显示的房源或户型，可能与物业官网实际可租的内容不一致。", "Decision fatigue": "选择疲劳", "After browsing many good options, users start to feel overwhelmed and struggle to explain why one is better than another.": "看过很多不错的选项之后，用户会开始眼花缭乱，也很难说清楚为什么其中一套更好。", "“I end up checking basically every rental app.”": "“我基本上所有租房软件都会看。”", "Design response: make Zillow Focus a richer decision surface rather than forcing users to reconstruct the same property across several products.": "设计回应：让 Zillow Focus 承担更完整的决策信息，而不是逼用户在多个产品之间重新拼凑同一套房的信息。", "“The app and the official apartment website can show different floor plans.”": "“App 上和公寓官网显示的户型可能不一样。”", "Design response: add floor-plan-level availability confidence, timestamps, and official-inventory checks.": "设计回应：加入户型级可租状态、更新时间以及官方库存核验。", "“After I look at too many, I get confused. A few of them all seem good.”": "“看多了之后会有点眼花缭乱，几个可能都挺好的，就不知道怎么决定。”", "Design response: move users into priority-based comparison earlier, with top criteria visible side by side.": "设计回应：更早进入基于个人优先级的比较模式，把最重要的信息并排展示。", "“I still need Maps, reviews, and the building website.”": "“我还是需要地图、评价，还有公寓官网。”", "Design response: consolidate commute, third-party review context, costs, availability, and application requirements.": "设计回应：集中展示通勤、第三方评价、成本、可租状态和申请要求。", "Managed apartments add another learning curve.": "管理型公寓还会带来额外的学习成本。", "Design response: preview income requirements, fees, required documents, and the destination application portal before handoff.": "设计回应：在跳转前先预览收入要求、费用、所需文件和最终申请网站。", "05 — Iteration": "05 — 迭代", "The biggest changes were about completeness, freshness, and decision clarity.": "最大的迭代围绕三件事：信息完整度、数据新鲜度和决策清晰度。", "The concept moved beyond “better recommendations” toward a system that explains what is current, what is missing, and why one option may fit better than another.": "这个概念不再只是“更好的推荐”，而是一个能解释什么是最新的、什么信息缺失、以及为什么某个选项更合适的系统。", "Before": "之前", "Static listing availability": "静态房源状态", "A renter could get excited about a floor plan that was already gone on the official property site.": "租客可能已经对某个户型产生兴趣，结果去官网才发现它早就没了。", "After": "之后", "Shows when inventory was verified, which floor plans are live, and when the property source needs to be refreshed.": "显示库存何时被核验、哪些户型仍然可租，以及什么时候需要重新刷新物业来源。", "More browsing": "继续浏览更多", "Showing more relevant listings still leaves renters with the same final problem: several homes can all look good.": "就算推荐的房源更相关，用户最后仍可能遇到同一个问题：几套房看起来都不错。", "Earlier decision mode": "更早进入决策模式", "Once users have a few viable options, Zillow shifts into personalized compare instead of encouraging more scrolling.": "当用户已经有几个可行选项时，Zillow 会切换到个性化比较，而不是继续鼓励无限滚动。", "Core MVP": "核心 MVP", "Personal priorities": "个人优先级", "Best Matches": "最佳匹配", "Live availability confidence": "实时房源状态可信度", "Transparent trade-offs": "透明的取舍", "Personalized Compare": "个性化比较", "Commute context": "通勤信息", "Application requirements": "申请要求", "Future exploration": "未来探索", "Reusable renter profile": "可复用的租客档案", "Verified income/document portability": "可复用的收入 / 文件验证", "Private-rental community insights": "私人出租社区信息", "Cross-property application standardization": "跨物业申请标准化", "Longitudinal match-quality learning": "长期学习匹配质量", "06 — Reflection": "06 — 复盘", "The project changed once the problem got bigger than the screen.": "当问题不再只是一个界面，这个项目也随之改变。", "This project started as a better Zillow comparison table. Renter feedback reframed it. The harder problem was the work happening": "这个项目最初只是想做一个更好的 Zillow 比较表，但租客反馈重新定义了问题。真正困难的是发生在房源页面", "around": "之外", "the listing: checking other apps, verifying whether a floor plan is still available, reading reviews, checking commute, and then trying to remember why one “good” option was better than another.": "的那些工作：查看其他 App、确认户型是否还可租、阅读评价、检查通勤，然后还要记住为什么某个“都不错”的选项比另一个更合适。", "The design opportunity became clearer:": "设计机会因此变得更清晰：", "a better rental product should not just surface more homes. It should help renters trust what is current, see the information they actually need, and make a decision before search turns into overload.": "一个更好的租房产品不应该只是展示更多房源，而应该帮助租客相信哪些信息仍然有效、看到真正需要的信息，并在搜索变成选择过载之前做出决定。", "Zillow Focus — Independent Product Concept": "Zillow Focus — 独立产品概念", "AI-assisted conceptual exploration · Portfolio case study · 2026": "AI 辅助概念探索 · 作品集案例 · 2026", "Three things changed the direction.": "三个反馈改变了设计方向。", "The goal became less about adding features — and more about making rental decisions easier to trust.": "重点不再是继续增加功能，而是让租房决策更可信、更容易。", "Information is fragmented.": "信息散落在不同平台。", "Renters check several rental apps because no single platform feels complete.": "租客会同时查看多个租房 App，因为没有一个平台能提供完整信息。", "Design response": "设计回应", "Bring commute, reviews, costs, and application details closer to the listing.": "把通勤、评价、成本和申请信息更集中地放在房源旁。", "Availability is hard to trust.": "可租状态很难完全相信。", "Marketplace listings and official property websites can show different floor plans or availability.": "租房平台与物业官网可能显示不同的户型或可租状态。", "Show when each floor plan was last verified and whether inventory needs a refresh.": "显示每个户型上次核验的时间，以及库存是否需要刷新。", "Too many good options become noise.": "太多不错的选择反而会变成噪音。", "After enough browsing, several homes can all look “good enough,” making the final choice harder.": "看得越多，越容易出现几套房都“差不多不错”，反而更难做最终决定。", "Move users into a personalized comparison view earlier.": "更早让用户进入个性化比较模式。"};
+      const translations = {"A rental-search concept that brings verified availability, key details, and side-by-side comparison into one simpler experience.": "一个租房搜索概念：将房源状态、关键信息和对比功能集中到更简单的体验中。", "Finding homes is easy. Trusting the information is harder.": "找到房源不难，难的是判断信息是否可靠。", "Renters switch between listing sites, property pages, reviews, and maps to check information before making a decision.": "租客需要在房源平台、物业官网、评价和地图之间反复核对信息，才能做决定。", "Availability and details often differ across sources.": "不同平台的房源状态和细节可能不一致。", "Make the shortlist clearer, more current, and easier to compare.": "让候选房源更清晰、更新、更容易比较。", "What renters need before they decide.": "租客做决定前真正需要什么。", "Informal renter conversations revealed three recurring frustrations.": "与租客的非正式交流发现了三个反复出现的问题。", "Information is scattered.": "信息分散在不同平台。", "Combine price, commute, reviews, and floor-plan details.": "整合价格、通勤、评价和户型详情。", "Availability can be outdated.": "可租状态可能已经过期。", "Show when listings were last checked.": "显示房源最后核对时间。", "Too many options make comparison harder.": "选择太多反而难比较。", "Compare a shortlist using renter priorities.": "按照租客的优先级比较候选房源。", "What I learned.": "我的收获。", "The biggest opportunity was not another search filter. Renters needed reliable information and a simpler way to compare their final options. This shifted the concept from listing discovery toward decision support.": "最大的机会不是增加筛选器，而是提供可靠信息，让租客更容易比较最终候选房源。因此，设计从寻找房源转向支持决策。", "Problem": "问题", "Research": "研究", "Solution": "方案", "Testing": "反馈", "Reflection": "复盘", "← Back to Profile": "← 返回主页", "Independent Product Concept": "独立产品概念", "Find less.": "少看一点。", "Decide better.": "更好地决定。", "A Zillow rental concept that helps renters cut through incomplete listings, stale availability, and decision overload — then compare a smaller set of homes with the information that actually matters.": "一个 Zillow 租房产品概念：帮助租客减少不完整信息、过期房源和选择过载带来的干扰，再用真正重要的信息比较更少、更合适的房子。", "Product Concept": "产品概念", "Mobile UX": "移动端体验", "Rental Marketplace": "租房平台", "Concept Exploration": "概念探索", "Independent AI-assisted concept project. Not affiliated with Zillow. Renter feedback is paraphrased, and all product screens and data shown here are conceptual and illustrative.": "这是一个由 AI 辅助完成的独立概念项目，与 Zillow 无关联。用户反馈经过转述；页面中的产品界面与数据均为概念性展示。", "Best matches for you": "最适合你的房源", "from 146 available rentals": "来自 146 个可租房源", "Berkeley & Oakland rentals": "Berkeley & Oakland 租房", "Map": "地图", "List": "列表", "Saved": "收藏", "7 best matches": "7 个最佳匹配", "From 146 listings · matched to your priorities and checked for current availability.": "从 146 个房源中筛选 · 根据你的偏好匹配，并核对当前可租状态。", "Strong fit": "高度匹配", "In-unit laundry": "室内洗衣机", "Parking included": "含停车位", "22 min to Berkeley": "到 Berkeley 22 分钟", "SF commute is 41 min": "到 SF 通勤 41 分钟", "3 floor plans · verified 8 min ago": "3 个户型 · 8 分钟前已核验", "+ 6 more high-fit homes": "+ 6 个高匹配房源", "Compare finalists": "比较最终候选", "Availability confidence": "房源状态可信度", "Live": "实时", "Property inventory checked 8 min ago": "8 分钟前已核对物业库存", "01 — The problem": "01 — 问题", "Renters can find plenty of listings. The hard part is knowing what is complete, current, and actually worth pursuing.": "租客并不缺房源。真正困难的是判断哪些信息完整、哪些仍然有效，以及哪些房子真的值得继续看。", "Renter feedback revealed three connected problems: information is fragmented across apps, availability can disagree with a property’s own website, and after browsing enough “good” options, choosing between them becomes exhausting.": "用户反馈暴露出三个互相关联的问题：信息散落在不同平台；平台上的可租状态可能与物业官网不一致；而当看过足够多“都不错”的房子后，做选择本身也会变得疲惫。", "Property website": "物业官网", "Users cross-check multiple sources because no single surface feels complete — and the same floor plan may appear available in one place but unavailable on the property’s own site.": "用户会交叉查看多个来源，因为没有任何一个平台的信息看起来足够完整——同一个户型甚至可能在一个平台显示可租，在物业官网却已经不可租。", "The opportunity is not to show renters more homes. It is to give them one clearer, more current view of the few homes they might actually choose.": "机会点不是给租客看更多房，而是让他们用一个更清晰、更新鲜的信息界面，看懂真正可能会选的少数几套。", "02 — Research": "02 — 研究", "What renters said was breaking the search experience.": "租客认为，找房体验到底哪里出了问题？", "Informal renter conversations consistently pointed to the same pattern: people do not trust one app to tell the whole story, so they assemble the decision themselves across several sources.": "非正式租客访谈反复出现同一个模式：大家不相信一个 App 能提供完整信息，因此只能自己在多个来源之间拼凑出最终判断。", "FINDING 01": "发现 01", "No single rental app feels complete.": "没有任何一个租房 App 的信息是完整的。", "Implication:": "设计启示：", "Bring pricing, commute, reviews, floor-plan details, and application context into one decision surface.": "把价格、通勤、评价、户型和申请信息集中到同一个决策界面。", "FINDING 02": "发现 02", "Marketplace availability can disagree with the property website.": "租房平台的可租状态可能和物业官网不一致。", "Show when unit inventory was last verified and distinguish live, stale, and unavailable floor plans.": "显示房源最后核验时间，并区分实时、待刷新和已不可租的户型。", "FINDING 03": "发现 03", "After enough browsing, several options start to look equally good.": "看得越多，越容易出现几套房都很好、反而不知道怎么选的情况。", "Shift from discovery to personalized comparison before decision fatigue sets in.": "在选择疲劳出现之前，从“继续发现”切换到个性化比较。", "FINDING 04": "发现 04", "Commute, facilities, parking, price, and reviews shape the final choice.": "通勤、设施、停车、价格和评价共同影响最终选择。", "Let renters choose which attributes deserve space in the comparison table.": "让租客自己决定哪些信息值得出现在比较表里。", "Observed behavior: renters check multiple rental apps, then validate promising properties with maps, review platforms, social content, and the property’s own website before deciding.": "观察到的行为：租客会同时查看多个租房 App，再用地图、评价平台、社交内容和物业官网去验证看起来不错的房源。", "MANAGED APARTMENTS": "管理型公寓", "Different friction after search": "搜索之后还有另一层摩擦", "Income requirements, application fees, external leasing portals, and property-specific websites add learning cost. Availability can also change between the marketplace and the official leasing site.": "收入要求、申请费、外部租赁门户和每个物业不同的网站都会增加学习成本；平台和官网之间的可租状态也可能发生变化。", "PRIVATE RENTALS": "私人出租", "Different kinds of uncertainty": "另一种不确定性", "Landlord reliability, maintenance expectations, utilities, neighborhood reality, noise, parking, and lease flexibility become more important than polished amenities.": "房东是否可靠、维修体验、水电费用、真实街区环境、噪音、停车和租约灵活性，往往比精美的设施介绍更重要。", "Design principle": "设计原则", "03 — The solution": "03 — 方案", "A decision workspace, not just a listing browser.": "不只是浏览房源，而是一个租房决策空间。", "Zillow Focus combines stronger information coverage with availability confidence, then helps renters narrow and compare a smaller set of homes around their own priorities.": "Zillow Focus 把更完整的信息与房源状态可信度结合起来，再根据租客自己的优先级，把选择缩小并进行比较。", "01 — PRIORITIES": "01 — 优先级", "Tell Zillow what actually matters.": "先告诉 Zillow，你真正看重什么。", "Users organize criteria by importance instead of relying only on binary filters.": "用户按重要程度组织条件，而不是只依赖“有 / 没有”的二元筛选。", "Must have:": "必须有：", "laundry, parking, pet policy": "洗衣、停车、宠物政策", "Important:": "重要：", "total monthly cost, commute, reviews": "真实月成本、通勤、评价", "Nice to have:": "加分项：", "gym, balcony, natural light": "健身房、阳台、自然采光", "Set your priorities": "设置你的优先级", "Step 2 of 3": "第 2 / 3 步", "Must have": "必须有", "Parking": "停车", "Cat friendly": "可养猫", "Important": "重要", "≤ $3,000 true monthly": "真实月成本 ≤ $3,000", "≤ 30 min commute": "通勤 ≤ 30 分钟", "Resident reviews": "住户评价", "Nice to have": "加分项", "Gym": "健身房", "Natural light": "自然采光", "Balcony": "阳台", "from 146 homes": "来自 146 个房源", "$2,940 est. monthly · Oakland": "预计每月 $2,940 · Oakland", "Laundry": "洗衣", "22 min commute": "通勤 22 分钟", "Smaller kitchen": "厨房较小", "02 — BEST MATCHES": "02 — 最佳匹配", "Surface fewer homes — without hiding the rest.": "优先展示更少的房子，但不把其他选择藏起来。", "Users get a prioritized set of matches with clear reasons. The full inventory remains available to preserve control and trust.": "用户先看到按优先级整理的匹配结果，并能理解为什么被推荐；完整房源仍然可查看，以保留控制感和信任。", "“7 best matches from 146 available”": "“146 个可租房源中的 7 个最佳匹配”", "Visible match explanations": "清楚解释匹配原因", "“View all” and “Why these?” controls": "保留“查看全部”和“为什么是这些？”", "03 — TRADE-OFFS": "03 — 取舍", "Show what changes when a preference changes.": "让用户知道，改变一个偏好会带来什么变化。", "Instead of a dead-end “No results,” users can see the consequence of relaxing one condition at a time.": "不再只给出“没有结果”，而是让用户看到一次放宽一个条件会得到哪些新选择。", "See how changes affect results": "看看调整条件会如何影响结果", "You control this": "由你决定", "Budget up to $3,100": "预算提高到 $3,100", "Current preference: $3,000": "当前偏好：$3,000", "+5 homes": "+5 个房源", "Commute up to 35 min": "通勤提高到 35 分钟", "Current preference: 30 min": "当前偏好：30 分钟", "+8 homes": "+8 个房源", "Shared laundry": "共用洗衣房", "Current preference: in-unit": "当前偏好：室内洗衣", "+12 homes": "+12 个房源", "Top priorities first": "优先显示最重要的信息", "Your priorities": "你的优先级", "True monthly": "真实月成本", "Yes": "有", "Included": "已包含", "Berkeley commute": "Berkeley 通勤", "SF commute": "SF 通勤", "Resident rating": "住户评分", "Availability": "可租状态", "3 live": "3 个实时可租", "1 live": "1 个实时可租", "Needs refresh": "需要刷新", "04 — PERSONALIZED COMPARE": "04 — 个性化比较", "Compare what matters to this renter — not every possible attribute.": "比较这个租客真正关心的内容，而不是把所有属性都塞进表格。", "The same priorities selected earlier become the comparison table. Users can reorder, collapse, and pin criteria.": "之前选择的优先级会直接变成比较表；用户还可以重新排序、折叠或固定项目。", "05 — LIVE AVAILABILITY": "05 — 实时房源状态", "Verify what is actually rentable before users get invested.": "在用户投入大量时间之前，先确认哪些房子真的还能租。", "When marketplace data and an apartment’s official website disagree, the renter pays the cost. Zillow Focus makes freshness visible at the floor-plan level.": "当平台和公寓官网的信息不一致时，承担时间成本的是租客。Zillow Focus 会把数据新鲜度明确显示到具体户型层级。", "Last-verified timestamp": "最后核验时间", "Floor-plan-level availability": "户型级可租状态", "Live / stale / unavailable states": "实时 / 过期 / 不可租状态", "Direct path to official property inventory": "可直接前往物业官方库存", "Current availability": "当前可租状态", "Verified 8 min ago": "8 分钟前已核验", "2 units": "2 套", "1 unit": "1 套", "Refresh needed": "需要刷新", "Zillow listing": "Zillow 房源", "Property inventory": "物业库存", "Last synced 8m ago": "8 分钟前同步", "06 — COMMUTE": "06 — 通勤", "Move from distance to real weekly routine.": "从“距离”升级到真实的一周通勤。", "A single travel-time estimate misses hybrid work, school schedules, transfer time, and transportation mode.": "单一通勤时间无法反映混合办公、课程安排、换乘时间和交通方式。", "Different destinations on different days": "不同日期对应不同目的地", "Arrival-time-aware estimates": "考虑到达时间的估算", "Walking + transit context": "步行 + 公共交通信息", "Estimated weekly commute": "预计每周通勤", "My weekly routine": "我的一周行程", "UC Berkeley": "UC Berkeley", "Mon / Wed / Fri · transit + walk": "周一 / 三 / 五 · 公交 + 步行", "SF Office": "SF 办公室", "Tue / Thu · BART + walk": "周二 / 四 · BART + 步行", "Typical weekday conditions · route details available": "典型工作日路况 · 可查看路线详情", "Resident experience": "住户体验", "Sources visible": "来源可见", "Responsive maintenance": "维修响应及时", "34 mentions": "34 次提及", "Street noise": "街道噪音", "18 mentions": "18 次提及", "Move-out charges": "退租收费", "11 mentions": "11 次提及", "07 — REVIEWS + APPLY INFO": "07 — 评价 + 申请信息", "Reduce context switching at the moment of decision.": "在真正做决定的时候，减少来回切换平台。", "For managed apartments, Zillow Focus surfaces review context and application requirements before sending users to an external property portal.": "对于管理型公寓，Zillow Focus 会在把用户跳转到外部物业网站之前，先展示评价背景和申请要求。", "Third-party ratings with source transparency": "第三方评分，并明确来源", "Income requirements": "收入要求", "Application fee": "申请费", "Required documents": "所需文件", "Clear external-portal handoff": "清晰说明将跳转至外部申请网站", "04 — User feedback": "04 — 用户反馈", "The strongest feedback was not “give me more filters.” It was “help me trust the information and decide.”": "最强烈的反馈不是“给我更多筛选器”，而是“让我相信这些信息，并帮我做决定”。", "Qualitative feedback shifted the concept from a recommendation layer into a more complete decision system.": "这些定性反馈把概念从单纯的推荐层，推向了更完整的决策系统。", "Cross-platform search": "跨平台搜索", "Renters check multiple rental apps because each platform can be missing something the others show.": "租客会同时查看多个租房 App，因为每个平台都可能缺少其他平台提供的信息。", "Availability mismatch": "可租状态不一致", "A unit or floor plan shown on the marketplace may not match what is actually available on the property’s own site.": "租房平台显示的房源或户型，可能与物业官网实际可租的内容不一致。", "Decision fatigue": "选择疲劳", "After browsing many good options, users start to feel overwhelmed and struggle to explain why one is better than another.": "看过很多不错的选项之后，用户会开始眼花缭乱，也很难说清楚为什么其中一套更好。", "“I end up checking basically every rental app.”": "“我基本上所有租房软件都会看。”", "Design response: make Zillow Focus a richer decision surface rather than forcing users to reconstruct the same property across several products.": "设计回应：让 Zillow Focus 承担更完整的决策信息，而不是逼用户在多个产品之间重新拼凑同一套房的信息。", "“The app and the official apartment website can show different floor plans.”": "“App 上和公寓官网显示的户型可能不一样。”", "Design response: add floor-plan-level availability confidence, timestamps, and official-inventory checks.": "设计回应：加入户型级可租状态、更新时间以及官方库存核验。", "“After I look at too many, I get confused. A few of them all seem good.”": "“看多了之后会有点眼花缭乱，几个可能都挺好的，就不知道怎么决定。”", "Design response: move users into priority-based comparison earlier, with top criteria visible side by side.": "设计回应：更早进入基于个人优先级的比较模式，把最重要的信息并排展示。", "“I still need Maps, reviews, and the building website.”": "“我还是需要地图、评价，还有公寓官网。”", "Design response: consolidate commute, third-party review context, costs, availability, and application requirements.": "设计回应：集中展示通勤、第三方评价、成本、可租状态和申请要求。", "Managed apartments add another learning curve.": "管理型公寓还会带来额外的学习成本。", "Design response: preview income requirements, fees, required documents, and the destination application portal before handoff.": "设计回应：在跳转前先预览收入要求、费用、所需文件和最终申请网站。", "05 — Iteration": "05 — 迭代", "The biggest changes were about completeness, freshness, and decision clarity.": "最大的迭代围绕三件事：信息完整度、数据新鲜度和决策清晰度。", "The concept moved beyond “better recommendations” toward a system that explains what is current, what is missing, and why one option may fit better than another.": "这个概念不再只是“更好的推荐”，而是一个能解释什么是最新的、什么信息缺失、以及为什么某个选项更合适的系统。", "Before": "之前", "Static listing availability": "静态房源状态", "A renter could get excited about a floor plan that was already gone on the official property site.": "租客可能已经对某个户型产生兴趣，结果去官网才发现它早就没了。", "After": "之后", "Shows when inventory was verified, which floor plans are live, and when the property source needs to be refreshed.": "显示库存何时被核验、哪些户型仍然可租，以及什么时候需要重新刷新物业来源。", "More browsing": "继续浏览更多", "Showing more relevant listings still leaves renters with the same final problem: several homes can all look good.": "就算推荐的房源更相关，用户最后仍可能遇到同一个问题：几套房看起来都不错。", "Earlier decision mode": "更早进入决策模式", "Once users have a few viable options, Zillow shifts into personalized compare instead of encouraging more scrolling.": "当用户已经有几个可行选项时，Zillow 会切换到个性化比较，而不是继续鼓励无限滚动。", "Core MVP": "核心 MVP", "Personal priorities": "个人优先级", "Best Matches": "最佳匹配", "Live availability confidence": "实时房源状态可信度", "Transparent trade-offs": "透明的取舍", "Personalized Compare": "个性化比较", "Commute context": "通勤信息", "Application requirements": "申请要求", "Future exploration": "未来探索", "Reusable renter profile": "可复用的租客档案", "Verified income/document portability": "可复用的收入 / 文件验证", "Private-rental community insights": "私人出租社区信息", "Cross-property application standardization": "跨物业申请标准化", "Longitudinal match-quality learning": "长期学习匹配质量", "06 — Reflection": "06 — 复盘", "The project changed once the problem got bigger than the screen.": "当问题不再只是一个界面，这个项目也随之改变。", "This project started as a better Zillow comparison table. Renter feedback reframed it. The harder problem was the work happening": "这个项目最初只是想做一个更好的 Zillow 比较表，但租客反馈重新定义了问题。真正困难的是发生在房源页面", "around": "之外", "the listing: checking other apps, verifying whether a floor plan is still available, reading reviews, checking commute, and then trying to remember why one “good” option was better than another.": "的那些工作：查看其他 App、确认户型是否还可租、阅读评价、检查通勤，然后还要记住为什么某个“都不错”的选项比另一个更合适。", "The design opportunity became clearer:": "设计机会因此变得更清晰：", "a better rental product should not just surface more homes. It should help renters trust what is current, see the information they actually need, and make a decision before search turns into overload.": "一个更好的租房产品不应该只是展示更多房源，而应该帮助租客相信哪些信息仍然有效、看到真正需要的信息，并在搜索变成选择过载之前做出决定。", "Zillow Focus — Independent Product Concept": "Zillow Focus — 独立产品概念", "AI-assisted conceptual exploration · Portfolio case study · 2026": "AI 辅助概念探索 · 作品集案例 · 2026", "Three things changed the direction.": "三个反馈改变了设计方向。", "The goal became less about adding features — and more about making rental decisions easier to trust.": "重点不再是继续增加功能，而是让租房决策更可信、更容易。", "Information is fragmented.": "信息散落在不同平台。", "Renters check several rental apps because no single platform feels complete.": "租客会同时查看多个租房 App，因为没有一个平台能提供完整信息。", "Design response": "设计回应", "Bring commute, reviews, costs, and application details closer to the listing.": "把通勤、评价、成本和申请信息更集中地放在房源旁。", "Availability is hard to trust.": "可租状态很难完全相信。", "Marketplace listings and official property websites can show different floor plans or availability.": "租房平台与物业官网可能显示不同的户型或可租状态。", "Show when each floor plan was last verified and whether inventory needs a refresh.": "显示每个户型上次核验的时间，以及库存是否需要刷新。", "Too many good options become noise.": "太多不错的选择反而会变成噪音。", "After enough browsing, several homes can all look “good enough,” making the final choice harder.": "看得越多，越容易出现几套房都“差不多不错”，反而更难做最终决定。", "Move users into a personalized comparison view earlier.": "更早让用户进入个性化比较模式。"};
       const toggle = document.querySelector('.language-switch');
       if(!toggle) return;
       const items = [];
@@ -1071,6 +1040,5 @@
       setLanguage(window.portfolioLanguage.get());
     })();
   </script>
-
 </body>
 </html>

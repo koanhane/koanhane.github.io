@@ -177,6 +177,11 @@ h2{font-size:clamp(32px,3.8vw,52px)!important;font-weight:620!important;letter-s
 }
 
 </style>
+<style>
+/* Natural line wrapping for Chinese research section */
+html[lang="zh-CN"] #research .section-head h2 {text-wrap:pretty;line-height:1.35;letter-spacing:-.025em;max-width:100%;}
+@media(max-width:700px){html[lang="zh-CN"] #research .section-head h2{font-size:clamp(26px,7vw,34px)!important;}}
+</style>
 </head>
 <body><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
 <header class="header">
@@ -222,7 +227,7 @@ h2{font-size:clamp(32px,3.8vw,52px)!important;font-weight:620!important;letter-s
     'What is happening this week?':'这周会发生什么？','What do I need to do next?':'我接下来要做什么？','How am I doing in each class?':'我每门课目前进展如何？',
     'Week at a glance':'一眼看清本周','Weekly schedule visible on the dashboard':'直接在仪表盘查看本周日程','Prioritized tasks':'按优先级整理任务','Course progress':'课程进度',
     'Related research · bCourse Remind Me':'相关研究 · bCourse Remind Me',
-    'Deadline awareness is not the same as having a plan.':'知道截止日期，不等于真正做好了计划。',
+    'Deadline awareness is not the same as having a plan.':'看到截止日期，不代表已经安排好了任务。',
     'In a related Canvas mobile team project, we surveyed 49 students about how they manage coursework and deadlines. The responses helped clarify why visibility, prioritization, and planning matter in an academic dashboard.':'在一个相关的 Canvas 移动端团队项目中，我们调查了 49 名学生如何管理课程和截止日期。这些回答帮助我进一步理解：为什么可见性、优先级和规划对学业仪表盘很重要。',
     'Survey finding':'问卷发现','students said they had missed or nearly missed a deadline at least once in the previous six months.':'名学生表示，在过去六个月中至少有一次错过或差点错过截止日期。',
     '01 · Remembering':'01 · 记住任务','“I forgot in the evening.”':'“到了晚上我就忘了。”',
