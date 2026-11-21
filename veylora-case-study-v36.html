@@ -1,0 +1,3008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Veylora University — Case Study</title>
+<style>
+  :root{
+    --green:#173F35;
+    --green-2:#245646;
+    --green-3:#DDE7DF;
+    --cream:#F6F1E7;
+    --paper:#FFFDF8;
+    --orange:#D58A3A;
+    --orange-soft:#F2DDC5;
+    --ink:#1F2A25;
+    --muted:#66716C;
+    --line:#D9D4C9;
+    --shadow:0 18px 50px rgba(26,44,36,.10);
+    --radius:24px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:min(1180px, calc(100% - 40px)); margin:auto}
+
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter: blur(14px);
+    background:rgba(246,241,231,.88);
+    border-bottom:1px solid rgba(23,63,53,.08);
+  }
+  .nav{
+    height:74px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+  }
+  .brand{font-weight:800; letter-spacing:-.02em}
+  .navlinks{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+  .navlinks a:hover{color:var(--green)}
+
+  .hero{padding:92px 0 54px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+  h1{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:clamp(56px,9vw,118px);
+    line-height:.92; letter-spacing:-.055em;
+    color:var(--green); margin:18px 0 24px;
+    max-width:1000px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.2fr .8fr; gap:54px; align-items:end;
+  }
+  .lede{font-size:20px;max-width:720px;color:#394740}
+  .meta{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:18px;
+    border-top:1px solid var(--line);padding-top:20px;
+  }
+  .meta small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
+  .meta strong{display:block;margin-top:5px;font-size:14px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .btn{
+    font-family:inherit;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--green);
+    font-weight:800;font-size:14px;transition:.2s ease;
+  }
+  .btn.primary{background:var(--green);color:white}
+  .btn.secondary{background:transparent;color:var(--green)}
+  .btn:hover{transform:translateY(-2px)}
+
+  .hero-art{
+    margin-top:52px;border-radius:34px;overflow:hidden;background:var(--green);
+    min-height:520px;box-shadow:var(--shadow);position:relative;
+    border:1px solid rgba(23,63,53,.12);
+  }
+  .campus-shell{position:absolute;inset:0;padding:34px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px}
+  .browser{
+    background:var(--paper);border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.18);
+    transform:rotate(-1deg);align-self:center;
+  }
+  .browser-top{height:42px;background:#EDE8DE;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 14px;gap:7px}
+  .browser-top i{width:9px;height:9px;border-radius:50%;background:#C8C1B4}
+  .browser-body{padding:34px}
+  .seal{width:72px;height:72px;border-radius:50%;border:4px double var(--green);display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;color:var(--green);margin-bottom:26px}
+  .seal:before{content:"VU";font-size:22px}
+  .browser-body h3{font-family:Georgia,serif;color:var(--green);font-size:34px;line-height:1.05;margin:0 0 12px}
+  .browser-body p{color:var(--muted);font-size:14px}
+  .orange-rule{height:4px;width:84px;background:var(--orange);border-radius:999px;margin:18px 0}
+  .doc-stack{align-self:center;position:relative;height:330px}
+  .doc{
+    position:absolute;inset:auto 0 0 0;background:var(--paper);border-radius:18px;padding:26px;
+    box-shadow:0 16px 40px rgba(0,0,0,.18);border:1px solid rgba(23,63,53,.08)
+  }
+  .doc:nth-child(1){transform:rotate(8deg) translate(15px,-25px);background:#F3E1C9}
+  .doc:nth-child(2){transform:rotate(-4deg) translate(-18px,-5px)}
+  .doc:nth-child(3){transform:rotate(1deg)}
+  .doc h4{margin:0;color:var(--green);font-family:Georgia,serif;font-size:23px}
+  .lines{margin-top:18px;display:grid;gap:8px}
+  .line{height:7px;border-radius:10px;background:#DDD7CB}
+  .line.short{width:63%}
+  .line.orange{background:var(--orange-soft);width:78%}
+
+  section{padding:84px 0}
+  .section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start;margin-bottom:42px}
+  .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--orange);font-weight:900}
+  h2{
+    font-family:Georgia, "Times New Roman", serif;color:var(--green);
+    font-size:clamp(38px,5vw,64px);line-height:1.02;letter-spacing:-.035em;margin:10px 0 0;
+  }
+  .section-copy{font-size:18px;color:#46534D;max-width:680px}
+  .quote{
+    border-left:4px solid var(--orange);padding:8px 0 8px 22px;
+    font-family:Georgia,serif;font-size:28px;line-height:1.25;color:var(--green);margin:26px 0;
+  }
+
+  .card{
+    background:rgba(255,253,248,.8);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px;box-shadow:0 10px 30px rgba(32,46,39,.04)
+  }
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pill{
+    display:inline-block;padding:7px 11px;border-radius:999px;background:var(--green-3);
+    color:var(--green);font-size:12px;font-weight:800;margin:5px 5px 0 0;
+  }
+
+  .challenge-card h3,.ref-card h3,.version-card h3{margin:0 0 10px;color:var(--green);font-size:22px}
+  .challenge-card p,.ref-card p,.version-card p{color:var(--muted);margin-bottom:0}
+
+  .ref-art{
+    height:280px;border-radius:18px;margin-bottom:22px;overflow:hidden;position:relative;border:1px solid var(--line);background:#ddd;
+  }
+  .ref-art img{width:100%;height:100%;object-fit:cover;display:block}
+  .ref-art::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(12,27,22,.52),rgba(12,27,22,0) 48%);
+    pointer-events:none;
+  }
+  .ref-tag{
+    position:absolute;left:18px;bottom:16px;z-index:2;color:white;
+    font-size:11px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;
+    text-shadow:0 1px 8px rgba(0,0,0,.4)
+  }
+  .credit{margin-top:10px;font-size:11px;color:#7D8782;line-height:1.45}
+
+  .takeaway{
+    margin-top:24px;background:var(--green);color:white;border-radius:28px;padding:30px 34px;
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;
+  }
+  .takeaway strong{display:block;font-family:Georgia,serif;font-size:28px}
+  .plus{font-size:34px;color:var(--orange)}
+
+  .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:24px;background:var(--paper)}
+  table{border-collapse:collapse;width:100%;min-width:800px}
+  th,td{padding:20px 22px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+  th{background:#EFEAE0;color:var(--green);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+  td:first-child{font-weight:900;color:var(--green);width:160px}
+  tr:last-child td{border-bottom:0}
+  .mini-link{font-weight:900;color:var(--orange)}
+
+  .version{
+    border-top:1px solid var(--line);
+    padding-top:42px;margin-top:10px;
+  }
+  .version-label{font-size:72px;font-weight:900;line-height:1;color:rgba(23,63,53,.12);letter-spacing:-.06em}
+  .version-title{font-family:Georgia,serif;font-size:44px;line-height:1.05;color:var(--green);margin:8px 0 12px}
+  .version-intro{font-size:18px;color:#4C5953;max-width:760px}
+  .version-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin-top:34px}
+  .visual-placeholder{
+    min-height:390px;border-radius:26px;border:1px dashed #AFA99D;background:
+    repeating-linear-gradient(45deg,#F0ECE3,#F0ECE3 10px,#F7F4ED 10px,#F7F4ED 20px);
+    display:grid;place-items:center;color:#847D72;font-weight:800;text-align:center;padding:30px;
+  }
+  .problem{background:#F1E7D8}
+  .problem h4{margin:0 0 12px;color:var(--green);font-size:18px}
+  .problem ul{margin:0;padding-left:20px;color:#55625B}
+  .problem li{margin:9px 0}
+
+  .flow{
+    display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:26px
+  }
+  .flow-step{
+    padding:13px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);
+    color:var(--green);font-weight:900;font-size:13px
+  }
+  .arrow{color:var(--orange);font-size:20px;font-weight:900}
+  .branch{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  .ending{border-radius:18px;padding:18px;text-align:center;font-weight:900}
+  .ending.false{background:#E9E6DF;color:#59645E}
+  .ending.true{background:var(--orange-soft);color:#7D4F1D}
+
+  .hybrid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:28px
+  }
+  .hybrid .card:nth-child(3){background:var(--green);color:white}
+  .hybrid .card:nth-child(3) h3{color:white}
+
+  .ux-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .ux-item{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+  .ux-visual{height:210px;background:#ECE8DE;display:grid;place-items:center;color:#958C7F;font-weight:900}
+  .ux-copy{padding:22px}
+  .ux-copy h4{margin:0;color:var(--green);font-size:20px}
+  .ux-copy p{margin:8px 0 0;color:var(--muted)}
+
+  .footer{
+    margin-top:60px;background:var(--green);color:white;padding:70px 0
+  }
+  .footer h2{color:white;max-width:760px}
+  .footer p{color:#DDE8E1;max-width:680px}
+  .small-note{font-size:13px;color:#7A847F;margin-top:18px}
+
+  @media(max-width:900px){
+    .hero-grid,.section-head,.version-grid{grid-template-columns:1fr}
+    .grid-2,.grid-3,.ux-grid,.hybrid{grid-template-columns:1fr}
+    .takeaway{grid-template-columns:1fr;text-align:left}
+    .plus{transform:rotate(90deg)}
+    .campus-shell{grid-template-columns:1fr}
+    .doc-stack{display:none}
+    .hero-art{min-height:460px}
+    .navlinks{display:none}
+  }
+
+  .project-shot{
+    width:100%;height:auto;display:block;
+    border-radius:24px;border:1px solid rgba(23,63,53,.12);
+    box-shadow:0 18px 50px rgba(26,44,36,.12);
+  }
+  .shot-frame{
+    background:#111;border-radius:28px;padding:8px;
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .shot-caption{
+    margin-top:10px;font-size:12px;color:#758079;
+  }
+  .prototype-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .prototype-link{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:10px 14px;border-radius:999px;background:var(--green);
+    color:#fff;font-weight:800;font-size:13px;
+  }
+  .prototype-link.alt{background:transparent;color:var(--green);border:1px solid var(--green)}
+
+  .hero-seal{
+    width:96px;height:96px;border-radius:50%;overflow:hidden;
+    background:#fff;border:1px solid rgba(23,63,53,.15);
+    box-shadow:0 8px 24px rgba(23,63,53,.10);
+    margin-bottom:24px;
+  }
+  .hero-seal img{width:100%;height:100%;object-fit:cover;display:block}
+  .concept-board{
+    margin-top:28px;border-radius:28px;background:var(--green);padding:34px;
+    box-shadow:var(--shadow);color:white;
+  }
+  .concept-top{
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    margin-bottom:28px;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:18px
+  }
+  .concept-brand{display:flex;align-items:center;gap:14px}
+  .concept-brand img{width:58px;height:58px;border-radius:50%;object-fit:cover;background:#fff}
+  .concept-brand strong{font-family:Georgia,serif;font-size:24px}
+  .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .concept-pane{
+    border-radius:20px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.14);padding:22px
+  }
+  .concept-pane h4{margin:0 0 10px;color:#fff;font-size:18px}
+  .concept-pane p{margin:0;color:#D8E3DD;font-size:14px}
+  .concept-evidence{
+    grid-column:1/-1;background:var(--paper);color:var(--green);
+    border-radius:20px;padding:22px
+  }
+  .concept-evidence h4{margin:0 0 8px;color:var(--green);font-size:18px}
+  .concept-evidence p{margin:0;color:#5E6963;font-size:14px}
+
+  .hero-lockup{
+    display:flex;align-items:center;gap:18px;margin-bottom:24px;
+  }
+  .hero-lockup img{
+    width:150px;height:auto;display:block;
+    filter:drop-shadow(0 8px 18px rgba(23,63,53,.10));
+  }
+  .hero-lockup .lockup-text small{
+    display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);font-weight:900;margin-bottom:4px
+  }
+  .hero-lockup .lockup-text strong{
+    display:block;font-family:Georgia,serif;color:var(--green);font-size:22px;line-height:1.1
+  }
+  .v2-gallery{
+    display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px
+  }
+  .v2-gallery .project-shot{height:270px;object-fit:cover}
+  .ui-mini-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px
+  }
+  .swatch{
+    border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper)
+  }
+  .swatch-color{height:80px}
+  .swatch-copy{padding:14px}
+  .swatch-copy h5{margin:0;color:var(--green);font-size:15px}
+  .swatch-copy p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.45}
+  @media(max-width:900px){
+    .ui-mini-grid,.v2-gallery{grid-template-columns:1fr}
+    .hero-lockup{flex-direction:column;align-items:flex-start}
+    .hero-lockup img{width:120px}
+  }
+
+  .ui-block{
+    margin-bottom:26px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:24px;
+  }
+  .ui-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:16px;
+  }
+  .ui-swatch{
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+    background:white;
+  }
+  .ui-swatch .color{
+    height:96px;
+  }
+  .ui-swatch .meta{
+    display:block;
+    padding:14px;
+    border-top:1px solid var(--line);
+  }
+  .ui-swatch h5{
+    margin:0 0 4px 0;
+    color:var(--green);
+    font-size:15px;
+  }
+  .ui-swatch p{
+    margin:0;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.45;
+  }
+  .ui-mini-copy{
+    margin-top:10px;
+    font-size:14px;
+    color:var(--muted);
+    max-width:820px;
+  }
+  @media(max-width:900px){
+    .ui-row{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .ui-row{grid-template-columns:1fr}
+  }
+
+  .ui-system-block{margin-bottom:22px}
+  .ui-system-label{
+    font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--orange);font-weight:900;margin-bottom:14px
+  }
+  .ui-palette{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:12px
+  }
+  .ui-color-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    overflow:hidden;padding-bottom:12px
+  }
+  .ui-color-chip{height:78px;border-bottom:1px solid var(--line)}
+  .ui-color-card strong,.ui-color-card span{display:block;padding:0 12px}
+  .ui-color-card strong{font-size:13px;color:var(--green);margin-top:10px}
+  .ui-color-card span{font-size:11px;color:var(--muted);margin-top:2px;font-family:ui-monospace,monospace}
+  .ui-system-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  .ui-system-grid.three{grid-template-columns:repeat(3,1fr)}
+  .ui-system-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:20px;
+    padding:22px;box-shadow:0 8px 22px rgba(23,63,53,.04)
+  }
+  .ui-system-card h3{margin:0 0 14px;color:var(--green);font-size:22px}
+  .ui-system-small{font-size:12px;color:var(--muted);margin:10px 0 0;line-height:1.5}
+  .type-demo-serif{font-family:Georgia,serif;font-size:34px;color:var(--green);line-height:1.1;margin:8px 0}
+  .type-demo-sans{font-size:20px;font-weight:700;color:var(--ink);margin-top:24px}
+  .mini-dialogue{border:1px solid var(--line);border-radius:12px;background:white;padding:16px}
+  .mini-dialogue b{font-size:11px;letter-spacing:.1em;color:var(--green)}
+  .mini-dialogue p{font-family:Georgia,serif;font-size:20px;line-height:1.35;margin:8px 0 0}
+  .mini-choices{display:grid;gap:8px;margin-top:10px}
+  .mini-choices span{border:1px solid var(--green);border-radius:9px;padding:10px 12px;font-size:12px;font-weight:700;color:var(--green)}
+  .mini-notice{border:1px solid rgba(217,125,61,.3);background:rgba(217,125,61,.08);border-radius:10px;padding:13px;margin-top:9px}
+  .mini-notice.soft{background:#F2F3EF;border-color:var(--line)}
+  .mini-notice b,.mini-notice span{display:block}
+  .mini-notice b{font-size:12px;color:var(--green)}
+  .mini-notice span{font-size:11px;color:var(--muted);margin-top:3px}
+  .mini-phone{border:1px solid var(--line);border-radius:18px;background:white;padding:12px}
+  .mini-phone-top{font-size:12px;font-weight:800;border-bottom:1px solid var(--line);padding:6px 4px 10px}
+  .mini-phone-top small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
+  .mini-phone .bubble{font-size:11px;background:#EFF1ED;border-radius:12px;padding:8px 10px;margin-top:10px;width:82%}
+  .mini-phone .bubble.me{margin-left:auto;background:var(--green);color:white}
+  .system-msg{text-align:center;font-size:10px;color:#8A908B;margin:12px 0}
+  .mini-id-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .mini-id{height:88px;border-radius:10px;border:1px solid var(--line);padding:10px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(140deg,#fff,#F1EFE8)}
+  .mini-id.mid{background:linear-gradient(140deg,#FFFDF8,#F4F0E6)}
+  .mini-id.high{background:linear-gradient(140deg,#FFFDF7,#F8F3E8);border-color:#D9D0BE;box-shadow:0 8px 18px rgba(105,80,35,.10)}
+  .mini-id span{font-size:9px;letter-spacing:.12em;color:var(--muted)}
+  .mini-id b{font-size:11px;color:var(--green)}
+  .rule-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .rule-compare>div{border:1px solid var(--line);border-radius:12px;padding:14px;background:white}
+  .rule-compare small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .rule-compare p{font-family:Georgia,serif;font-size:15px;line-height:1.45;margin:8px 0 0}
+  .rule-compare b{color:var(--orange)}
+  .principle-list{display:grid;gap:10px}
+  .principle-list>div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+  .principle-list>div>b{font-family:Georgia,serif;color:var(--orange);font-size:18px}
+  .principle-list span strong,.principle-list span small{display:block}
+  .principle-list span strong{font-size:13px;color:var(--green)}
+  .principle-list span small{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
+  .ux-change-strip{
+    margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper)
+  }
+  .ux-change-strip>div{padding:16px;border-right:1px solid var(--line)}
+  .ux-change-strip>div:last-child{border-right:0}
+  .ux-change-strip b,.ux-change-strip span{display:block}
+  .ux-change-strip b{font-size:12px;color:var(--green)}
+  .ux-change-strip span{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4}
+  @media(max-width:980px){
+    .ui-palette{grid-template-columns:repeat(3,1fr)}
+    .ui-system-grid,.ui-system-grid.three{grid-template-columns:1fr}
+    .ux-change-strip{grid-template-columns:1fr 1fr}
+    .ux-change-strip>div{border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:640px){
+    .ui-palette{grid-template-columns:1fr 1fr}
+    .rule-compare{grid-template-columns:1fr}
+    .ux-change-strip{grid-template-columns:1fr}
+  }
+
+  .core-mechanics{
+    margin-top:34px;padding-top:30px;border-top:1px solid var(--line)
+  }
+  .core-mechanics-head{
+    display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:end;margin-bottom:18px
+  }
+  .core-mechanics-head h3{
+    margin:6px 0 0;color:var(--green);font-family:Georgia,serif;font-size:32px;font-weight:500
+  }
+  .core-mechanics-head p{
+    margin:0;color:var(--muted);font-size:15px;line-height:1.55
+  }
+  .mechanic-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .mechanic-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px
+  }
+  .mechanic-card.awareness{border-top:4px solid #7C9385}
+  .mechanic-card.stability{border-top:4px solid var(--orange)}
+  .mechanic-top{display:flex;align-items:center;gap:12px}
+  .mechanic-top span{
+    width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+    background:var(--green-3);color:var(--green);font-size:11px;font-weight:900
+  }
+  .mechanic-top h4{margin:0;color:var(--green);font-size:20px}
+  .mechanic-definition{margin:10px 0 14px;color:var(--muted);font-size:13px}
+  .mechanic-examples{display:flex;flex-wrap:wrap;gap:7px}
+  .mechanic-examples span{
+    font-size:11px;padding:7px 9px;border-radius:999px;background:#F0F1ED;color:#5E6862;border:1px solid #E0E1DC
+  }
+  .mechanic-output{
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line)
+  }
+  .mechanic-output b,.mechanic-output span{display:block}
+  .mechanic-output b{color:var(--green);font-size:12px}
+  .mechanic-output span{color:var(--muted);font-size:12px;line-height:1.5;margin-top:4px}
+  .mechanic-connection{
+    margin-top:14px;background:var(--green);color:white;border-radius:18px;padding:18px 20px;
+    display:grid;grid-template-columns:.65fr 1.35fr;gap:22px;align-items:center
+  }
+  .mechanic-connection small{display:block;color:#F0B46D;font-size:10px;letter-spacing:.14em;font-weight:900}
+  .mechanic-connection strong{display:block;font-family:Georgia,serif;font-size:20px;margin-top:3px}
+  .mechanic-connection p{margin:0;color:#D9E5DE;font-size:12px;line-height:1.5}
+  @media(max-width:900px){
+    .core-mechanics-head,.mechanic-grid,.mechanic-connection{grid-template-columns:1fr}
+  }
+
+  .v3-current{margin-top:30px}
+  .v3-preview{min-height:410px;border-radius:26px;background-size:cover;background-position:center;position:relative;overflow:hidden;box-shadow:var(--shadow);display:grid;place-items:center}
+  .v3-preview:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(9,29,22,.34))}
+  .v3-preview-card{position:relative;z-index:2;width:min(420px,74%);background:rgba(247,243,233,.88);border:1px solid rgba(255,255,255,.72);backdrop-filter:blur(12px);padding:26px 38px;text-align:center;box-shadow:0 25px 70px rgba(10,30,23,.24)}
+  .v3-preview-card img{width:min(300px,90%);height:150px;object-fit:contain;margin:0 auto 10px;display:block}
+  .v3-preview-rule{width:70px;height:2px;background:var(--orange);margin:8px auto 15px}
+  .v3-preview-card span{display:block;border:1px solid rgba(23,63,53,.24);padding:10px 14px;margin-top:8px;color:var(--green);font-family:Georgia,serif;font-size:13px;background:rgba(255,255,255,.72)}
+  .v3-preview-label{position:absolute;z-index:3;left:20px;top:18px;background:rgba(23,63,53,.88);color:white;padding:8px 11px;border-radius:999px;font-size:10px;letter-spacing:.12em;font-weight:900}
+  .v3-build-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  .v3-build-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:17px}
+  .v3-build-card b,.v3-build-card span{display:block}
+  .v3-build-card b{color:var(--green);font-size:13px;margin-bottom:5px}
+  .v3-build-card span{color:var(--muted);font-size:11px;line-height:1.5}
+  .v3-map-preview{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;margin-top:18px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px}
+  .v3-map-preview img{width:100%;height:270px;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+  .v3-map-preview h4{font-family:Georgia,serif;color:var(--green);font-size:25px;margin:7px 0 8px}
+  .v3-map-preview p{color:var(--muted);font-size:12px;line-height:1.55}
+  @media(max-width:900px){.v3-build-grid,.v3-map-preview{grid-template-columns:1fr}.v3-preview{min-height:330px}.v3-preview-card{width:84%;padding:20px}.v3-map-preview img{height:auto}}
+
+  .wip-badge{
+    display:inline-flex;align-items:center;padding:7px 11px;border-radius:999px;
+    background:var(--orange-soft);color:#86561f;font-size:11px;font-weight:900;
+    letter-spacing:.12em;text-transform:uppercase;margin:2px 0 12px
+  }
+  .current-ui-showcase{margin-bottom:26px}
+  .current-ui-head{
+    display:grid;grid-template-columns:.75fr 1.25fr;gap:34px;align-items:end;
+    margin-bottom:18px
+  }
+  .current-ui-head h3{
+    margin:4px 0 0;color:var(--green);font-family:Georgia,serif;
+    font-size:32px;font-weight:500
+  }
+  .current-ui-head p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+  .os-demo{
+    border:1px solid rgba(31,58,46,.18);border-radius:22px;overflow:hidden;
+    background:#D8D4C9;box-shadow:0 18px 42px rgba(31,58,46,.11)
+  }
+  .os-topbar{
+    height:38px;background:rgba(247,246,242,.95);border-bottom:1px solid var(--line);
+    display:flex;align-items:center;padding:0 13px;font-size:11px
+  }
+  .os-brand{display:flex;align-items:center;gap:7px;color:var(--green)}
+  .os-brand img{width:22px;height:22px;object-fit:contain}
+  .os-status{margin-left:auto;display:flex;gap:16px;color:var(--muted);font-size:10px}
+  .os-canvas{
+    min-height:390px;padding:22px;display:grid;grid-template-columns:82px 1fr;gap:18px;
+    background:
+      linear-gradient(120deg,rgba(245,244,239,.86),rgba(237,232,218,.68)),
+      radial-gradient(circle at 70% 30%,#d7c9a8,#a5b6a8 58%,#738777);
+  }
+  .os-dock{display:grid;gap:7px;align-content:start}
+  .os-dock>div{
+    height:60px;border-radius:12px;background:rgba(255,255,255,.83);
+    border:1px solid rgba(31,58,46,.10);display:grid;place-items:center;align-content:center;
+    gap:3px;color:var(--green);box-shadow:0 6px 14px rgba(31,58,46,.07)
+  }
+  .os-dock i{font-style:normal;font-size:18px}.os-dock span{font-size:8px}
+  .os-window{
+    align-self:center;justify-self:center;width:min(760px,100%);height:300px;
+    background:#FAF9F5;border:1px solid rgba(31,58,46,.18);border-radius:13px;
+    box-shadow:0 24px 54px rgba(14,25,20,.20);overflow:hidden
+  }
+  .os-window-head{
+    height:36px;background:#EFEEE9;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;padding:0 12px;gap:7px;position:relative
+  }
+  .os-window-head .traffic{width:10px;height:10px;border-radius:50%}
+  .os-window-head .red{background:#D97D6C}.os-window-head .yellow{background:#D6AD59}.os-window-head .green{background:#6D9E76}
+  .os-window-head b{position:absolute;left:50%;transform:translateX(-50%);font-size:10px;color:#4C544F}
+  .os-window-body{height:264px;padding:20px;display:grid;grid-template-columns:190px 1fr;gap:20px;background:#fff}
+  .archive-side small{font-size:9px;letter-spacing:.13em;color:var(--orange);font-weight:900}
+  .archive-side strong{display:block;font-family:Georgia,serif;color:var(--green);font-size:22px;margin:10px 0 7px}
+  .archive-side p{font-size:11px;color:var(--muted);line-height:1.5;margin:0}
+  .archive-files{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .archive-files>div{border:1px solid var(--line);padding:13px;background:#FAFAF8}
+  .archive-files small{display:block;color:var(--orange);font-size:8px;letter-spacing:.12em}
+  .archive-files b{display:block;color:var(--green);font-size:11px;margin:10px 0 4px}
+  .archive-files span{font-size:9px;color:var(--muted)}
+  .archive-files .locked{opacity:.42}
+  .current-ui-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  .current-ui-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;
+    overflow:hidden
+  }
+  .portal-demo{border:1px solid var(--line);background:#F5F4EF;border-radius:13px;overflow:hidden}
+  .portal-demo-head{height:42px;background:var(--green);color:white;display:flex;align-items:center;padding:0 13px;gap:8px}
+  .portal-demo-head img{width:27px;height:27px;object-fit:contain}
+  .portal-demo-head span{font-family:Georgia,serif;font-size:13px}
+  .portal-demo-head small{margin-left:auto;font-size:8px;letter-spacing:.11em;text-transform:uppercase;color:#D3DCD5}
+  .portal-demo-body{display:grid;grid-template-columns:105px 1fr;min-height:190px}
+  .portal-demo-body aside{background:#fff;border-right:1px solid var(--line);padding:16px;display:grid;grid-template-columns:22px 1fr;gap:9px 5px;align-content:start}
+  .portal-demo-body aside b{color:#9AA09B;font-family:Georgia,serif;font-size:11px}
+  .portal-demo-body aside span{color:var(--muted);font-size:9px}
+  .portal-demo-body main{padding:22px}
+  .portal-demo-body main small{font-size:8px;letter-spacing:.13em;color:var(--orange);font-weight:900}
+  .portal-demo-body main h4{font:500 25px/1.1 Georgia,serif;color:var(--green);margin:7px 0 20px}
+  .portal-line{height:1px;background:#C9C8C0;margin:18px 0}.portal-line.short{width:65%}
+  .portal-demo-body button{border:0;background:var(--green);color:white;padding:9px 12px;font-size:9px;border-radius:5px}
+  .real-id-card{
+    position:relative;border:1px solid #D7D2C8;border-radius:15px;overflow:hidden;
+    background:linear-gradient(140deg,#FFFDF7,#F1EEE6);box-shadow:0 12px 28px rgba(31,58,46,.09)
+  }
+  .real-id-band{height:46px;background:var(--green);color:white;display:flex;align-items:center;padding:0 13px;gap:8px}
+  .real-id-band img{width:31px;height:31px;object-fit:contain}
+  .real-id-band b{font:500 13px Georgia,serif;letter-spacing:.06em}
+  .real-id-band span{margin-left:auto;font:500 7px Georgia,serif;letter-spacing:.09em;color:#E7D7C0}
+  .real-id-main{display:grid;grid-template-columns:105px 1fr;gap:15px;padding:14px 15px 35px;position:relative}
+  .real-id-photo{height:132px;background:#DADBD7;border:1px solid #C8CBC5;display:grid;place-items:center;font:500 28px Georgia,serif;color:var(--muted)}
+  .real-id-info{position:relative;z-index:2}
+  .real-id-info h4{font:500 23px/1 Georgia,serif;margin:2px 0 12px;color:var(--ink)}
+  .real-id-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+  .real-id-grid small{display:block;font-size:6px;color:var(--muted);letter-spacing:.04em}
+  .real-id-grid b{display:block;color:var(--ink);font-size:8px;margin-top:2px}
+  .real-id-signature{font:italic 13px Georgia,serif;margin-top:11px;color:#5D625E}
+  .real-id-watermark{position:absolute;right:2px;bottom:22px;width:120px;opacity:.07;z-index:1}
+  .real-id-bottom{height:28px;background:var(--green);color:#E8E3D8;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font:500 6px Georgia,serif;letter-spacing:.08em;text-transform:uppercase}
+  .phone-shell-demo{width:230px;max-width:100%;margin:auto;background:#F8F7F2;border:7px solid #1B211E;border-radius:28px;overflow:hidden}
+  .phone-status{height:32px;background:white;padding:8px 11px;font-size:9px;font-weight:800;display:flex;justify-content:space-between}
+  .phone-tabs{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line);background:white}
+  .phone-tabs span{text-align:center;font-size:6px;padding:8px 1px;color:var(--muted)}
+  .phone-mail-demo{background:white;border:1px solid var(--line);margin:10px;padding:10px}
+  .phone-mail-demo b{display:block;color:var(--green);font-size:9px}
+  .phone-mail-demo small{color:var(--muted);font-size:7px}
+  .phone-mail-demo p{font:9px/1.45 Georgia,serif;margin:6px 0 0;color:#454E49}
+  .system-language{display:grid;gap:8px}
+  .system-language>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .system-language b{color:var(--green);font-size:11px}
+  .system-language span{color:var(--muted);font-size:10px;text-align:right}
+  @media(max-width:900px){
+    .current-ui-head,.current-ui-grid{grid-template-columns:1fr}
+    .os-canvas{grid-template-columns:1fr}
+    .os-dock{grid-template-columns:repeat(4,1fr)}
+    .os-dock>div{height:54px}
+  }
+  @media(max-width:620px){
+    .os-window-body{grid-template-columns:1fr}
+    .archive-side{display:none}
+    .real-id-main{grid-template-columns:86px 1fr}
+    .real-id-photo{height:112px}
+  }
+
+  .ui-current-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:26px}
+  .ui-shot-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:20px;
+    box-shadow:0 10px 28px rgba(23,63,53,.05)
+  }
+  .ui-shot-head h3{
+    margin:4px 0 0;color:var(--green);font-family:Georgia,serif;font-size:28px;font-weight:500
+  }
+  .ui-shot{
+    width:100%;display:block;border-radius:16px;border:1px solid var(--line);
+    margin-top:14px;box-shadow:0 12px 30px rgba(0,0,0,.08)
+  }
+  .ui-shot-copy{margin:14px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+  .ui-system-foundation{
+    display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:end;
+    margin:18px 0 12px;padding-top:8px
+  }
+  .ui-system-foundation h3{
+    margin:4px 0 0;color:var(--green);font-family:Georgia,serif;font-size:30px;font-weight:500
+  }
+  .ui-system-foundation p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+  .ui-foundation-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
+  .foundation-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    box-shadow:0 8px 22px rgba(23,63,53,.04)
+  }
+  .foundation-swatch{height:88px;border-bottom:1px solid var(--line)}
+  .foundation-card strong,.foundation-card span{display:block;padding:0 14px}
+  .foundation-card strong{margin-top:12px;color:var(--green);font-size:14px}
+  .foundation-card span{margin:4px 0 14px;color:var(--muted);font-size:12px;line-height:1.45}
+  .id-system-block{
+    margin-top:10px;background:rgba(255,253,248,.66);border:1px solid var(--line);
+    border-radius:24px;padding:24px
+  }
+  .id-system-head{
+    display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;align-items:end;margin-bottom:18px
+  }
+  .id-system-head h3{
+    margin:4px 0 0;color:var(--green);font-family:Georgia,serif;font-size:30px;font-weight:500
+  }
+  .id-system-head p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+  .id-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .id-variant{
+    background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;
+    box-shadow:0 10px 24px rgba(23,63,53,.04)
+  }
+  .id-badge{
+    display:inline-flex;padding:7px 10px;border-radius:999px;background:var(--green-3);
+    color:var(--green);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px
+  }
+  .id-variant.high .id-badge{background:#F5E5D3;color:#8A5922}
+  .id-card-real{
+    border:1px solid #D8D2C7;border-radius:16px;overflow:hidden;
+    background:linear-gradient(140deg,#FFFDF8,#F1EEE5)
+  }
+  .id-top{
+    height:50px;background:var(--green);color:white;display:flex;align-items:center;gap:10px;padding:0 14px
+  }
+  .id-top img{width:30px;height:30px;object-fit:contain}
+  .id-top b{display:block;font:500 13px Georgia,serif;letter-spacing:.04em}
+  .id-top span{display:block;font:500 8px Georgia,serif;letter-spacing:.1em;color:#E9DCC6}
+  .id-main{display:grid;grid-template-columns:88px 1fr;gap:12px;padding:14px}
+  .id-photo{
+    height:112px;border:1px solid #CFCBC1;display:grid;place-items:center;
+    font:500 28px Georgia,serif;color:#6A716C;border-radius:3px
+  }
+  .low-photo{background:#DBDDD9; transform: rotate(-1.2deg) translateY(1px); filter:saturate(.92) contrast(.96)}
+  .mid-photo{background:#E3E0D7; filter:saturate(1.02) brightness(1.02)}
+  .high-photo{background:linear-gradient(140deg,#EEE8D9,#F8F3E8); filter:saturate(1.08) brightness(1.05)}
+  .id-info h4{font:500 22px/1 Georgia,serif;color:var(--ink);margin:2px 0 12px}
+  .id-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 10px}
+  .id-info-grid small{display:block;font-size:7px;letter-spacing:.06em;color:var(--muted)}
+  .id-info-grid b{display:block;font-size:9px;color:var(--ink);margin-top:2px}
+  .id-bottom{
+    height:28px;background:var(--green);display:flex;align-items:center;justify-content:space-between;
+    color:#E8E2D8;padding:0 12px;font:500 7px Georgia,serif;letter-spacing:.08em;text-transform:uppercase
+  }
+  .id-note{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
+  .ui-principles-strip{
+    margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden
+  }
+  .ui-principles-strip>div{padding:16px;border-right:1px solid var(--line)}
+  .ui-principles-strip>div:last-child{border-right:0}
+  .ui-principles-strip b,.ui-principles-strip span{display:block}
+  .ui-principles-strip b{font-size:12px;color:var(--green)}
+  .ui-principles-strip span{margin-top:5px;font-size:11px;color:var(--muted);line-height:1.45}
+  @media(max-width:980px){
+    .ui-current-grid,.ui-system-foundation,.id-system-head{grid-template-columns:1fr}
+    .ui-foundation-grid{grid-template-columns:1fr 1fr}
+    .id-grid{grid-template-columns:1fr}
+    .ui-principles-strip{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .ui-foundation-grid,.ui-principles-strip{grid-template-columns:1fr}
+    .id-main{grid-template-columns:76px 1fr}
+    .id-photo{height:98px}
+  }
+
+  .v3-embed-block{
+    margin-bottom:24px;background:var(--paper);border:1px solid var(--line);
+    border-radius:24px;padding:22px;box-shadow:0 12px 30px rgba(23,63,53,.05)
+  }
+  .v3-embed-head{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:20px
+  }
+  .v3-embed-head h3{
+    margin:4px 0 0;color:var(--green);font:500 30px Georgia,serif
+  }
+  .v3-embed-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .v3-embed-copy{color:var(--muted);font-size:13px;line-height:1.55;max-width:820px}
+  .v3-frame-shell{
+    margin-top:16px;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    background:#111;box-shadow:0 18px 44px rgba(23,63,53,.10)
+  }
+  .v3-frame-shell iframe{
+    display:block;width:100%;height:690px;border:0;background:#F5F4EF
+  }
+
+  .id-comparison-grid{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px
+  }
+  .id-version-card{
+    background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;
+    box-shadow:0 10px 26px rgba(23,63,53,.05)
+  }
+  .id-version-label{
+    display:inline-flex;margin:2px 0 12px;padding:7px 10px;border-radius:999px;
+    font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:900;
+    color:var(--green);background:var(--green-3)
+  }
+  .id-version-card.high .id-version-label{background:#F3E1CC;color:#81501A}
+
+  .portfolio-student-id{
+    position:relative;overflow:hidden;border-radius:16px;border:1px solid #D1CBBE;
+    background:
+      radial-gradient(circle at 90% 18%,rgba(217,125,61,.09),transparent 25%),
+      linear-gradient(135deg,#FFFDF7 0%,#F0EBDF 100%);
+    box-shadow:0 12px 28px rgba(31,58,46,.10)
+  }
+  .id-version-card.low .portfolio-student-id{
+    filter:saturate(.96) contrast(.985);
+    box-shadow:0 9px 20px rgba(31,58,46,.07)
+  }
+  .id-version-card.high .portfolio-student-id{
+    filter:saturate(1.025) brightness(1.012);
+    box-shadow:0 16px 34px rgba(73,52,20,.13)
+  }
+
+  .pid-band{
+    height:52px;background:#1F3A2E;color:white;display:flex;align-items:center;
+    padding:0 14px;gap:9px
+  }
+  .pid-band img{width:36px;height:36px;object-fit:contain}
+  .pid-band b{
+    font:500 13px Georgia,serif;letter-spacing:.09em;font-variant:small-caps
+  }
+  .pid-band span{
+    margin-left:auto;font:600 7px Georgia,serif;letter-spacing:.10em;color:#E7D7C0
+  }
+
+  .pid-body{
+    position:relative;display:grid;grid-template-columns:112px 1fr;gap:16px;
+    min-height:205px;padding:16px 16px 42px
+  }
+  .pid-photo-wrap{
+    width:112px;height:145px;overflow:hidden;background:#D8D9D5;border:1px solid #C5C8C1
+  }
+  .pid-photo-wrap img{width:100%;height:100%;object-fit:cover}
+  .pid-photo-wrap.low{transform:rotate(-.45deg) translateY(1px)}
+  .pid-photo-wrap.mid img{object-position:50% 48%}
+  .pid-photo-wrap.high img{object-position:50% 46%;filter:brightness(1.02)}
+
+  .pid-info{position:relative;z-index:2}
+  .pid-info h4{
+    margin:4px 0 14px;color:#1A1F1C;font:500 28px/1 Georgia,serif
+  }
+  .pid-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px}
+  .pid-fields small{
+    display:block;font-size:6.5px;letter-spacing:.08em;color:#626A64
+  }
+  .pid-fields strong{
+    display:block;margin-top:2px;font-size:9px;color:#1A1F1C;letter-spacing:0
+  }
+  .pid-signature{
+    margin-top:14px;color:#5D625E;font:italic 18px Georgia,serif
+  }
+  .pid-watermark{
+    position:absolute;right:-12px;bottom:35px;width:128px;height:128px;
+    object-fit:contain;opacity:.075;z-index:1
+  }
+  .pid-barcode{
+    position:absolute;right:14px;bottom:34px;width:132px;height:22px;z-index:3;
+    background:repeating-linear-gradient(90deg,#1A1F1C 0 2px,transparent 2px 4px,#1A1F1C 4px 5px,transparent 5px 8px)
+  }
+  .pid-bottom{
+    height:30px;background:#1F3A2E;color:#EEE7DB;display:flex;align-items:center;
+    justify-content:space-between;padding:0 12px;font:600 6px Georgia,serif;
+    letter-spacing:.11em;text-transform:uppercase
+  }
+
+  .id-version-card.low .portfolio-student-id:after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;
+    background:
+      linear-gradient(102deg,transparent 0 34%,rgba(80,75,65,.12) 34.4%,transparent 35%),
+      radial-gradient(circle at 10% 82%,rgba(90,80,70,.10),transparent 14%)
+  }
+  .id-version-card.mid .portfolio-student-id:after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(130deg,transparent 55%,rgba(255,248,231,.15))
+  }
+  .id-version-card.high .portfolio-student-id:after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 78% 14%,rgba(255,222,177,.12),transparent 27%)
+  }
+
+  .id-version-copy{padding:12px 4px 2px}
+  .id-version-copy strong{display:block;color:var(--green);font-size:12px}
+  .id-version-copy p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.5}
+  .id-design-note{
+    margin-top:16px;background:#1F3A2E;color:white;border-radius:16px;padding:15px 18px;
+    display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center
+  }
+  .id-design-note b{font:500 17px Georgia,serif}
+  .id-design-note span{font-size:11px;line-height:1.55;color:#DAE4DD}
+
+  @media(max-width:1050px){
+    .id-comparison-grid{grid-template-columns:1fr}
+    .portfolio-student-id{max-width:620px;margin:auto}
+    .v3-frame-shell iframe{height:560px}
+  }
+  @media(max-width:700px){
+    .v3-embed-head{align-items:flex-start;flex-direction:column}
+    .v3-frame-shell iframe{height:480px}
+    .pid-body{grid-template-columns:90px 1fr;gap:11px;padding:12px 12px 38px}
+    .pid-photo-wrap{width:90px;height:122px}
+    .pid-info h4{font-size:22px}
+    .pid-band span{display:none}
+    .pid-barcode{width:100px}
+    .id-design-note{grid-template-columns:1fr}
+  }
+
+  .v3-progress-card{
+    margin-bottom:22px;background:var(--paper);border:1px solid var(--line);
+    border-radius:20px;padding:20px 22px;display:flex;align-items:center;
+    justify-content:space-between;gap:24px;box-shadow:0 8px 22px rgba(23,63,53,.04)
+  }
+  .v3-progress-card h3{
+    margin:4px 0 6px;color:var(--green);font:500 26px Georgia,serif
+  }
+  .v3-progress-card p{
+    margin:0;color:var(--muted);font-size:13px;line-height:1.55;max-width:720px
+  }
+  .v3-progress-actions{
+    display:flex;flex-direction:column;align-items:flex-end;gap:8px;white-space:nowrap
+  }
+  .coming-link{
+    color:var(--muted);font-size:11px;border:1px dashed var(--line);
+    padding:8px 10px;border-radius:999px;background:#FAF8F2
+  }
+
+  .full-id-stack{display:grid;gap:22px}
+  .full-id-version{
+    display:grid;grid-template-columns:190px minmax(0,1fr);gap:22px;
+    align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;
+    padding:20px;box-shadow:0 10px 28px rgba(23,63,53,.05)
+  }
+  .full-id-meta{align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+  .full-id-meta strong{display:block;color:var(--green);font-size:14px}
+  .full-id-meta p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
+
+  .full-student-id{
+    width:100%;aspect-ratio:1.62;position:relative;overflow:hidden;
+    border:1px solid #CFC8BC;border-radius:18px;
+    background:
+      radial-gradient(circle at 88% 18%,rgba(217,125,61,.08),transparent 26%),
+      linear-gradient(135deg,#FFFDF7 0%,#F0EBDF 100%);
+    box-shadow:0 14px 34px rgba(31,58,46,.10)
+  }
+  .fsid-band{
+    height:14%;min-height:54px;background:#1F3A2E;color:white;
+    display:flex;align-items:center;justify-content:space-between;padding:0 3.2%
+  }
+  .fsid-brand{display:flex;align-items:center;gap:10px}
+  .fsid-brand img{width:42px;height:42px;object-fit:contain}
+  .fsid-brand b{
+    font:500 clamp(15px,1.35vw,22px) Georgia,serif;
+    letter-spacing:.09em;font-variant:small-caps
+  }
+  .fsid-band>span{
+    font:600 clamp(8px,.75vw,12px) Georgia,serif;
+    letter-spacing:.10em;color:#E7D7C0
+  }
+
+  .fsid-body{
+    position:absolute;left:0;right:0;top:14%;bottom:8%;
+    display:grid;grid-template-columns:28% 1fr;gap:3.4%;
+    padding:2.8% 3.4% 5.2%
+  }
+  .fsid-photo{
+    width:100%;height:100%;overflow:hidden;background:#D9DAD6;border:1px solid #C3C6BF
+  }
+  .fsid-photo img{
+    width:100%;height:100%;display:block;object-fit:cover;
+    object-position:center center
+  }
+  .full-id-version.low .fsid-photo img{
+    object-position:48% 48%;filter:saturate(.94) contrast(.98)
+  }
+  .full-id-version.mid .fsid-photo img{
+    object-position:50% 47%;filter:brightness(1.02) saturate(1.01)
+  }
+  .full-id-version.high .fsid-photo img{
+    object-position:50% 45%;filter:brightness(1.045) saturate(1.05)
+  }
+
+  .fsid-info{position:relative;z-index:2;padding-top:1%}
+  .fsid-info h4{
+    margin:0 0 5%;color:#1A1F1C;
+    font:500 clamp(25px,2.7vw,48px)/1 Georgia,serif
+  }
+  .fsid-fields{
+    display:grid;grid-template-columns:1fr 1fr;gap:5% 9%
+  }
+  .fsid-fields small{
+    display:block;font-size:clamp(7px,.68vw,11px);
+    letter-spacing:.08em;color:#626A64
+  }
+  .fsid-fields strong{
+    display:block;margin-top:2px;font-size:clamp(10px,.95vw,16px);color:#1A1F1C
+  }
+  .fsid-signature{
+    margin-top:5%;color:#5D625E;font:italic clamp(16px,1.65vw,28px) Georgia,serif
+  }
+  .fsid-watermark{
+    position:absolute;right:1%;bottom:1%;width:25%;height:auto;opacity:.07;z-index:1
+  }
+  .fsid-barcode{
+    position:absolute;right:3.2%;bottom:2.8%;width:26%;height:5.5%;z-index:3;
+    background:repeating-linear-gradient(
+      90deg,#1A1F1C 0 2px,transparent 2px 4px,
+      #1A1F1C 4px 5px,transparent 5px 8px
+    )
+  }
+  .fsid-bottom{
+    position:absolute;left:0;right:0;bottom:0;height:8%;min-height:31px;
+    background:#1F3A2E;color:#EEE7DB;display:flex;align-items:center;
+    justify-content:space-between;padding:0 3.2%;
+    font:600 clamp(7px,.72vw,11px) Georgia,serif;
+    letter-spacing:.11em;text-transform:uppercase
+  }
+
+  .full-id-version.low .full-student-id{
+    filter:saturate(.97) contrast(.99);
+    box-shadow:0 10px 24px rgba(31,58,46,.07)
+  }
+  .full-id-version.high .full-student-id{
+    filter:brightness(1.01) saturate(1.02);
+    box-shadow:0 18px 38px rgba(83,57,20,.12)
+  }
+
+  @media(max-width:980px){
+    .full-id-version{grid-template-columns:1fr}
+    .full-id-meta{display:block}
+  }
+  @media(max-width:700px){
+    .v3-progress-card{align-items:flex-start;flex-direction:column}
+    .v3-progress-actions{align-items:flex-start}
+    .fsid-brand img{width:32px;height:32px}
+    .fsid-band{min-height:44px}
+    .fsid-bottom{min-height:26px}
+  }
+
+  .mini-id-grid{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px
+  }
+  .mini-id-card-wrap{
+    background:#fff;border:1px solid var(--line);border-radius:18px;
+    padding:14px;box-shadow:0 8px 20px rgba(23,63,53,.04)
+  }
+
+  .mini-student-id{
+    width:100%;aspect-ratio:1.62;position:relative;overflow:hidden;
+    border:1px solid #CFC8BC;border-radius:14px;
+    background:
+      radial-gradient(circle at 88% 18%,rgba(217,125,61,.08),transparent 26%),
+      linear-gradient(135deg,#FFFDF7 0%,#F0EBDF 100%);
+    box-shadow:0 10px 22px rgba(31,58,46,.08)
+  }
+  .mini-id-card-wrap.low .mini-student-id{filter:saturate(.975) contrast(.99)}
+  .mini-id-card-wrap.high .mini-student-id{filter:brightness(1.012) saturate(1.02)}
+
+  .msid-band{
+    height:13%;min-height:36px;background:#1F3A2E;color:white;
+    display:flex;align-items:center;justify-content:space-between;padding:0 3%
+  }
+  .msid-brand{display:flex;align-items:center;gap:7px}
+  .msid-brand img{width:24px;height:24px;object-fit:contain}
+  .msid-brand b{
+    font:500 clamp(9px,1vw,13px) Georgia,serif;
+    letter-spacing:.08em;font-variant:small-caps
+  }
+  .msid-band>span{
+    font:600 clamp(5px,.58vw,8px) Georgia,serif;letter-spacing:.10em;color:#E7D7C0
+  }
+
+  .msid-body{
+    position:absolute;left:0;right:0;top:13%;bottom:8%;
+    display:grid;grid-template-columns:29% 1fr;gap:3.2%;
+    padding:3% 3.2% 5%
+  }
+  .msid-photo{
+    width:100%;height:100%;overflow:hidden;background:#D9DAD6;border:1px solid #C3C6BF
+  }
+  .msid-photo img{
+    width:100%;height:100%;display:block;object-fit:cover;object-position:center center
+  }
+  .mini-id-card-wrap.low .msid-photo img{object-position:50% 48%}
+  .mini-id-card-wrap.mid .msid-photo img{object-position:50% 47%}
+  .mini-id-card-wrap.high .msid-photo img{object-position:50% 46%}
+
+  .msid-info{position:relative;z-index:2;padding-top:.5%}
+  .msid-info h4{
+    margin:0 0 5%;color:#1A1F1C;font:500 clamp(14px,1.5vw,22px)/1 Georgia,serif
+  }
+  .msid-fields{display:grid;grid-template-columns:1fr 1fr;gap:6% 8%}
+  .msid-fields small{
+    display:block;font-size:clamp(4.5px,.48vw,7px);letter-spacing:.07em;color:#626A64
+  }
+  .msid-fields strong{
+    display:block;margin-top:1px;font-size:clamp(6px,.68vw,10px);color:#1A1F1C
+  }
+  .msid-signature{
+    margin-top:5%;color:#5D625E;font:italic clamp(8px,.95vw,13px) Georgia,serif
+  }
+  .msid-watermark{
+    position:absolute;right:1%;bottom:1%;width:24%;height:auto;opacity:.07;z-index:1
+  }
+  .msid-barcode{
+    position:absolute;right:3%;bottom:3%;width:28%;height:7%;z-index:3;
+    background:repeating-linear-gradient(90deg,#1A1F1C 0 2px,transparent 2px 4px,#1A1F1C 4px 5px,transparent 5px 8px)
+  }
+  .msid-bottom{
+    position:absolute;left:0;right:0;bottom:0;height:8%;min-height:22px;
+    background:#1F3A2E;color:#EEE7DB;display:flex;align-items:center;justify-content:space-between;
+    padding:0 3%;font:600 clamp(4.8px,.52vw,7px) Georgia,serif;letter-spacing:.10em;text-transform:uppercase
+  }
+
+  .mini-id-copy{padding:10px 2px 0}
+  .mini-id-copy strong{display:block;color:var(--green);font-size:12px}
+  .mini-id-copy p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.45}
+
+  @media(max-width:1100px){
+    .mini-id-grid{grid-template-columns:1fr}
+    .mini-student-id{max-width:560px;margin:auto}
+  }
+
+  .msid-photo{
+    width:100%;height:100%;overflow:hidden;background:#D9DAD6;border:1px solid #C3C6BF;
+    display:block
+  }
+  .msid-photo img{
+    width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;
+    transform:scale(1.01)
+  }
+  .mini-id-card-wrap.low .msid-photo img{
+    object-position:50% 48%;
+  }
+  .mini-id-card-wrap.mid .msid-photo img{
+    object-position:50% 48%;
+  }
+  .mini-id-card-wrap.high .msid-photo img{
+    object-position:50% 47%;
+  }
+
+  .msid-photo{
+    width:100%;height:100%;overflow:hidden;background:#D9DAD6;border:0;
+    display:block
+  }
+  .msid-photo img{
+    width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;
+    transform:scale(1.015)
+  }
+
+  /* Card condition by Stability */
+  .mini-student-id.low{
+    filter:saturate(.94) brightness(.985) contrast(.985);
+    box-shadow:0 7px 14px rgba(31,58,46,.06)
+  }
+  .mini-student-id.mid{
+    filter:saturate(.99) brightness(1.00);
+    box-shadow:0 9px 18px rgba(31,58,46,.08)
+  }
+  .mini-student-id.high{
+    filter:saturate(1.035) brightness(1.025) contrast(1.01);
+    box-shadow:0 14px 28px rgba(75,55,20,.14)
+  }
+
+  /* Low: worn, scratched, slightly dirty */
+  .mini-student-id.low .card-aging-layer{
+    position:absolute;inset:0;z-index:6;pointer-events:none;opacity:.34;
+    background:
+      linear-gradient(103deg,transparent 0 26%,rgba(70,66,58,.11) 26.3%,transparent 27%),
+      linear-gradient(14deg,transparent 0 66%,rgba(70,66,58,.08) 66.2%,transparent 67%),
+      radial-gradient(circle at 7% 86%,rgba(90,82,72,.13),transparent 11%),
+      radial-gradient(circle at 92% 16%,rgba(90,82,72,.06),transparent 9%);
+    mix-blend-mode:multiply
+  }
+  .mini-student-id.low:after{
+    content:"";position:absolute;inset:2px;border-radius:12px;pointer-events:none;z-index:7;
+    box-shadow:
+      inset 0 0 0 1px rgba(45,45,40,.08),
+      inset 8px 0 12px rgba(70,65,55,.035),
+      inset -5px -3px 10px rgba(70,65,55,.03)
+  }
+
+  /* Mid: mostly clean with a very mild surface sheen */
+  .mini-student-id.mid .card-aging-layer{
+    position:absolute;inset:0;z-index:6;pointer-events:none;opacity:.12;
+    background:
+      linear-gradient(118deg,transparent 15%,rgba(255,255,255,.22) 31%,transparent 46%)
+  }
+
+  /* High: pristine, glossy, freshly printed */
+  .mini-student-id.high .card-gloss-layer{
+    position:absolute;inset:0;z-index:7;pointer-events:none;opacity:.55;
+    background:
+      linear-gradient(118deg,transparent 8%,rgba(255,255,255,.28) 23%,transparent 39%),
+      radial-gradient(circle at 85% 15%,rgba(255,228,185,.12),transparent 26%)
+  }
+  .mini-student-id.high:after{
+    content:"";position:absolute;inset:0;border-radius:14px;z-index:8;pointer-events:none;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.34),
+      inset 0 1px 0 rgba(255,255,255,.60)
+  }
+
+  .mini-id-card-wrap.low .msid-photo img{
+    object-position:50% 48%;filter:saturate(.92) brightness(.98)
+  }
+  .mini-id-card-wrap.mid .msid-photo img{
+    object-position:50% 48%;filter:brightness(1.015)
+  }
+  .mini-id-card-wrap.high .msid-photo img{
+    object-position:50% 47%;filter:brightness(1.04) saturate(1.04)
+  }
+
+  /* Stronger material storytelling for the ID cards */
+  .mini-student-id{
+    position:relative;
+  }
+
+  /* LOW STABILITY — visibly older, lightly worn, slightly faded */
+  .mini-student-id.low{
+    filter:saturate(.88) brightness(.97) contrast(.97);
+    box-shadow:0 6px 12px rgba(31,58,46,.05);
+  }
+  .mini-student-id.low .msid-band,
+  .mini-student-id.low .msid-bottom{
+    background:#234238;
+  }
+  .mini-student-id.low .msid-photo{
+    border:1px solid #b8bbb3;
+  }
+  .mini-student-id.low .card-aging-layer{
+    position:absolute;inset:0;z-index:6;pointer-events:none;opacity:.62;
+    background:
+      linear-gradient(103deg,transparent 0 20%,rgba(74,67,58,.11) 20.5%,transparent 21.1%),
+      linear-gradient(14deg,transparent 0 61%,rgba(80,70,58,.08) 61.3%,transparent 62%),
+      radial-gradient(circle at 7% 85%,rgba(93,82,67,.16),transparent 10%),
+      radial-gradient(circle at 94% 16%,rgba(90,82,72,.10),transparent 9%),
+      radial-gradient(circle at 84% 84%,rgba(120,110,95,.08),transparent 14%),
+      linear-gradient(180deg,rgba(135,125,110,.05),rgba(0,0,0,0));
+    mix-blend-mode:multiply;
+  }
+  .mini-student-id.low:before{
+    content:"";position:absolute;inset:0;z-index:7;pointer-events:none;border-radius:14px;
+    background:
+      radial-gradient(circle at 0 0, rgba(90,84,72,.16) 0 6px, transparent 7px),
+      radial-gradient(circle at 100% 0, rgba(90,84,72,.12) 0 5px, transparent 6px),
+      radial-gradient(circle at 0 100%, rgba(90,84,72,.11) 0 5px, transparent 6px),
+      radial-gradient(circle at 100% 100%, rgba(90,84,72,.16) 0 7px, transparent 8px);
+    background-repeat:no-repeat;
+    background-size:28px 28px, 24px 24px, 24px 24px, 30px 30px;
+    background-position:0 0, 100% 0, 0 100%, 100% 100%;
+  }
+  .mini-student-id.low:after{
+    content:"";position:absolute;inset:2px;z-index:8;pointer-events:none;border-radius:12px;
+    box-shadow:
+      inset 0 0 0 1px rgba(55,52,47,.08),
+      inset 11px 0 15px rgba(78,70,58,.04),
+      inset -8px -5px 14px rgba(78,70,58,.04);
+  }
+
+  /* MID STABILITY — mostly clean */
+  .mini-student-id.mid{
+    filter:saturate(.99) brightness(1.00);
+    box-shadow:0 9px 18px rgba(31,58,46,.08);
+  }
+  .mini-student-id.mid .card-aging-layer{
+    position:absolute;inset:0;z-index:6;pointer-events:none;opacity:.15;
+    background:linear-gradient(118deg,transparent 15%,rgba(255,255,255,.20) 31%,transparent 46%);
+  }
+
+  /* HIGH STABILITY — new, glossy, idealized */
+  .mini-student-id.high{
+    filter:saturate(1.05) brightness(1.04) contrast(1.01);
+    box-shadow:0 16px 30px rgba(83,57,20,.15);
+  }
+  .mini-student-id.high .msid-band,
+  .mini-student-id.high .msid-bottom{
+    background:#173a2d;
+  }
+  .mini-student-id.high .msid-photo{
+    border:1px solid rgba(255,255,255,.38);
+    box-shadow:0 0 0 1px rgba(255,255,255,.24) inset;
+  }
+  .mini-student-id.high .card-gloss-layer{
+    position:absolute;inset:0;z-index:7;pointer-events:none;opacity:.82;
+    background:
+      linear-gradient(118deg,transparent 8%,rgba(255,255,255,.12) 16%,rgba(255,255,255,.34) 23%,rgba(255,255,255,.10) 29%,transparent 39%),
+      linear-gradient(180deg,rgba(255,255,255,.08),transparent 24%),
+      radial-gradient(circle at 86% 15%,rgba(255,233,194,.16),transparent 27%);
+  }
+  .mini-student-id.high:before{
+    content:"";position:absolute;inset:0;z-index:8;pointer-events:none;border-radius:14px;
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.16),transparent 28%),
+      linear-gradient(0deg,rgba(255,255,255,.06),transparent 20%);
+    mix-blend-mode:screen;
+  }
+  .mini-student-id.high:after{
+    content:"";position:absolute;inset:0;z-index:9;pointer-events:none;border-radius:14px;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.38),
+      inset 0 1px 0 rgba(255,255,255,.72),
+      0 8px 18px rgba(217,125,61,.08);
+  }
+
+  .mini-id-card-wrap.low .msid-photo img{
+    object-position:50% 48%;
+    filter:saturate(.90) brightness(.98);
+  }
+  .mini-id-card-wrap.mid .msid-photo img{
+    object-position:50% 48%;
+    filter:brightness(1.015);
+  }
+  .mini-id-card-wrap.high .msid-photo img{
+    object-position:50% 47%;
+    filter:brightness(1.05) saturate(1.05);
+  }
+
+  .testing-summary{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px
+  }
+  .testing-summary-stat{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px
+  }
+  .testing-summary-stat small{
+    display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)
+  }
+  .testing-summary-stat strong{
+    display:block;margin-top:6px;color:var(--green);font-size:15px
+  }
+  .testing-quote{
+    margin:0 0 24px;padding:24px 28px;border-left:4px solid var(--orange);
+    background:rgba(255,253,248,.72);border-radius:0 18px 18px 0;
+    color:var(--green);font:500 26px/1.35 Georgia,serif
+  }
+  .finding-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:18px
+  }
+  .finding-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;
+    box-shadow:0 8px 24px rgba(23,63,53,.04)
+  }
+  .finding-index{
+    color:var(--orange);font:500 24px Georgia,serif;margin-bottom:10px
+  }
+  .finding-card h3{
+    margin:0;color:var(--green);font-size:19px;line-height:1.3
+  }
+  .finding-card p{
+    margin:10px 0 16px;color:var(--muted);font-size:13px;line-height:1.6
+  }
+  .finding-response{
+    border-top:1px solid var(--line);padding-top:14px
+  }
+  .finding-response small{
+    display:block;color:var(--orange);font-size:9px;letter-spacing:.12em;
+    text-transform:uppercase;font-weight:900;margin-bottom:4px
+  }
+  .finding-response strong{
+    display:block;color:var(--ink);font-size:12px;line-height:1.5
+  }
+  .testing-notes{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px
+  }
+  .testing-notes>div{
+    border:1px solid var(--line);border-radius:16px;padding:16px;background:#F6F3EB
+  }
+  .testing-notes b,.testing-notes span{display:block}
+  .testing-notes b{color:var(--green);font-size:12px}
+  .testing-notes span{margin-top:5px;color:var(--muted);font-size:11px;line-height:1.5}
+  .testing-takeaway{
+    margin-top:20px;background:var(--green);border-radius:20px;padding:22px 24px;color:white
+  }
+  .testing-takeaway small{
+    display:block;color:#F0B46D;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:900
+  }
+  .testing-takeaway h3{
+    margin:8px 0 0;color:white;font:500 23px/1.35 Georgia,serif;max-width:900px
+  }
+
+  @media(max-width:900px){
+    .testing-summary,.finding-grid,.testing-notes{grid-template-columns:1fr}
+  }
+
+  .v3-showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+  .v3-shot-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 12px 34px rgba(18,42,32,.08)}
+  .v3-shot-card img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#EAE5D9}
+  .v3-shot-copy{padding:18px 18px 20px}
+  .v3-shot-copy h4{margin:0;color:var(--green);font-size:18px}
+  .v3-shot-copy p{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+  .ui-concepts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px}
+  .ui-concept-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 12px 34px rgba(18,42,32,.08)}
+  .ui-concept-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:#EAE5D9}
+  .ui-concept-copy{padding:18px 18px 22px}
+  .ui-concept-copy h3{margin:0;color:var(--green);font-size:22px}
+  .ui-concept-copy p{margin:8px 0 0;color:var(--muted)}
+  .ui-concept-span-2{grid-column:1 / -1}
+  @media (max-width: 960px){
+    .v3-showcase-grid,.ui-concepts-grid{grid-template-columns:1fr}
+    .ui-concept-span-2{grid-column:auto}
+  }
+
+  /* Keep dividers aligned inside paired cards */
+  .mechanic-card{
+    display:flex;
+    flex-direction:column;
+  }
+  .mechanic-output{
+    margin-top:auto;
+  }
+
+  .finding-card{
+    display:flex;
+    flex-direction:column;
+  }
+  .finding-response{
+    margin-top:auto;
+  }
+
+
+/* Homepage-matched floating pill navigation — Veylora palette */
+.veylora-pill-nav{
+  position:sticky!important;
+  top:8px!important;
+  z-index:100!important;
+  width:min(1160px,calc(100% - 48px))!important;
+  min-height:54px!important;
+  margin:10px auto 0!important;
+  padding:6px 14px 6px 20px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:14px!important;
+  background:rgba(247,245,238,.92)!important;
+  border:1px solid rgba(31,58,46,.16)!important;
+  border-radius:999px!important;
+  box-shadow:0 6px 22px rgba(31,58,46,.08)!important;
+  backdrop-filter:blur(20px)!important;
+  -webkit-backdrop-filter:blur(20px)!important;
+}
+.veylora-pill-nav .brand,
+.veylora-pill-nav .nav-brand,
+.veylora-pill-nav .logo{flex:none}
+.veylora-pill-nav nav,
+.veylora-pill-nav .navlinks,
+.veylora-pill-nav .nav-links{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:23px!important;
+  margin-left:auto!important;
+  padding:0!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.veylora-pill-nav nav a,
+.veylora-pill-nav .navlinks a,
+.veylora-pill-nav .nav-links a{
+  font-size:12px!important;
+  font-weight:650!important;
+  color:#1F3A2E!important;
+  white-space:nowrap!important;
+  padding:6px 0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  transition:color .2s ease, opacity .2s ease!important;
+}
+.veylora-pill-nav nav a:hover,
+.veylora-pill-nav .navlinks a:hover,
+.veylora-pill-nav .nav-links a:hover{color:#D97D3D!important}
+.veylora-pill-nav .nav-cta,
+.veylora-pill-nav .back-link,
+.veylora-pill-nav .primary-nav-action{
+  padding:8px 14px!important;
+  border-radius:999px!important;
+  background:#1F3A2E!important;
+  color:#fff!important;
+  border:1px solid #1F3A2E!important;
+  font-size:12px!important;
+  font-weight:650!important;
+}
+.veylora-pill-nav .nav-cta:hover,
+.veylora-pill-nav .back-link:hover,
+.veylora-pill-nav .primary-nav-action:hover{
+  background:#29493D!important;color:#fff!important
+}
+section[id]{scroll-margin-top:84px}
+@media(max-width:920px){
+  .veylora-pill-nav{width:calc(100% - 28px)!important;gap:8px!important;padding:7px 12px!important}
+  .veylora-pill-nav nav,.veylora-pill-nav .navlinks,.veylora-pill-nav .nav-links{gap:13px!important}
+}
+@media(max-width:700px){
+  .veylora-pill-nav{top:8px!important;border-radius:22px!important;min-height:54px!important;flex-wrap:wrap!important}
+  .veylora-pill-nav nav,.veylora-pill-nav .navlinks,.veylora-pill-nav .nav-links{
+    flex-basis:100%!important;order:3!important;flex-wrap:wrap!important;gap:8px 14px!important;justify-content:flex-start!important
+  }
+}
+
+
+/* Match the portfolio navigation exactly in geometry and control sizing */
+.site-nav.veylora-case-nav{
+  position:sticky!important;
+  top:8px!important;
+  z-index:150!important;
+  width:min(1160px,calc(100% - 48px))!important;
+  min-height:54px!important;
+  margin:10px auto 0!important;
+  padding:6px 14px 6px 20px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:14px!important;
+  background:rgba(250,248,252,.89)!important;
+  border:1px solid rgba(65,49,83,.16)!important;
+  border-radius:999px!important;
+  box-shadow:0 6px 22px rgba(97,81,122,.035)!important;
+  backdrop-filter:blur(20px)!important;
+  -webkit-backdrop-filter:blur(20px)!important;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+}
+.site-nav.veylora-case-nav .brand{
+  font-size:16px!important;
+  font-weight:800!important;
+  letter-spacing:-.06em!important;
+  color:#24212b!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+}
+.site-nav.veylora-case-nav .brand span{
+  color:#7854d9!important;
+}
+.site-nav.veylora-case-nav .nav-actions{
+  display:flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  margin-left:auto!important;
+}
+.site-nav.veylora-case-nav .language-switch{
+  background:#fff!important;
+  border:1px solid rgba(43,34,59,.11)!important;
+  border-radius:999px!important;
+  padding:7px 11px!important;
+  min-height:36px!important;
+  font-size:11px!important;
+  font-weight:700!important;
+  color:#24212b!important;
+  white-space:nowrap!important;
+  cursor:default!important;
+}
+.site-nav.veylora-case-nav .nav-return{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:36px!important;
+  padding:8px 14px!important;
+  border-radius:999px!important;
+  background:#25212d!important;
+  color:#fff!important;
+  border:1px solid #25212d!important;
+  font-size:12px!important;
+  font-weight:650!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+  transition:transform .2s ease,background .2s ease!important;
+}
+.site-nav.veylora-case-nav .nav-return:hover{
+  transform:translateY(-2px)!important;
+  background:#3b3546!important;
+}
+@media(max-width:700px){
+  .site-nav.veylora-case-nav{
+    width:calc(100% - 28px)!important;
+    min-height:54px!important;
+    padding:7px 12px!important;
+    border-radius:22px!important;
+  }
+  .site-nav.veylora-case-nav .brand{font-size:15px!important}
+  .site-nav.veylora-case-nav .language-switch{padding:7px 10px!important}
+  .site-nav.veylora-case-nav .nav-return{padding:9px 11px!important;font-size:11px!important}
+}
+
+
+/* Veylora case-study navigation: homepage geometry, project palette */
+.site-nav.veylora-case-nav{
+  background:rgba(247,245,238,.94)!important;
+  border:1px solid rgba(31,58,46,.18)!important;
+  box-shadow:0 7px 24px rgba(31,58,46,.07)!important;
+}
+.site-nav.veylora-case-nav .brand{
+  color:#1F3A2E!important;
+}
+.site-nav.veylora-case-nav .brand span{
+  color:#D97D3D!important;
+}
+.site-nav.veylora-case-nav .navlinks{
+  display:flex!important;
+  position:absolute!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:22px!important;
+  margin:0!important;
+  padding:0!important;
+  background:none!important;
+  box-shadow:none!important;
+}
+.site-nav.veylora-case-nav .navlinks a{
+  display:block!important;
+  color:#526159!important;
+  font-size:11px!important;
+  font-weight:650!important;
+  padding:7px 0!important;
+  white-space:nowrap!important;
+  background:transparent!important;
+  border:0!important;
+  transition:color .2s ease!important;
+}
+.site-nav.veylora-case-nav .navlinks a:hover{
+  color:#D97D3D!important;
+}
+.site-nav.veylora-case-nav .language-switch{
+  background:#FFFDF8!important;
+  border-color:rgba(31,58,46,.15)!important;
+  color:#1F3A2E!important;
+  cursor:pointer!important;
+}
+.site-nav.veylora-case-nav .language-switch:hover{
+  border-color:#D97D3D!important;
+}
+.site-nav.veylora-case-nav .nav-return{
+  background:#1F3A2E!important;
+  border-color:#1F3A2E!important;
+  color:#fff!important;
+}
+.site-nav.veylora-case-nav .nav-return:hover{
+  background:#29493D!important;
+}
+
+@media(max-width:1080px){
+  .site-nav.veylora-case-nav .navlinks{
+    gap:13px!important;
+  }
+  .site-nav.veylora-case-nav .navlinks a{
+    font-size:10px!important;
+  }
+}
+@media(max-width:900px){
+  .site-nav.veylora-case-nav .navlinks{
+    display:none!important;
+  }
+}
+
+
+/* Navigation fix: preserve original case-study sections and include Design Challenge */
+.site-nav.veylora-case-nav .navlinks{
+  gap:18px!important;
+}
+.site-nav.veylora-case-nav .navlinks a{
+  font-size:10.5px!important;
+}
+@media(max-width:1120px){
+  .site-nav.veylora-case-nav .navlinks{gap:12px!important}
+  .site-nav.veylora-case-nav .navlinks a{font-size:10px!important}
+}
+
+
+/* V32 — compact case-study hero */
+.hero{
+  min-height:auto!important;
+  padding:54px 0 38px!important;
+}
+.hero-grid{
+  align-items:start!important;
+  gap:48px!important;
+}
+.hero h1{
+  font-size:clamp(68px,8vw,118px)!important;
+  line-height:.92!important;
+  margin:18px 0 24px!important;
+  max-width:760px!important;
+}
+.hero .lede{
+  max-width:690px!important;
+  font-size:18px!important;
+  line-height:1.58!important;
+  margin-bottom:24px!important;
+}
+.hero-actions{
+  margin-top:22px!important;
+}
+.meta{
+  margin-top:112px!important;
+  padding-top:22px!important;
+  gap:24px 34px!important;
+}
+.meta small{
+  margin-bottom:5px!important;
+}
+.meta strong{
+  font-size:14px!important;
+  line-height:1.4!important;
+}
+
+/* shrink the large green browser preview beneath the hero */
+.institutional{
+  margin-top:18px!important;
+  border-radius:28px!important;
+  padding:34px 38px!important;
+  min-height:0!important;
+}
+.institutional .browser{
+  max-width:900px!important;
+  margin:0 auto!important;
+  transform:rotate(-1deg) scale(.93)!important;
+  transform-origin:center!important;
+}
+.institutional-copy,
+.institutional .institutional-copy{
+  max-width:900px!important;
+  margin:20px auto 0!important;
+}
+.institutional{
+  overflow:hidden!important;
+}
+
+/* keep the whole opening composition visually tighter on normal laptops */
+@media(min-width:1100px){
+  .hero .wrap,
+  .hero.wrap{
+    max-width:1240px!important;
+  }
+}
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr!important;gap:18px!important}
+  .meta{margin-top:8px!important}
+  .institutional{padding:26px!important}
+  .institutional .browser{transform:none!important}
+}
+
+
+/* V33 — Chinese hero meta alignment only */
+html[lang="zh-CN"] .hero .meta{
+  padding-left:22px!important;
+  column-gap:38px!important;
+  row-gap:12px!important;
+  align-items:stretch!important;
+}
+html[lang="zh-CN"] .hero .meta > div{
+  min-height:70px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+  padding:8px 4px!important;
+}
+html[lang="zh-CN"] .hero .meta small{
+  margin-bottom:7px!important;
+}
+html[lang="zh-CN"] .hero .meta strong{
+  margin-top:0!important;
+  line-height:1.55!important;
+}
+
+@media(max-width:980px){
+  html[lang="zh-CN"] .hero .meta{
+    padding-left:0!important;
+  }
+}
+
+
+/* V34 — integrated case-study opening */
+.hero-integrated{
+  padding:44px 0 52px!important;
+  min-height:auto!important;
+}
+.hero-integrated-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.9fr) minmax(520px,1.1fr)!important;
+  gap:50px!important;
+  align-items:center!important;
+}
+.hero-integrated-copy{min-width:0}
+.hero-integrated h1{
+  font-size:clamp(68px,7.1vw,108px)!important;
+  line-height:.89!important;
+  letter-spacing:-.065em!important;
+  margin:16px 0 22px!important;
+  max-width:none!important;
+}
+.hero-integrated .lede{
+  max-width:610px!important;
+  font-size:17px!important;
+  line-height:1.62!important;
+  margin:0!important;
+}
+.hero-integrated .hero-actions{
+  margin-top:24px!important;
+}
+.hero-integrated-meta{
+  margin-top:32px!important;
+  padding-top:20px!important;
+  border-top:1px solid var(--line)!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:18px 28px!important;
+}
+.hero-integrated-meta > div{
+  min-height:0!important;
+  padding:0!important;
+  display:block!important;
+}
+.hero-integrated-meta small{
+  display:block!important;
+  margin-bottom:5px!important;
+}
+.hero-integrated-meta strong{
+  display:block!important;
+  font-size:13px!important;
+  line-height:1.45!important;
+}
+
+.hero-integrated-visual{
+  min-width:0;
+}
+.hero-shot-frame{
+  width:100%;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  border-radius:28px;
+  border:1px solid rgba(31,58,46,.14);
+  background:#1F3A2E;
+  box-shadow:0 22px 58px rgba(31,58,46,.14);
+}
+.hero-shot-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.hero-shot-caption{
+  margin-top:13px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+.hero-shot-caption span{
+  color:var(--orange);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.hero-shot-caption b{
+  color:var(--green);
+  font-size:12px;
+  line-height:1.45;
+  text-align:right;
+}
+
+html[lang="zh-CN"] .hero-integrated-meta{
+  padding-left:0!important;
+}
+html[lang="zh-CN"] .hero-integrated-meta > div{
+  min-height:0!important;
+  padding:0!important;
+}
+html[lang="zh-CN"] .hero-integrated h1{
+  letter-spacing:-.045em!important;
+}
+
+@media(max-width:1050px){
+  .hero-integrated-grid{
+    grid-template-columns:1fr!important;
+    gap:30px!important;
+  }
+  .hero-integrated-visual{max-width:820px}
+}
+@media(max-width:700px){
+  .hero-integrated{padding-top:28px!important}
+  .hero-integrated h1{font-size:clamp(58px,16vw,82px)!important}
+  .hero-integrated-meta{grid-template-columns:1fr 1fr!important;gap:16px!important}
+  .hero-shot-caption{flex-direction:column;gap:5px}
+  .hero-shot-caption b{text-align:left}
+}
+
+
+/* V35 — compact artifact hero + reading progress */
+.case-reading-progress{
+  position:fixed;
+  z-index:180;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:rgba(31,58,46,.08);
+  pointer-events:none;
+}
+.case-reading-progress span{
+  display:block;
+  width:100%;
+  height:100%;
+  transform:scaleX(0);
+  transform-origin:left;
+  background:linear-gradient(90deg,#1F3A2E 0%,#5C7669 58%,#D97D3D 100%);
+}
+
+.hero-artifact{
+  min-height:calc(100svh - 78px)!important;
+  padding:34px 0 42px!important;
+  display:flex!important;
+  align-items:center!important;
+}
+.hero-artifact-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.92fr) minmax(420px,.78fr)!important;
+  gap:70px!important;
+  align-items:center!important;
+}
+.hero-artifact .hero-integrated-copy{
+  min-width:0;
+}
+.hero-artifact h1{
+  font-size:clamp(68px,7vw,108px)!important;
+  line-height:.9!important;
+  margin:15px 0 21px!important;
+}
+.hero-artifact .lede{
+  max-width:610px!important;
+  font-size:17px!important;
+  line-height:1.6!important;
+}
+.hero-artifact .hero-actions{
+  margin-top:23px!important;
+}
+.hero-artifact .hero-integrated-meta{
+  margin-top:30px!important;
+  padding-top:20px!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:18px 28px!important;
+}
+.hero-artifact .hero-integrated-meta > div{
+  min-height:0!important;
+  padding:0!important;
+}
+
+.hero-artifact-visual{
+  position:relative;
+  min-height:480px;
+  display:grid;
+  place-items:center;
+}
+.artifact-seal-card{
+  width:min(100%,470px);
+  border:1px solid rgba(31,58,46,.14);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 87% 14%,rgba(217,125,61,.12),transparent 23%),
+    linear-gradient(145deg,#FFFDF8 0%,#F2EEE3 100%);
+  box-shadow:0 24px 60px rgba(31,58,46,.12);
+  overflow:hidden;
+  transform:rotate(-2deg);
+}
+.artifact-seal-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:20px 22px;
+  background:#1F3A2E;
+  color:#fff;
+}
+.artifact-seal-top img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+}
+.artifact-seal-top span{
+  display:block;
+  font:500 21px Georgia,serif;
+  letter-spacing:.04em;
+}
+.artifact-seal-top small{
+  display:block;
+  margin-top:3px;
+  color:#E6D9C5;
+  font:500 9px Georgia,serif;
+  letter-spacing:.13em;
+}
+.artifact-seal-body{
+  padding:30px 30px 24px;
+}
+.artifact-kicker{
+  display:block;
+  color:#D97D3D;
+  font-size:9px;
+  font-weight:850;
+  letter-spacing:.16em;
+}
+.artifact-seal-body h3{
+  margin:12px 0 14px;
+  color:#1F3A2E;
+  font:500 42px/1 Georgia,serif;
+}
+.artifact-seal-body p{
+  margin:0;
+  color:#59655F;
+  font-size:13px;
+  line-height:1.65;
+  max-width:340px;
+}
+.artifact-code-row{
+  margin-top:28px;
+  padding-top:16px;
+  border-top:1px solid rgba(31,58,46,.12);
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  color:#1F3A2E;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.09em;
+}
+.artifact-seal-foot{
+  padding:13px 20px;
+  background:#1F3A2E;
+  color:#EEE7DB;
+  text-align:center;
+  font-size:7px;
+  letter-spacing:.14em;
+  font-weight:700;
+}
+.artifact-mini-id{
+  position:absolute;
+  right:-10px;
+  bottom:26px;
+  width:210px;
+  display:grid;
+  grid-template-columns:50px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:14px 16px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(31,58,46,.12);
+  box-shadow:0 14px 35px rgba(31,58,46,.13);
+  transform:rotate(5deg);
+}
+.artifact-mini-id img{
+  width:46px;
+  height:46px;
+  object-fit:contain;
+}
+.artifact-mini-id small,
+.artifact-mini-id strong,
+.artifact-mini-id span{
+  display:block;
+}
+.artifact-mini-id small{
+  color:#7A847E;
+  font-size:7px;
+  letter-spacing:.12em;
+}
+.artifact-mini-id strong{
+  margin-top:2px;
+  color:#1F3A2E;
+  font-size:14px;
+}
+.artifact-mini-id span{
+  margin-top:2px;
+  color:#7A847E;
+  font-size:9px;
+}
+
+/* Keep the next section fully below the first viewport */
+#origin{
+  scroll-margin-top:84px;
+}
+
+/* Mechanics alignment: both dividers sit on the same baseline */
+.mechanic-card{
+  display:flex!important;
+  flex-direction:column!important;
+}
+.mechanic-card .pills{
+  min-height:86px!important;
+  align-content:flex-start!important;
+}
+.mechanic-card .mechanic-output{
+  margin-top:auto!important;
+  min-height:92px!important;
+}
+.mechanic-card .mechanic-output p{
+  max-width:none!important;
+}
+.mechanic-card:nth-child(2) .mechanic-output p{
+  white-space:nowrap!important;
+  font-size:13px!important;
+}
+
+@media(max-width:1050px){
+  .hero-artifact{
+    min-height:auto!important;
+  }
+  .hero-artifact-grid{
+    grid-template-columns:1fr!important;
+    gap:28px!important;
+  }
+  .hero-artifact-visual{
+    min-height:430px;
+    max-width:620px;
+  }
+}
+@media(max-width:700px){
+  .hero-artifact{
+    padding-top:24px!important;
+  }
+  .hero-artifact-visual{
+    min-height:350px;
+  }
+  .artifact-seal-card{
+    max-width:390px;
+  }
+  .artifact-mini-id{
+    width:180px;
+    right:0;
+    bottom:8px;
+  }
+  .mechanic-card .mechanic-output p{
+    white-space:normal!important;
+  }
+}
+
+
+/* V36 — mechanic divider spacing */
+.mechanic-card .pills{
+  min-height:104px!important;
+  padding-bottom:18px!important;
+}
+.mechanic-card .mechanic-output{
+  margin-top:0!important;
+  padding-top:22px!important;
+}
+
+</style>
+<script id="shared-portfolio-language">
+(function(){
+  const key='yanyu-personal-universe-language';
+  window.portfolioLanguage={
+    get(){try{return localStorage.getItem(key)==='zh'?'zh':'en';}catch(e){return 'en';}},
+    set(lang){try{localStorage.setItem(key,lang==='zh'?'zh':'en');}catch(e){}}
+  };
+  document.addEventListener('click',function(event){
+    const target=event.target;
+    if(target && target.closest && target.closest('.language-switch')){
+      window.portfolioLanguage.set(document.documentElement.lang==='zh-CN'?'en':'zh');
+    }
+  },true);
+})();
+</script>
+</head>
+<body>
+
+
+
+<div class="case-reading-progress" aria-hidden="true"><span id="case-reading-progress"></span></div>
+<header class="site-nav veylora-case-nav">
+  <a class="brand" href="#top" aria-label="Veylora case study — Back to top">
+    YANYU GU<span>.</span>
+  </a>
+
+  <nav class="navlinks" aria-label="Case study navigation">
+    <a href="#origin">Origin</a>
+    <a href="#challenge">Design Challenge</a>
+    <a href="#research">Research</a>
+    <a href="#versions">Versions</a>
+    <a href="#testing">Testing</a>
+    <a href="#ux">UI System</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button class="language-switch" type="button" aria-label="Switch language">EN / 中文</button>
+    <a class="nav-return" href="index.html#work">← Back to portfolio</a>
+  </div>
+</header>
+
+
+
+<main>
+  
+
+<section class="hero hero-integrated hero-artifact" id="top">
+  <div class="wrap hero-artifact-grid">
+    <div class="hero-integrated-copy">
+      <div class="eyebrow">Product Design · Game UX · Narrative Systems</div>
+      <h1>Veylora<br/>University</h1>
+      <p class="lede">Designing a psychological horror game where players uncover the story by noticing contradictions across rules, documents, websites, and physical spaces.</p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="https://veylora-v2.koanhane.chatgpt.site" target="_blank" rel="noopener">Play Latest Version (V2) ↗</a>
+      </div>
+
+      <div class="meta hero-integrated-meta">
+        <div><small>Role</small><strong>Product / UX/UI / Narrative Design</strong></div>
+        <div><small>Type</small><strong>Personal Project</strong></div>
+        <div><small>Focus</small><strong>Interaction · IA · Game UX</strong></div>
+        <div><small>Tools</small><strong>Figma · ChatGPT · Gemini · Claude · HTML/CSS/JS</strong></div>
+      </div>
+    </div>
+
+    <div class="hero-artifact-visual" aria-label="Veylora institutional identity concept">
+      <div class="artifact-seal-card">
+        <div class="artifact-seal-top">
+          <img src="veylora-crest.webp" alt="Veylora University crest">
+          <div>
+            <span>Veylora University</span>
+            <small>Constans in Proposito</small>
+          </div>
+        </div>
+        <div class="artifact-seal-body">
+          <span class="artifact-kicker">STUDENT CODE · 2031</span>
+          <h3>Welcome to<br/>Veylora.</h3>
+          <p>Your student record has been activated. Please review the Student Code before orientation.</p>
+          <div class="artifact-code-row">
+            <span>VU-310427</span>
+            <span>GENERAL ACCESS</span>
+          </div>
+        </div>
+        <div class="artifact-seal-foot">OFFICIAL STUDENT MATERIAL · VEYLORA UNIVERSITY</div>
+      </div>
+
+      <div class="artifact-mini-id">
+        <img src="veylora-crest.webp" alt="">
+        <div>
+          <small>STUDENT ID</small>
+          <strong>VU-310427</strong>
+          <span>Class of 2031</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <section id="origin">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">01 · Origin</div>
+          <h2>From story to game.</h2>
+        </div>
+        <div class="section-copy">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
+            <img src="veylora-id-crest.webp" alt="Veylora University crest" style="width:92px;height:auto;display:block">
+            <span class="small-note" style="margin:0">Veylora University · fictional institutional identity</span>
+          </div>
+          The original written version was a UC Berkeley–based rules horror story. For the interactive adaptation, I rebuilt the setting as Veylora University — a fictional institution with its own identity, rules, and world.
+          <div class="quote">How could I preserve the feeling of discovering contradictions while giving the player more agency than a written story?</div>
+          <a class="btn secondary" href="https://docs.google.com/document/d/1SLCmLm36RTWN-GqN5N6dBZaq58aqR0DsPb7Q034cLVQ/edit?usp=drivesdk" target="_blank" rel="noopener">Read original story ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="challenge">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">02 · Design Challenge</div>
+          <h2>Design challenge</h2>
+        </div>
+        <div class="section-copy">
+          In the original story, I controlled when the reader saw each rule and contradiction. In a game, the player needed to discover, remember, and connect information for themselves.
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card challenge-card">
+          <h3>Discover</h3>
+          <p>How can information feel found, rather than simply delivered by the story?</p>
+        </div>
+        <div class="card challenge-card">
+          <h3>Explore</h3>
+          <p>How can physical places like the library, dorm, and student union still matter?</p>
+        </div>
+        <div class="card challenge-card">
+          <h3>Connect</h3>
+          <p>How can scattered clues form one coherent investigation instead of unrelated strange events?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">03 · Reference Research</div>
+          <h2>References</h2>
+        </div>
+        <div class="section-copy">
+          I studied two interaction models through Danganronpa and Her Story. Danganronpa helped me understand scene-based narrative immersion; Her Story showed how fragmented information can become the investigation itself. Veylora combines both rather than choosing one.
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card ref-card">
+          <div class="ref-art">
+            <img src="danganronpa-reference.webp" alt="Danganronpa gameplay reference showing a character portrait, dialogue box, and scene-based presentation">
+            <div class="ref-tag">Narrative reference · Danganronpa</div>
+          </div>
+          <h3>Narrative Games</h3>
+          <p><em>Danganronpa</em> influenced the early interaction model: character portraits, dialogue-driven scenes, distinct locations, and the feeling of physically moving through a story world.</p>
+          <div>
+            <span class="pill">Characters</span><span class="pill">Dialogue</span><span class="pill">Scenes</span>
+          </div>
+          <div class="credit">Reference image: Danganronpa (Spike Chunsoft).</div>
+        </article>
+
+        <article class="card ref-card">
+          <div class="ref-art">
+            <img src="her-story-reference.webp" alt="Her Story reference showing a desktop interface, video database, text files, and layered investigation windows">
+            <div class="ref-tag">Investigation reference · Her Story</div>
+          </div>
+          <h3>Desktop / Information Investigation</h3>
+          <p><em>Her Story</em> helped me think about investigation differently: the player searches, revisits, and connects fragments of information instead of receiving the story in one fixed sequence.</p>
+          <div>
+            <span class="pill">Files</span><span class="pill">Search</span><span class="pill">Cross-reference</span>
+          </div>
+          <div class="credit">Reference image: Her Story (Sam Barlow / Half Mermaid).</div>
+        </article>
+      </div>
+
+      <div class="takeaway">
+        <div><small>Narrative games gave me</small><strong>Presence + spatial immersion</strong></div>
+        <div class="plus">+</div>
+        <div><small>Desktop investigation gave me</small><strong>Search + information discovery</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="versions">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">04 · Version Evolution</div>
+          <h2>Version evolution</h2>
+        </div>
+        <div class="section-copy">
+          Each version changed what I believed the player should actually be doing.
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>V1</th>
+              <th>V2</th>
+              <th>V3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Focus</td>
+              <td>Turn the original story into a playable game.</td>
+              <td>Build one complete, library-centered storyline.</td>
+              <td>Build the hybrid investigation system.</td>
+            </tr>
+            <tr>
+              <td>Player Experience</td>
+              <td>Follow scattered events.</td>
+              <td>Explore a connected mystery with a clear main line.</td>
+              <td>Move between digital investigation and field exploration.</td>
+            </tr>
+            <tr>
+              <td>Biggest Change</td>
+              <td>Story → playable scenes</td>
+              <td>Library-centered flow + true / false endings</td>
+              <td>Working hybrid system: web / desktop + field exploration</td>
+            </tr>
+            <tr>
+              <td>Prototype</td>
+              <td><a class="mini-link" href="https://veylora-v1.koanhane.chatgpt.site" target="_blank" rel="noopener">Play V1 ↗</a></td>
+              <td><a class="mini-link" href="https://veylora-v2.koanhane.chatgpt.site" target="_blank" rel="noopener">Play V2 ↗</a></td>
+              <td>In progress</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="version">
+        <div class="version-label">V1</div>
+        <div class="version-title">V1 · First playable build</div>
+        <p class="version-intro">The first prototype tried to bring many parts of the original story into Day 1 at once — orientation, documents, campus exploration, strange events, and multiple rules.</p>
+
+        <div class="version-grid">
+          <div>
+          <img class="project-shot" src="veylora-v1-gameplay.webp" alt="Veylora V1 gameplay screenshot showing campus exploration, dialogue choices, and early UI">
+          <div class="prototype-actions">
+            <a class="prototype-link" href="https://veylora-v1.koanhane.chatgpt.site" target="_blank" rel="noopener">Play V1 ↗</a>
+          </div>
+          <div class="shot-caption">V1 · Early playable narrative prototype</div>
+        </div>
+          <div class="card problem">
+            <h4>What I learned</h4>
+            <ul>
+              <li>The storyline felt fragmented.</li>
+              <li>Too many events appeared without one clear investigation thread.</li>
+              <li>Text was too small for a reading-heavy experience.</li>
+              <li>Dialogue progressed too quickly.</li>
+              <li>Some spaces reused visuals even after the player changed locations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="version">
+        <div class="version-label">V2</div>
+        <div class="version-title">V2 · One clear storyline</div>
+        <p class="version-intro">V2 shifted the focus toward one complete, coherent storyline. The library became the center of the investigation: earlier rules and events guided players toward it, discoveries there connected later scenes, and the full route eventually branched into a true ending and a false ending.</p>
+
+        <div class="flow">
+          <span class="flow-step">Orientation</span><span class="arrow">→</span>
+          <span class="flow-step">Learn a rule</span><span class="arrow">→</span>
+          <span class="flow-step">Library lead</span><span class="arrow">→</span>
+          <span class="flow-step">Explore library</span><span class="arrow">→</span>
+          <span class="flow-step">Find evidence</span><span class="arrow">→</span>
+          <span class="flow-step">Key decision</span>
+        </div>
+        <div class="branch">
+          <div class="ending false">False Ending</div>
+          <div class="ending true">True Ending</div>
+        </div>
+
+        <div class="version-grid">
+          
+<div>
+  <img class="project-shot" src="veylora-v2-orientation.webp" alt="Veylora V2 orientation check-in scene showing university ID, character dialogue, and environmental storytelling">
+  <div class="prototype-actions">
+    <a class="prototype-link" href="https://veylora-v2.koanhane.chatgpt.site" target="_blank" rel="noopener">Play V2 ↗</a>
+  </div>
+  <div class="shot-caption">V2 · Orientation check-in · clearer storyline and worldbuilding</div>
+</div>
+
+          <div class="card problem">
+            <h4>Supporting UX improvements</h4>
+            <ul>
+              <li>Unique scenes for important spaces.</li>
+              <li>Character portraits and stronger dialogue presentation.</li>
+              <li>Day / night and clock transitions.</li>
+              <li>Phone and email audio cues.</li>
+              <li>Slower reading pace and better document hierarchy.</li>
+            </ul>
+            <h4 style="margin-top:22px">Remaining problem</h4>
+            <p style="margin:0;color:#55625B">The player still mostly followed a predefined story rather than actively investigating it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="version">
+        <div class="version-label">V3</div>
+        <div class="version-title">V3 · Investigation</div>
+        <div class="wip-badge">In progress</div>
+        <p class="version-intro">V3 is now a working hybrid prototype and is still expanding. It connects Veylora’s website, applicant portal, desktop OS, archive, forum, phone, map, code runner, and field exploration into one investigation system.</p>
+        <div class="prototype-actions"></div>
+
+        <div class="quote">The horror comes from contradiction.</div>
+
+        <div class="flow">
+          <span class="flow-step">Explore</span><span class="arrow">→</span>
+          <span class="flow-step">Find</span><span class="arrow">→</span>
+          <span class="flow-step">Save</span><span class="arrow">→</span>
+          <span class="flow-step">Compare</span><span class="arrow">→</span>
+          <span class="flow-step">Interpret</span><span class="arrow">↺</span>
+        </div>
+
+        <h3 style="margin-top:36px;color:var(--green);font-size:24px">Why hybrid?</h3>
+        <p class="section-copy" style="max-width:900px">
+          Web interfaces work well for searching and comparing information, but the story also depends on physically entering spaces, finding objects, and escaping institutional environments. V3 keeps both.
+        </p>
+
+        <div class="hybrid">
+          <div class="card">
+            <h3>Digital Layer</h3>
+            <p>Website, email, forum, portal, files.</p>
+            <span class="pill">Read</span><span class="pill">Search</span><span class="pill">Compare</span>
+          </div>
+          <div class="card">
+            <h3>Physical Layer</h3>
+            <p>Library, dorm, SLC, student union, elevators, notes.</p>
+            <span class="pill">Explore</span><span class="pill">Discover</span><span class="pill">Collect</span>
+          </div>
+          <div class="card">
+            <h3>Evidence Layer</h3>
+            <p>Connects both worlds by letting players save, reopen, and compare what they find.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:34px;color:var(--green);font-size:24px">Current V3 showcase</h3>
+        <p class="section-copy" style="max-width:920px">
+          These are current in-engine V3 scenes. They belong in the project evolution section because they show the actual playable investigation build, not just isolated UI concepts.
+        </p>
+
+        <div class="v3-showcase-grid">
+          <article class="v3-shot-card">
+            <img src="veylora-v3-memorial-court.webp" alt="V3 scene showing Memorial Court orientation with Chloe Park and the campus access reader">
+            <div class="v3-shot-copy">
+              <h4>Memorial Court · orientation start</h4>
+              <p>The player first enters campus life through a guided welcome scene that establishes role, tone, and the institutional surface of the university.</p>
+            </div>
+          </article>
+
+          <article class="v3-shot-card">
+            <img src="veylora-v3-os-hub.webp" alt="V3 scene showing Veylora OS with archive, browser, and code runner">
+            <div class="v3-shot-copy">
+              <h4>Veylora OS · investigation hub</h4>
+              <p>The desktop system becomes the central place for collecting evidence, reopening documents, comparing contradictions, and running discovered files.</p>
+            </div>
+          </article>
+
+          <article class="v3-shot-card">
+            <img src="veylora-v3-access-management.webp" alt="V3 scene showing the Campus Access Management screen inside the library staff area">
+            <div class="v3-shot-copy">
+              <h4>Library staff area · permission escalation</h4>
+              <p>Institutional systems become part of the puzzle. Access is no longer just narrative flavor — it is a mechanic that unlocks what the player can discover.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="core-mechanics">
+          <div class="core-mechanics-head">
+            <div>
+              <div class="kicker">Core Mechanics</div>
+              <h3>Awareness × Stability</h3>
+            </div>
+            <p>V3 now tracks two hidden variables in the game state. Together, they create the tension between seeing the truth and succeeding inside the institution.</p>
+          </div>
+
+          <div class="mechanic-grid">
+            <div class="mechanic-card awareness">
+              <div class="mechanic-top">
+                <span>01</span>
+                <h4>Awareness</h4>
+              </div>
+              <p class="mechanic-definition">How much the player notices inconsistency.</p>
+              <div class="mechanic-examples">
+                <span>Revisit repeated buildings</span>
+                <span>Remember the 5th floor</span>
+                <span>Read anomalous forum posts</span>
+              </div>
+              <div class="mechanic-output"><b>Awareness ↑</b><span>More anomalies become visible, bringing the player closer to the truth.</span></div>
+            </div>
+
+            <div class="mechanic-card stability">
+              <div class="mechanic-top">
+                <span>02</span>
+                <h4>Stability</h4>
+              </div>
+              <p class="mechanic-definition">How “normal” the university system believes the player is.</p>
+              <div class="mechanic-examples">
+                <span>Attend class</span>
+                <span>Maintain grades</span>
+                <span>Follow Advisor instructions</span>
+                <span>Avoid discussing anomalies</span>
+              </div>
+              <div class="mechanic-output"><b>Stability ↑</b><span>The player looks more successful — and more aligned with the system.</span></div>
+            </div>
+          </div>
+
+          <div class="mechanic-connection">
+            <div>
+              <small>SYSTEM OUTPUT</small>
+              <strong>Student ID × Stability</strong>
+            </div>
+            <p>The student's ID photo quietly becomes cleaner, warmer, and more “perfect” as Stability rises. The system never announces the change — the player has to notice it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="testing">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">05 · User Testing</div>
+        <h2>Formative test</h2>
+      </div>
+      <div class="section-copy">
+        I tested an incomplete V3 build to understand whether the new investigation direction was working before the full game was finished.
+        The goal was not to validate the final experience, but to identify where players felt engaged, confused, or overly guided.
+      </div>
+    </div>
+
+    <div class="testing-summary">
+      <div class="testing-summary-stat">
+        <small>Prototype stage</small>
+        <strong>V3 · In progress</strong>
+      </div>
+      <div class="testing-summary-stat">
+        <small>Format</small>
+        <strong>Moderated playtest</strong>
+      </div>
+      <div class="testing-summary-stat">
+        <small>Main focus</small>
+        <strong>Discovery · Reading · Navigation</strong>
+      </div>
+    </div>
+
+    <div class="testing-quote">
+      “I felt like I was being guided to look, rather than discovering things myself.”
+    </div>
+
+    <div class="finding-grid">
+      <article class="finding-card">
+        <div class="finding-index">01</div>
+        <h3>The mystery worked, but discovery felt too guided.</h3>
+        <p>
+          The player understood the hidden fifth floor as the first major anomaly and could follow the library-centered investigation.
+          However, many discoveries still felt prompted rather than self-directed.
+        </p>
+        <div class="finding-response">
+          <small>Design response</small>
+          <strong>Reduce explicit prompts and give players more control over where to investigate next.</strong>
+        </div>
+      </article>
+
+      <article class="finding-card">
+        <div class="finding-index">02</div>
+        <h3>Reading friction reduced engagement.</h3>
+        <p>
+          Long blocks of text and weak hierarchy made some documents hard to scan.
+          The player explicitly noted that dense text made them less willing to read.
+        </p>
+        <div class="finding-response">
+          <small>Design response</small>
+          <strong>Shorter chunks, clearer hierarchy, more lists, and easier reopening of evidence.</strong>
+        </div>
+      </article>
+
+      <article class="finding-card">
+        <div class="finding-index">03</div>
+        <h3>The desktop system was one of the strongest parts.</h3>
+        <p>
+          The computer interface, archive, browser, and map were perceived as clear and visually coherent.
+          This supported the direction of using Veylora OS as the investigation hub.
+        </p>
+        <div class="finding-response">
+          <small>Design response</small>
+          <strong>Keep the OS central and make previously collected information easier to access at any time.</strong>
+        </div>
+      </article>
+
+      <article class="finding-card">
+        <div class="finding-index">04</div>
+        <h3>Early immersion was weaker than the later mystery.</h3>
+        <p>
+          The player understood the tasks, but did not immediately feel strongly embedded in the role of a new student.
+          The strongest sense of unease began around the library sequence.
+        </p>
+        <div class="finding-response">
+          <small>Design response</small>
+          <strong>Strengthen student identity, campus-life interactions, and onboarding before the horror becomes explicit.</strong>
+        </div>
+      </article>
+    </div>
+
+    <div class="testing-notes">
+      <div>
+        <b>Other issues observed</b>
+        <span>Location changes felt abrupt, Student ID could be ignored without prompting, and some information architecture still needs simplification.</span>
+      </div>
+      <div>
+        <b>Prototype limitation</b>
+        <span>A blocking bug prevented full validation of one ending path, so the ending flow still needs another test after implementation is complete.</span>
+      </div>
+    </div>
+
+    <div class="testing-takeaway">
+      <small>Key takeaway</small>
+      <h3>V3 should not simply tell players where the mystery is. It should give them better tools to notice, remember, and investigate it themselves.</h3>
+    </div>
+  </div>
+</section>
+
+<section id="ux">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">06 · UI System</div>
+        <h2>UI system</h2>
+      </div>
+      <div class="section-copy">
+        The current V3 interface system expands Veylora beyond scene dialogue into a connected institutional world: a desktop OS, official university website, applicant portal, student ID, archive, map, and evidence surfaces.
+        <div class="quote" style="font-size:24px">The UI should feel trustworthy before it feels strange.</div>
+      </div>
+    </div>
+
+    <div class="v3-progress-card">
+      <div>
+        <div class="ui-system-label">V3 · In Progress</div>
+        <h3>Current direction</h3>
+        <p>V3 is still being developed. The case study documents the product direction and UI system without presenting the unfinished build as a final prototype.</p>
+      </div>
+      <div class="v3-progress-actions">
+        <span class="wip-badge">In progress</span>
+        <span class="coming-link">Progress link coming soon</span>
+      </div>
+    </div>
+
+    <div class="ui-current-grid">
+      <article class="ui-shot-card">
+        <div class="ui-shot-head">
+          <div class="ui-system-label">Current V3 UI</div>
+          <h3>Veylora OS</h3>
+        </div>
+        <img class="ui-shot" src="veylora-os-interface.webp" alt="Veylora OS interface with mail, archive, portal, map, and desktop layout">
+        <p class="ui-shot-copy">
+          The OS becomes the player’s investigation hub. It supports mail, archive, browser, portal, map, forum, and file-based exploration while preserving a polished institutional tone.
+        </p>
+      </article>
+
+      <article class="ui-shot-card">
+        <div class="ui-shot-head">
+          <div class="ui-system-label">Current V3 UI</div>
+          <h3>Official website</h3>
+        </div>
+        <img class="ui-shot" src="veylora-official-website.webp" alt="Veylora University official website and applicant portal landing page">
+        <p class="ui-shot-copy">
+          The website and applicant portal establish Veylora as a desirable, believable university first. That credibility makes later contradictions more effective.
+        </p>
+      </article>
+    </div>
+
+    <div class="ui-system-foundation">
+      <div>
+        <div class="ui-system-label">Foundations</div>
+        <h3>Visual language</h3>
+      </div>
+      <p>
+        The UI uses a restrained institutional palette: deep green for authority, cream for readability, and warm orange for emphasis.
+        Editorial serif headings are paired with clean system sans-serif text so the experience feels more like a university ecosystem than a conventional horror interface.
+      </p>
+    </div>
+
+    <div class="ui-foundation-grid">
+      <div class="foundation-card">
+        <div class="foundation-swatch" style="background:#1F3A2E"></div>
+        <strong>Primary green</strong>
+        <span>Institutional surfaces, headers, buttons</span>
+      </div>
+      <div class="foundation-card">
+        <div class="foundation-swatch" style="background:#F5F4EF"></div>
+        <strong>Soft cream</strong>
+        <span>Backgrounds, readability, paper tone</span>
+      </div>
+      <div class="foundation-card">
+        <div class="foundation-swatch" style="background:#D97D3D"></div>
+        <strong>Warm orange</strong>
+        <span>Accent, progress, subtle emphasis</span>
+      </div>
+      <div class="foundation-card">
+        <div class="foundation-swatch" style="background:#1A1F1C"></div>
+        <strong>Text ink</strong>
+        <span>Body copy, system labels, hierarchy</span>
+      </div>
+    </div>
+
+    <div class="id-system-block">
+      <div class="id-system-head">
+        <div>
+          <div class="ui-system-label">Student ID × Stability</div>
+          <h3>Identity drift</h3>
+        </div>
+        <p>
+          Stability changes both the portrait and the physical condition of the ID itself.
+          The player never receives an update notice — the card simply becomes cleaner, newer, and more idealized over time.
+        </p>
+      </div>
+
+      <div class="mini-id-grid">
+        
+        <article class="mini-id-card-wrap low">
+          <span class="id-version-label">Low Stability</span>
+
+          <div class="mini-student-id low">
+            <div class="msid-band">
+              <div class="msid-brand">
+                <img src="veylora-crest.webp" alt="Veylora crest">
+                <b>Veylora University</b>
+              </div>
+              <span>Constans in Proposito</span>
+            </div>
+
+            <div class="msid-body">
+              <div class="msid-photo">
+                <img src="veylora-student-low-stability.webp" alt="Sample Veylora student portrait">
+              </div>
+
+              <div class="msid-info">
+                <h4>Jiayi Chen</h4>
+                <div class="msid-fields">
+                  <div><small>STUDENT ID</small><strong>VU-310427</strong></div>
+                  <div><small>CLASS OF</small><strong>2031</strong></div>
+                  <div><small>PROGRAM</small><strong>Undeclared</strong></div>
+                  <div><small>STATUS</small><strong>Active</strong></div>
+                  <div><small>CAMPUS ACCESS</small><strong>General</strong></div>
+                  <div><small>ISSUED</small><strong>08 / 27</strong></div>
+                </div>
+                <div class="msid-signature">j. chen</div>
+              </div>
+
+              <img class="msid-watermark" src="veylora-crest.webp" alt="">
+              <div class="msid-barcode"></div>
+              <div class="card-aging-layer"></div>
+              <div class="card-gloss-layer"></div>
+            </div>
+
+            <div class="msid-bottom">
+              <span>Veylora Student Identification</span>
+              <span>Campus ✓ &nbsp;&nbsp; Library ✓ &nbsp;&nbsp; Residence ✓</span>
+            </div>
+          </div>
+
+          <div class="mini-id-copy">
+            <strong>Used / original</strong>
+            <p>A casual Day 1 portrait on a card with visible wear, faint scratches, softened corners, and slightly dulled color.</p>
+          </div>
+        </article>
+
+        <article class="mini-id-card-wrap mid">
+          <span class="id-version-label">Mid Stability</span>
+
+          <div class="mini-student-id mid">
+            <div class="msid-band">
+              <div class="msid-brand">
+                <img src="veylora-crest.webp" alt="Veylora crest">
+                <b>Veylora University</b>
+              </div>
+              <span>Constans in Proposito</span>
+            </div>
+
+            <div class="msid-body">
+              <div class="msid-photo">
+                <img src="veylora-student-mid-stability.webp" alt="Sample Veylora student portrait">
+              </div>
+
+              <div class="msid-info">
+                <h4>Jiayi Chen</h4>
+                <div class="msid-fields">
+                  <div><small>STUDENT ID</small><strong>VU-310427</strong></div>
+                  <div><small>CLASS OF</small><strong>2031</strong></div>
+                  <div><small>PROGRAM</small><strong>Undeclared</strong></div>
+                  <div><small>STATUS</small><strong>Active</strong></div>
+                  <div><small>CAMPUS ACCESS</small><strong>General</strong></div>
+                  <div><small>ISSUED</small><strong>08 / 27</strong></div>
+                </div>
+                <div class="msid-signature">j. chen</div>
+              </div>
+
+              <img class="msid-watermark" src="veylora-crest.webp" alt="">
+              <div class="msid-barcode"></div>
+              <div class="card-aging-layer"></div>
+              <div class="card-gloss-layer"></div>
+            </div>
+
+            <div class="msid-bottom">
+              <span>Veylora Student Identification</span>
+              <span>Campus ✓ &nbsp;&nbsp; Library ✓ &nbsp;&nbsp; Residence ✓</span>
+            </div>
+          </div>
+
+          <div class="mini-id-copy">
+            <strong>Quietly corrected</strong>
+            <p>The same ID looks cleaner and better aligned. The portrait is brighter and the card has fewer signs of use.</p>
+          </div>
+        </article>
+
+        <article class="mini-id-card-wrap high">
+          <span class="id-version-label">High Stability</span>
+
+          <div class="mini-student-id high">
+            <div class="msid-band">
+              <div class="msid-brand">
+                <img src="veylora-crest.webp" alt="Veylora crest">
+                <b>Veylora University</b>
+              </div>
+              <span>Constans in Proposito</span>
+            </div>
+
+            <div class="msid-body">
+              <div class="msid-photo">
+                <img src="veylora-student-high-stability.webp" alt="Sample Veylora student portrait">
+              </div>
+
+              <div class="msid-info">
+                <h4>Jiayi Chen</h4>
+                <div class="msid-fields">
+                  <div><small>STUDENT ID</small><strong>VU-310427</strong></div>
+                  <div><small>CLASS OF</small><strong>2031</strong></div>
+                  <div><small>PROGRAM</small><strong>Undeclared</strong></div>
+                  <div><small>STATUS</small><strong>Active</strong></div>
+                  <div><small>CAMPUS ACCESS</small><strong>General</strong></div>
+                  <div><small>ISSUED</small><strong>08 / 27</strong></div>
+                </div>
+                <div class="msid-signature">j. chen</div>
+              </div>
+
+              <img class="msid-watermark" src="veylora-crest.webp" alt="">
+              <div class="msid-barcode"></div>
+              <div class="card-aging-layer"></div>
+              <div class="card-gloss-layer"></div>
+            </div>
+
+            <div class="msid-bottom">
+              <span>Veylora Student Identification</span>
+              <span>Campus ✓ &nbsp;&nbsp; Library ✓ &nbsp;&nbsp; Residence ✓</span>
+            </div>
+          </div>
+
+          <div class="mini-id-copy">
+            <strong>Pristine / promotional</strong>
+            <p>The card looks freshly printed and glossy, with cleaner whites, brighter surfaces, and a more polished campaign-photo portrait.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="id-design-note">
+        <b>Design intent</b>
+        <span>The unsettling part is that nothing looks damaged. As Stability rises, the university makes the player look more successful, more polished, and less like the person who first arrived.</span>
+      </div>
+    </div>
+
+    <div class="ui-principles-strip">
+      <div><b>Calm institution</b><span>The interface stays more restrained than the story.</span></div>
+      <div><b>Trust first</b><span>Design credibility makes contradictions more effective.</span></div>
+      <div><b>Recognition-based horror</b><span>The player notices change instead of being told it happened.</span></div>
+      <div><b>Systemic consistency</b><span>OS, website, ID, archive, and evidence all feel part of one university.</span></div>
+    </div>
+  </div>
+</section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">07 · Next Step</div>
+          <h2>Next steps</h2>
+        </div>
+        <div class="section-copy">
+          After this formative test, the next step is not more abstract planning — it is implementation and refinement inside the game itself.
+          I need to strengthen early immersion, reduce over-guidance, improve text hierarchy, add a quick way to reopen the OS and saved evidence, finish more V3 scenes and transitions, and then run another test once the blocked ending path is fully working.
+        </div>
+      </div>
+
+      <div class="ui-principles-strip" style="margin-top:22px">
+        <div><b>Immersion</b><span>Make the player feel like a real new student earlier.</span></div>
+        <div><b>Exploration</b><span>Shift from prompted actions to self-directed discovery.</span></div>
+        <div><b>Readability</b><span>Break long text into clearer, scannable evidence formats.</span></div>
+        <div><b>Retest</b><span>Validate the ending flow after implementation and bug fixes.</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="kicker" style="color:#F0B46D">Reflection</div>
+    <h2>From events to investigation.</h2>
+    <p>The biggest shift was realizing that Veylora did not need more obvious horror. It needed better conditions for players to notice, remember, compare, and question information on their own.</p>
+    <div class="actions">
+      <a class="btn" style="border-color:white;color:white" href="#">Back to Work ↑</a>
+    </div>
+    <p class="small-note" style="color:#BFD0C7">AI-assisted prototyping with ChatGPT, Gemini, and Claude was used to rapidly explore scenes, interfaces, and implementation directions. Product direction, original narrative, interaction structure, visual decisions, and iteration were authored and directed by Yan.</p>
+  </div>
+</footer>
+
+
+
+<script>
+(function(){
+  const toggle = document.querySelector('.site-nav.veylora-case-nav .language-switch');
+  if(!toggle) return;
+  const dict = {"Origin": "起源", "Design Challenge": "设计挑战", "Research": "参考研究", "Versions": "版本迭代", "Testing": "用户测试", "UI System": "UI 系统", "← Back to portfolio": "← 返回作品集", "Product Design · Game UX · Narrative Systems": "产品设计 · 游戏 UX · 叙事系统", "Designing a psychological horror game where players uncover the story by noticing contradictions across rules, documents, websites, and physical spaces.": "设计一款心理恐怖游戏，让玩家通过发现规则、文件、网站与实体空间之间的矛盾，逐步揭开故事真相。", "Play Latest Version (V2) ↗": "试玩最新公开版本（V2）↗", "Role": "角色", "Product / UX/UI / Narrative Design": "产品设计 / UX/UI / 叙事设计", "Type": "类型", "Personal Project": "个人项目", "Focus": "重点", "Interaction · IA · Game UX": "交互设计 · 信息架构 · 游戏 UX", "Tools": "工具", "Figma · ChatGPT · Gemini · Claude · HTML/CSS/JS": "Figma · ChatGPT · Gemini · Claude · HTML/CSS/JS", "Institutional identity": "学校品牌识别", "Welcome to Veylora University.": "欢迎来到 Veylora University。", "Your student record has been activated. Please review the Student Code before orientation.": "你的学生档案已激活。请在迎新开始前阅读《学生守则》。", "Student Portal": "学生门户", "Orientation": "迎新", "Handbook": "手册", "Campus Map": "校园地图", "Orientation Notice": "迎新通知", "Student Code": "学生守则", "01 · Origin": "01 · 起源", "From story to game.": "从故事到游戏。", "Veylora University · fictional institutional identity": "Veylora University · 虚构大学品牌体系", "The original written version was a UC Berkeley–based rules horror story. For the interactive adaptation, I rebuilt the setting as Veylora University — a fictional institution with its own identity, rules, and world.": "最初的文字版本是一篇以 UC Berkeley 为背景的规则怪谈。为了把它改编成交互体验，我重新构建了 Veylora University——一所拥有独立品牌、规则与世界观的虚构大学。", "How could I preserve the feeling of discovering contradictions while giving the player more agency than a written story?": "如何保留“发现矛盾”的感觉，同时让玩家比阅读文字故事时拥有更多主动权？", "Read original story ↗": "阅读原始故事 ↗", "02 · Design Challenge": "02 · 设计挑战", "Design challenge": "设计挑战", "In the original story, I controlled when the reader saw each rule and contradiction. In a game, the player needed to discover, remember, and connect information for themselves.": "在原始故事中，我可以控制读者何时看到每条规则和矛盾；但在游戏里，玩家需要自己发现、记住并连接这些信息。", "Discover": "发现", "How can information feel found, rather than simply delivered by the story?": "如何让信息像是玩家自己发现的，而不是由剧情直接递送？", "Explore": "探索", "How can physical places like the library, dorm, and student union still matter?": "如何让图书馆、宿舍、学生会等实体空间继续发挥作用？", "Connect": "连接", "How can scattered clues form one coherent investigation instead of unrelated strange events?": "如何让零散线索形成一条完整的调查线，而不是彼此无关的怪异事件？", "03 · Reference Research": "03 · 参考研究", "References": "参考研究", "I studied two interaction models through Danganronpa and Her Story. Danganronpa helped me understand scene-based narrative immersion; Her Story showed how fragmented information can become the investigation itself. Veylora combines both rather than choosing one.": "我通过《Danganronpa》和《Her Story》研究了两种交互模式。《Danganronpa》帮助我理解基于场景的叙事沉浸；《Her Story》让我看到碎片化信息本身也可以成为调查过程。Veylora 选择把两者结合起来，而不是二选一。", "Narrative reference · Danganronpa": "叙事参考 · Danganronpa", "Narrative Games": "叙事游戏", "influenced the early interaction model: character portraits, dialogue-driven scenes, distinct locations, and the feeling of physically moving through a story world.": "影响了早期的交互模型：角色立绘、对白驱动场景、明确地点，以及在故事世界中实际移动的感觉。", "Characters": "角色", "Dialogue": "对白", "Scenes": "场景", "Reference image: Danganronpa (Spike Chunsoft).": "参考图片：Danganronpa（Spike Chunsoft）。", "Investigation reference · Her Story": "调查参考 · Her Story", "Desktop / Information Investigation": "桌面 / 信息调查", "helped me think about investigation differently: the player searches, revisits, and connects fragments of information instead of receiving the story in one fixed sequence.": "让我重新思考调查玩法：玩家通过搜索、回看和连接信息碎片推进，而不是按固定顺序接收故事。", "Files": "文件", "Search": "搜索", "Cross-reference": "交叉比对", "Reference image: Her Story (Sam Barlow / Half Mermaid).": "参考图片：Her Story（Sam Barlow / Half Mermaid）。", "Narrative games gave me": "叙事游戏给了我", "Presence + spatial immersion": "角色存在感 + 空间沉浸", "Desktop investigation gave me": "桌面调查给了我", "Search + information discovery": "搜索 + 信息发现", "04 · Version Evolution": "04 · 版本迭代", "Version evolution": "版本迭代", "Each version changed what I believed the player should actually be doing.": "每一个版本都改变了我对“玩家真正应该做什么”的理解。", "Turn the original story into a playable game.": "把原始故事变成可玩的游戏。", "Build one complete, library-centered storyline.": "建立一条完整、以图书馆为中心的主线。", "Build the hybrid investigation system.": "建立混合式调查系统。", "Player Experience": "玩家体验", "Follow scattered events.": "跟随零散事件。", "Explore a connected mystery with a clear main line.": "沿着清晰主线探索彼此连接的谜团。", "Move between digital investigation and field exploration.": "在数字调查与实体空间探索之间切换。", "Biggest Change": "最大变化", "Story → playable scenes": "故事 → 可玩场景", "Library-centered flow + true / false endings": "图书馆中心流程 + 真 / 假结局", "Working hybrid system: web / desktop + field exploration": "可运行的混合系统：网页 / 桌面 + 实地探索", "Prototype": "原型", "Play V1 ↗": "试玩 V1 ↗", "Play V2 ↗": "试玩 V2 ↗", "In progress": "制作中", "V1 · First playable build": "V1 · 第一个可玩版本", "The first prototype tried to bring many parts of the original story into Day 1 at once — orientation, documents, campus exploration, strange events, and multiple rules.": "第一版试图在 Day 1 一次放入原故事中的许多内容——迎新、文件、校园探索、异常事件和多条规则。", "V1 · Early playable narrative prototype": "V1 · 早期可玩叙事原型", "What I learned": "我的发现", "The storyline felt fragmented.": "剧情显得零散。", "Too many events appeared without one clear investigation thread.": "事件很多，但缺少一条明确的调查主线。", "Text was too small for a reading-heavy experience.": "对于大量阅读的体验来说，文字太小。", "Dialogue progressed too quickly.": "对白推进得太快。", "Some spaces reused visuals even after the player changed locations.": "有些地点切换后仍复用相同视觉，空间连续性较弱。", "V2 · One clear storyline": "V2 · 一条清晰主线", "V2 shifted the focus toward one complete, coherent storyline. The library became the center of the investigation: earlier rules and events guided players toward it, discoveries there connected later scenes, and the full route eventually branched into a true ending and a false ending.": "V2 把重点转向一条完整、连贯的主线。图书馆成为调查中心：前期规则和事件把玩家引向这里，图书馆里的发现继续连接后续场景，最终路线分支为真结局和假结局。", "Learn a rule": "了解规则", "Library lead": "获得图书馆线索", "Explore library": "探索图书馆", "Find evidence": "发现证据", "Key decision": "关键选择", "False Ending": "假结局", "True Ending": "真结局", "V2 · Orientation check-in · clearer storyline and worldbuilding": "V2 · 迎新签到 · 更清晰的剧情与世界观", "Supporting UX improvements": "辅助 UX 改进", "Unique scenes for important spaces.": "为重要地点设计独立场景。", "Character portraits and stronger dialogue presentation.": "加入角色立绘，并加强对白呈现。", "Day / night and clock transitions.": "加入昼夜和时间变化。", "Phone and email audio cues.": "加入手机和邮件音效提示。", "Slower reading pace and better document hierarchy.": "降低阅读节奏，并改善文件信息层级。", "Remaining problem": "剩余问题", "The player still mostly followed a predefined story rather than actively investigating it.": "玩家仍然主要是在跟随预设剧情，而不是真正主动调查。", "V3 · Investigation": "V3 · 调查", "V3 is now a working hybrid prototype and is still expanding. It connects Veylora’s website, applicant portal, desktop OS, archive, forum, phone, map, code runner, and field exploration into one investigation system.": "V3 目前已经是可运行的混合原型，并仍在扩展中。它把 Veylora 官网、申请 Portal、桌面 OS、Archive、Forum、Phone、Map、Code Runner 与实体探索连接成一个调查系统。", "The horror comes from contradiction.": "恐怖来自矛盾。", "Find": "发现", "Save": "保存", "Compare": "比较", "Interpret": "解读", "Why hybrid?": "为什么采用混合模式？", "Web interfaces work well for searching and comparing information, but the story also depends on physically entering spaces, finding objects, and escaping institutional environments. V3 keeps both.": "网页界面适合搜索和比较信息，但这个故事同样依赖进入实体空间、发现物品和逃离制度化环境。V3 因此保留两种体验。", "Digital Layer": "数字层", "Website, email, forum, portal, files.": "网站、邮件、论坛、Portal、文件。", "Read": "阅读", "Physical Layer": "实体层", "Library, dorm, SLC, student union, elevators, notes.": "图书馆、宿舍、SLC、学生会、电梯、纸条。", "Collect": "收集", "Evidence Layer": "证据层", "Connects both worlds by letting players save, reopen, and compare what they find.": "通过保存、重新打开和比较发现的内容，把数字世界与实体空间连接起来。", "Current V3 showcase": "当前 V3 展示", "These are current in-engine V3 scenes. They belong in the project evolution section because they show the actual playable investigation build, not just isolated UI concepts.": "这些是当前 V3 的实际游戏内场景。它们放在版本迭代部分，因为展示的是正在制作中的真实可玩调查体验，而不只是独立 UI 概念。", "Memorial Court · orientation start": "Memorial Court · 迎新开始", "The player first enters campus life through a guided welcome scene that establishes role, tone, and the institutional surface of the university.": "玩家通过引导式迎新场景进入校园生活，建立学生身份、游戏基调以及学校表面的制度秩序。", "Veylora OS · investigation hub": "Veylora OS · 调查中心", "The desktop system becomes the central place for collecting evidence, reopening documents, comparing contradictions, and running discovered files.": "桌面系统成为收集证据、重新查看文件、比较矛盾信息和运行已发现文件的核心入口。", "Library staff area · permission escalation": "图书馆员工区 · 权限升级", "Institutional systems become part of the puzzle. Access is no longer just narrative flavor — it is a mechanic that unlocks what the player can discover.": "学校制度本身也成为谜题的一部分。权限不再只是叙事装饰，而是决定玩家能够发现什么的游戏机制。", "Core Mechanics": "核心机制", "Awareness × Stability": "Awareness × Stability", "V3 now tracks two hidden variables in the game state. Together, they create the tension between seeing the truth and succeeding inside the institution.": "V3 在游戏状态中追踪两个隐藏变量。它们共同制造“看见真相”与“在制度中成功”之间的张力。", "Awareness": "Awareness", "How much the player notices inconsistency.": "玩家能够察觉多少不一致。", "Revisit repeated buildings": "再次进入重复出现的建筑", "Remember the 5th floor": "记住第五层", "Read anomalous forum posts": "阅读异常论坛帖子", "Awareness ↑": "Awareness ↑", "More anomalies become visible, bringing the player closer to the truth.": "更多异常会变得可见，让玩家更接近真相。", "Stability": "Stability", "How “normal” the university system believes the player is.": "学校系统认为玩家有多“正常”。", "Attend class": "按时上课", "Maintain grades": "维持成绩", "Follow Advisor instructions": "遵循 Advisor 指示", "Avoid discussing anomalies": "避免讨论异常", "Stability ↑": "Stability ↑", "The player looks more successful — and more aligned with the system.": "玩家看起来更成功、更融入校园——同时也越来越与系统保持一致。", "SYSTEM OUTPUT": "系统反馈", "Student ID × Stability": "学生证 × Stability", "The student's ID photo quietly becomes cleaner, warmer, and more “perfect” as Stability rises. The system never announces the change — the player has to notice it.": "随着 Stability 上升，学生证照片会悄悄变得更干净、更温暖、更“完美”。系统不会提醒这一变化——玩家必须自己发现。", "05 · User Testing": "05 · 用户测试", "Formative test": "形成性测试", "I tested an incomplete V3 build to understand whether the new investigation direction was working before the full game was finished. The goal was not to validate the final experience, but to identify where players felt engaged, confused, or overly guided.": "我在 V3 尚未完成时进行了一次形成性测试，用来判断新的调查方向是否有效。目标不是验证最终成品，而是提前发现玩家在哪些地方投入、困惑或感到引导过强。", "Prototype stage": "原型阶段", "V3 · In progress": "V3 · 制作中", "Format": "形式", "Moderated playtest": "主持式可用性测试", "Main focus": "主要观察", "Discovery · Reading · Navigation": "发现 · 阅读 · 导航", "“I felt like I was being guided to look, rather than discovering things myself.”": "“我感觉自己是在被引导着去看，而不是自己发现东西。”", "The mystery worked, but discovery felt too guided.": "谜团成立，但发现过程过于被引导。", "The player understood the hidden fifth floor as the first major anomaly and could follow the library-centered investigation. However, many discoveries still felt prompted rather than self-directed.": "玩家能够理解隐藏第五层是第一个重要异常，也能跟随以图书馆为中心的调查线。但很多发现仍像是被提示出来的，而不是由玩家主动探索得到。", "Design response": "设计调整", "Reduce explicit prompts and give players more control over where to investigate next.": "减少明确提示，让玩家更自由地决定下一步调查哪里。", "Reading friction reduced engagement.": "阅读阻力降低了参与度。", "Long blocks of text and weak hierarchy made some documents hard to scan. The player explicitly noted that dense text made them less willing to read.": "大段文本和较弱的信息层级让部分文件难以快速浏览。玩家明确表示，过密的文字会降低阅读意愿。", "Shorter chunks, clearer hierarchy, more lists, and easier reopening of evidence.": "缩短文本、强化层级、增加列表，并让证据更容易重新打开。", "The desktop system was one of the strongest parts.": "桌面系统是体验中最强的部分之一。", "The computer interface, archive, browser, and map were perceived as clear and visually coherent. This supported the direction of using Veylora OS as the investigation hub.": "电脑界面、Archive、Browser 和 Map 被认为清晰且视觉一致，这进一步支持了把 Veylora OS 作为调查中心的方向。", "Keep the OS central and make previously collected information easier to access at any time.": "保留 OS 的核心地位，并让已收集信息能够随时快速访问。", "Early immersion was weaker than the later mystery.": "前期代入感弱于后期谜团。", "The player understood the tasks, but did not immediately feel strongly embedded in the role of a new student. The strongest sense of unease began around the library sequence.": "玩家理解任务，但一开始并没有强烈感受到“自己是新生”。最明显的不安感是在图书馆段落才出现。", "Strengthen student identity, campus-life interactions, and onboarding before the horror becomes explicit.": "在恐怖元素明确出现之前，加强学生身份、校园生活互动和 onboarding。", "Other issues observed": "其他观察", "Location changes felt abrupt, Student ID could be ignored without prompting, and some information architecture still needs simplification.": "地点切换较突然；没有提示时玩家容易忽略 Student ID；部分信息架构仍需简化。", "Prototype limitation": "原型限制", "A blocking bug prevented full validation of one ending path, so the ending flow still needs another test after implementation is complete.": "一个阻塞性 bug 导致其中一条结局无法完整验证，因此结局流程需要在实现完成后再次测试。", "Key takeaway": "关键结论", "V3 should not simply tell players where the mystery is. It should give them better tools to notice, remember, and investigate it themselves.": "V3 不应该直接告诉玩家谜团在哪里，而应该提供更好的工具，让玩家自己注意、记住并调查异常。", "06 · UI System": "06 · UI 系统", "UI system": "UI 系统", "The current V3 interface system expands Veylora beyond scene dialogue into a connected institutional world: a desktop OS, official university website, applicant portal, student ID, archive, map, and evidence surfaces.": "当前 V3 的界面系统让 Veylora 不再只依赖场景对白，而是形成一个互相连接的学校世界：桌面 OS、官方网站、Applicant Portal、Student ID、Archive、Map 与证据界面。", "The UI should feel trustworthy before it feels strange.": "UI 应该先让人相信，再让人觉得不对劲。", "V3 · In Progress": "V3 · 制作中", "Current direction": "当前方向", "V3 is still being developed. The case study documents the product direction and UI system without presenting the unfinished build as a final prototype.": "V3 仍在开发中。这个 case study 展示当前产品方向和 UI 系统，而不会把未完成版本包装成最终原型。", "Progress link coming soon": "进度链接稍后补充", "Current V3 UI": "当前 V3 UI", "Veylora OS": "Veylora OS", "The OS becomes the player’s investigation hub. It supports mail, archive, browser, portal, map, forum, and file-based exploration while preserving a polished institutional tone.": "OS 是玩家的调查中心，整合 Mail、Archive、Browser、Portal、Map、Forum 和文件探索，同时维持学校系统统一、可信的视觉语言。", "Official website": "官方网站", "The website and applicant portal establish Veylora as a desirable, believable university first. That credibility makes later contradictions more effective.": "官网和 Applicant Portal 首先让 Veylora 看起来像一所令人向往、可信的大学；这种可信度会让后续出现的矛盾更有效。", "Foundations": "基础规范", "Visual language": "视觉语言", "The UI uses a restrained institutional palette: deep green for authority, cream for readability, and warm orange for emphasis. Editorial serif headings are paired with clean system sans-serif text so the experience feels more like a university ecosystem than a conventional horror interface.": "UI 使用克制的学校品牌配色：深绿色体现权威，奶油色提升可读性，暖橙色用于强调。编辑感的衬线标题与干净的系统无衬线字体搭配，让体验更像一个真实大学生态，而不是传统恐怖界面。", "Primary green": "主绿色", "Institutional surfaces, headers, buttons": "学校界面、标题、按钮", "Soft cream": "柔和奶油色", "Backgrounds, readability, paper tone": "背景、可读性、纸张质感", "Warm orange": "暖橙色", "Accent, progress, subtle emphasis": "强调、进度、轻微提示", "Text ink": "正文墨色", "Body copy, system labels, hierarchy": "正文、系统标签、信息层级", "Identity drift": "身份漂移", "Stability changes both the portrait and the physical condition of the ID itself. The player never receives an update notice — the card simply becomes cleaner, newer, and more idealized over time.": "Stability 会同时改变照片和学生证本身的物理状态。玩家不会收到任何更新提示——卡片只会随着时间悄悄变得更干净、更新、更理想化。", "Low Stability": "低 Stability", "STUDENT ID": "学生编号", "CLASS OF": "毕业年份", "PROGRAM": "专业", "Undeclared": "未定专业", "STATUS": "状态", "Active": "有效", "CAMPUS ACCESS": "校园权限", "General": "普通", "ISSUED": "签发", "Veylora Student Identification": "Veylora 学生身份证明", "Campus ✓ Library ✓ Residence ✓": "校园 ✓ 图书馆 ✓ 宿舍 ✓", "Used / original": "旧卡 / 原始状态", "A casual Day 1 portrait on a card with visible wear, faint scratches, softened corners, and slightly dulled color.": "Day 1 的照片更自然随意，卡面有明显使用痕迹、轻微划痕、磨旧边角和略微褪色。", "Mid Stability": "中等 Stability", "Quietly corrected": "悄然修正", "The same ID looks cleaner and better aligned. The portrait is brighter and the card has fewer signs of use.": "同一张学生证逐渐变得更干净、更整齐，照片更亮，卡面的使用痕迹也减少。", "High Stability": "高 Stability", "Pristine / promotional": "崭新 / 宣传化", "The card looks freshly printed and glossy, with cleaner whites, brighter surfaces, and a more polished campaign-photo portrait.": "卡片像刚印出来一样崭新发亮，白色更干净、表面更明亮，人物照片也更像学校宣传照。", "Design intent": "设计意图", "The unsettling part is that nothing looks damaged. As Stability rises, the university makes the player look more successful, more polished, and less like the person who first arrived.": "令人不安的地方并不是“损坏”，而是随着 Stability 上升，学校让玩家看起来更成功、更精致，也越来越不像最初来到这里的自己。", "Calm institution": "克制的学校系统", "The interface stays more restrained than the story.": "界面始终比故事本身更克制。", "Trust first": "先建立信任", "Design credibility makes contradictions more effective.": "可信的设计会让矛盾出现时更有冲击力。", "Recognition-based horror": "基于察觉的恐怖", "The player notices change instead of being told it happened.": "玩家自己察觉变化，而不是被系统告知变化。", "Systemic consistency": "系统一致性", "OS, website, ID, archive, and evidence all feel part of one university.": "OS、官网、学生证、Archive 与证据系统都属于同一个大学体系。", "07 · Next Step": "07 · 下一步", "Next steps": "下一步", "After this formative test, the next step is not more abstract planning — it is implementation and refinement inside the game itself. I need to strengthen early immersion, reduce over-guidance, improve text hierarchy, add a quick way to reopen the OS and saved evidence, finish more V3 scenes and transitions, and then run another test once the blocked ending path is fully working.": "这轮形成性测试之后，下一步不是继续做抽象规划，而是直接完善游戏本身：加强前期代入感、减少过强引导、改善文字层级、加入快速打开 OS 和已保存证据的方式、完成更多 V3 场景与过渡，并在被阻塞的结局路径完成后再进行一次测试。", "Immersion": "沉浸感", "Make the player feel like a real new student earlier.": "更早让玩家真正感觉自己是一名新生。", "Exploration": "探索", "Shift from prompted actions to self-directed discovery.": "从被提示的操作转向玩家主动发现。", "Readability": "可读性", "Break long text into clearer, scannable evidence formats.": "把长文本拆成更清晰、更易扫描的证据格式。", "Retest": "再次测试", "Validate the ending flow after implementation and bug fixes.": "在实现和修复 bug 后验证结局流程。", "Reflection": "反思", "From events to investigation.": "从事件堆叠到真正的调查体验。", "The biggest shift was realizing that Veylora did not need more obvious horror. It needed better conditions for players to notice, remember, compare, and question information on their own.": "最大的转变，是意识到 Veylora 并不需要更明显的恐怖元素，而需要创造更好的条件，让玩家自己注意、记住、比较并质疑信息。", "Back to Work ↑": "返回作品 ↑", "AI-assisted prototyping with ChatGPT, Gemini, and Claude was used to rapidly explore scenes, interfaces, and implementation directions. Product direction, original narrative, interaction structure, visual decisions, and iteration were authored and directed by Yan.": "我使用 ChatGPT、Gemini 和 Claude 辅助快速探索场景、界面与实现方向。产品方向、原创叙事、交互结构、视觉决策与迭代均由 Yan 主导完成。"};
+  const items = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node;
+  while((node = walker.nextNode())){
+    if(node.parentElement?.closest('script,style')) continue;
+    const original = node.nodeValue;
+    const trimmed = original.trim().replace(/\s+/g,' ');
+    if(dict[trimmed]) items.push([node, original, dict[trimmed]]);
+  }
+  function setLanguage(lang){
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    items.forEach(([n,en,zh])=>{
+      const trimmed = en.trim();
+      n.nodeValue = lang === 'zh' ? en.replace(trimmed, zh) : en;
+    });
+    toggle.textContent = lang === 'zh' ? '中文 / EN' : 'EN / 中文';
+    toggle.setAttribute('aria-pressed', String(lang === 'zh'));
+  }
+  toggle.addEventListener('click',()=>{
+    setLanguage(document.documentElement.lang === 'zh-CN' ? 'en' : 'zh');
+  });
+  setLanguage(window.portfolioLanguage.get());
+})();
+</script>
+
+
+
+<script>
+(function(){
+  const bar=document.getElementById('case-reading-progress');
+  if(!bar) return;
+  function updateCaseProgress(){
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const p=max>0?Math.max(0,Math.min(1,window.scrollY/max)):0;
+    bar.style.transform='scaleX('+p+')';
+  }
+  window.addEventListener('scroll',updateCaseProgress,{passive:true});
+  window.addEventListener('resize',updateCaseProgress,{passive:true});
+  updateCaseProgress();
+})();
+</script>
+
+</body>
+</html>
