@@ -240,6 +240,14 @@ html[lang="zh-CN"] .summary .statement{font-family:"PingFang SC",serif;font-size
 .hero-grid > div:first-child h1 { margin-left: 11px; }
 @media(max-width:650px){.hero-grid > div:first-child h1{margin-left:9px;}}
 </style>
+
+<style id="matcha-title-alignment-fix">
+/* Deliberately visible inset for the hero title, while preserving the illustration position. */
+.hero-grid > div:first-child h1 { margin-left: 30px !important; }
+@media (max-width:650px) {
+  .hero-grid > div:first-child h1 { margin-left: 22px !important; max-width: calc(100% - 22px); }
+}
+</style>
 </head><body>
 <div class="progress" id="progress"></div><header aria-label="Yume Mori project navigation" class="topbar">
 <a aria-label="Yanyu Gu — back to top" class="project-owner" href="#top">YANYU GU<span>.</span></a>

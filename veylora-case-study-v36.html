@@ -2195,6 +2195,22 @@ html[lang="zh-CN"] .hero-integrated h1{
 .mechanic-card .mechanic-output{margin-top:32px;padding-top:19px;}
 .mechanic-card .mechanic-examples{row-gap:10px;}
 </style>
+
+<style id="mechanic-tag-divider-spacing-fix">
+/* The tag row must end well before the output divider on both cards. */
+.mechanic-grid .mechanic-card .mechanic-examples {
+  padding-bottom: 38px !important;
+  margin-bottom: 0 !important;
+  align-content: start !important;
+}
+.mechanic-grid .mechanic-card .mechanic-output {
+  margin-top: auto !important;
+  padding-top: 20px !important;
+}
+@media (max-width:700px) {
+  .mechanic-grid .mechanic-card .mechanic-examples { padding-bottom: 30px !important; }
+}
+</style>
 </head>
 <body>
 
